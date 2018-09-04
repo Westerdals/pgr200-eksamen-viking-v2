@@ -1,11 +1,6 @@
 package no.kristiania.prg200.commandline;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
 
 import org.junit.Test;
 
@@ -23,37 +18,44 @@ public class ConferenceCliClientTest {
                 "-title", title,
                 "-description", description
         });
-        AddTalkCommand expectedCommand = new AddTalkCommand().withTitle(title).withDescription(description);
+        AddTalkCommand expectedCommand = new AddTalkCommand();
+        expectedCommand.setTitle(title);
+        expectedCommand.setDescription(description);
         assertThat(command).isInstanceOf(AddTalkCommand.class)
             .isEqualToComparingFieldByField(expectedCommand);
     }
 
     @Test
-    public void shouldDecodeAddCommandInAnyOrder() {
-        String topic = SampleData.sampleTopic();
+    public void shouldDecodeAddCommandWithTopic() {
         String title = SampleData.sampleText(5);
         String description = SampleData.sampleText(10);
+        String topic = SampleData.sampleTopic();
         ConferenceClientCommand command = client.decodeCommand(new String[] {
                 "add",
-                "-topic", topic,
                 "-title", title,
+                "-topic", topic,
                 "-description", description
         });
-        AddTalkCommand expectedCommand = new AddTalkCommand().withTitle(title).withDescription(description);
-        assertThat(command)
-            .isInstanceOf(AddTalkCommand.class)
+        AddTalkCommand expectedCommand = new AddTalkCommand();
+        expectedCommand.setTitle(title);
+        expectedCommand.setTopic(topic);
+        expectedCommand.setDescription(description);
+        assertThat(command).isInstanceOf(AddTalkCommand.class)
             .isEqualToComparingFieldByField(expectedCommand);
     }
 
     @Test
-    public void shouldDecodeListCommand() {
+    public void shouldDecodeListCommandWithTopic() {
+        String title = SampleData.sampleText(5);
+        String description = SampleData.sampleText(10);
         String topic = SampleData.sampleTopic();
         ConferenceClientCommand command = client.decodeCommand(new String[] {
-                "list", "-topic", topic
+                "list",
+                "-topic", topic,
         });
-        assertThat(command)
-            .isInstanceOf(ListTalksCommand.class)
-            .isEqualToComparingFieldByField(new ListTalksCommand().withTopic(topic));
+        ListTalksCommand expectedCommand = new ListTalksCommand();
+        expectedCommand.setTopic(topic);
+        assertThat(command).isInstanceOf(ListTalksCommand.class)
+            .isEqualToComparingFieldByField(expectedCommand);
     }
-
 }

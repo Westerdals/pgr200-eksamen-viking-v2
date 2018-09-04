@@ -4,9 +4,13 @@ public class ListTalksCommand implements ConferenceClientCommand {
 
     private String topic;
 
-    public ListTalksCommand withTopic(String topic) {
+    public void setTopic(String topic) {
         this.topic = topic;
-        return this;
+    }
+
+    @Override
+    public void readArguments(String[] args) {
+        setTopic(getArgument(args, "-topic"));
     }
 
 }
