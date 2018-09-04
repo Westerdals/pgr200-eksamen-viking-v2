@@ -1,0 +1,29 @@
+-> ConferenceClient: main
+ConferenceClient -> ConferenceClient ++: executeCommand(args)
+	ConferenceClient -> ConferenceClient ++: decodeCommand(args)
+		ConferenceClient -> ConferenceClient: findCommand(args[0])
+		create AddTalkCommand
+		ConferenceClient --> AddTalkCommand:
+		ConferenceClient -> AddTalkCommand ++: decodeArguments(args)
+			AddTalkCommand --> Arguments: title := getRequired("title")
+			AddTalkCommand --> Arguments: description := getRequired("description")
+			AddTalkCommand --> Arguments: topic := getRequired("topic")
+		ConferenceClient <-- AddTalkCommand --
+		ConferenceClient -> Arguments: verifyAllUsed
+	ConferenceClient <-- ConferenceClient --
+	ConferenceClient --> AddTalkCommand ++: execute
+		create HttpPostFormRequest
+		AddTalkCommand --> HttpPostFormRequest: "POST", "localhost", 8088, payload
+		AddTalkCommand --> HttpPostFormRequest ++: execute
+			create HttpResponse
+			HttpPostFormRequest --> HttpResponse
+			create Socket
+			HttpPostFormRequest --> Socket: "localhost" 8088
+			HttpPostFormRequest --> Socket: "..."
+			HttpPostFormRequest --> HttpResponse ++: readResponse
+				HttpResponse --> Socket ++: read line
+				HttpResponse <-- Socket --: 200 OK
+			HttpPostFormRequest <-- HttpResponse --
+		AddTalkCommand <-- HttpPostFormRequest --
+	ConferenceClient <-- AddTalkCommand --
+ConferenceClient -> ConferenceClient --

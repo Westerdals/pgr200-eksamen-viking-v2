@@ -1,0 +1,40 @@
+-> ConferenceClient: main
+ConferenceClient -> ConferenceClient ++: executeCommand(args)
+	ConferenceClient -> ConferenceClient ++: decodeCommand(args)
+		ConferenceClient -> ConferenceClient: findCommand(args[0])
+		create AddTalkCommand
+		ConferenceClient --> AddTalkCommand:
+		ConferenceClient -> AddTalkCommand ++: decodeArguments(args)
+			AddTalkCommand --> Arguments: title := getRequired("title")
+			AddTalkCommand --> Arguments: description := getRequired("description")
+			AddTalkCommand --> Arguments: topic := getRequired("topic")
+		ConferenceClient <-- AddTalkCommand --
+		ConferenceClient -> Arguments: verifyAllUsed
+	ConferenceClient <-- ConferenceClient --
+	ConferenceClient --> AddTalkCommand ++: execute
+		AddTalkCommand --> AddTalkCommand ++: createPayload
+			create HttpPayload
+			AddTalkCommand --> HttpPayload
+			AddTalkCommand --> HttpPayload: add("title", title)
+			AddTalkCommand --> HttpPayload: add("description", description)
+			AddTalkCommand --> HttpPayload: add("topic", topic)
+		AddTalkCommand --> AddTalkCommand --
+		create HttpPostFormRequest
+		AddTalkCommand --> HttpPostFormRequest: "POST", "localhost", 8088, payload
+		AddTalkCommand --> HttpPostFormRequest ++: execute
+			create HttpResponse
+			HttpPostFormRequest --> HttpResponse
+			create Socket
+			HttpPostFormRequest --> Socket: "localhost" 8088
+			HttpPostFormRequest --> Socket: "POST /api/talks HTTP/1.1"
+			HttpPostFormRequest --> Socket: "Content-length: 1355"
+			HttpPostFormRequest --> Socket: "title=my+talk&topic=java&description=..."
+			HttpPostFormRequest --> Socket: flush
+			HttpPostFormRequest --> HttpResponse ++: readResponse
+				HttpResponse --> Socket ++: read line
+				HttpResponse <-- Socket --: 200 OK
+				HttpResponse --> HttpResponse: parse response code
+			HttpPostFormRequest <-- HttpResponse --
+		AddTalkCommand <-- HttpPostFormRequest --
+	ConferenceClient <-- AddTalkCommand --
+ConferenceClient -> ConferenceClient --

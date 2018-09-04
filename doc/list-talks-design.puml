@@ -1,0 +1,41 @@
+-> ConferenceClient: main
+ConferenceClient -> ConferenceClient ++: executeCommand(args)
+	ConferenceClient -> ConferenceClient ++: decodeCommand(args)
+		ConferenceClient -> ConferenceClient: findCommand(args[0])
+		create ListTalksCommand
+		ConferenceClient --> ListTalksCommand:
+		ConferenceClient -> ListTalksCommand ++: decodeArguments(args)
+			ListTalksCommand --> Arguments: topic := getRequired("topic")
+		ConferenceClient <-- ListTalksCommand --
+		ConferenceClient -> Arguments: verifyAllUsed
+	ConferenceClient <-- ConferenceClient --
+	ConferenceClient --> ListTalksCommand ++: execute
+		ListTalksCommand --> ListTalksCommand ++: createPayload
+			create HttpQuery
+			ListTalksCommand --> HttpQuery
+			ListTalksCommand --> HttpQuery: add("topic", topic)
+		ListTalksCommand --> ListTalksCommand --
+		create HttpGetRequest
+		ListTalksCommand --> HttpGetRequest: "GET", "localhost", 8088, query
+		ListTalksCommand --> HttpGetRequest ++: execute
+			create HttpResponse
+			HttpGetRequest --> HttpResponse
+			create Socket
+			HttpGetRequest --> Socket: "localhost" 8088
+			HttpGetRequest --> Socket: "GET /api/talks&topic=java HTTP/1.1"
+			HttpGetRequest --> Socket: "title=my+talk&topic=java&description=..."
+			HttpGetRequest --> Socket: flush
+			HttpGetRequest --> HttpResponse ++: readResponse
+				HttpResponse --> Socket ++: read line
+				HttpResponse <-- Socket --: 200 OK
+				HttpResponse --> HttpResponse: parse response code
+				create Body
+				HttpResponse --> Body
+				loop Each line
+					HttpResponse --> Socket: line := read line
+					HttpResponse --> Body: append(line)
+				end loop
+			HttpGetRequest <-- HttpResponse --: body
+		ListTalksCommand <-- HttpGetRequest --
+	ConferenceClient <-- ListTalksCommand --
+ConferenceClient -> ConferenceClient --
