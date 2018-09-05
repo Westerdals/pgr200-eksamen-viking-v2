@@ -7,7 +7,7 @@ ConferenceClient -> ConferenceClient ++: executeCommand(args)
 		ConferenceClient -> AddTalkCommand ++: decodeArguments(args)
 			AddTalkCommand --> Arguments: title := getRequired("title")
 			AddTalkCommand --> Arguments: description := getRequired("description")
-			AddTalkCommand --> Arguments: topic := getRequired("topic")
+			AddTalkCommand --> Arguments: topic := getOptional("topic")
 		ConferenceClient <-- AddTalkCommand --
 		ConferenceClient -> Arguments: verifyAllUsed
 	ConferenceClient <-- ConferenceClient --
