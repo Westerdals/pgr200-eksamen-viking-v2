@@ -7,14 +7,16 @@ public class HttpRequest {
 
     private String hostname;
     private String uri;
+    private int port;
 
-    public HttpRequest(String hostname, String uri) {
+    public HttpRequest(String hostname, int port, String uri) {
         this.hostname = hostname;
         this.uri = uri;
+        this.port = port;
     }
 
     public HttpResponse execute() throws IOException {
-        try(Socket socket = new Socket(hostname, 80)) {
+        try(Socket socket = new Socket(hostname, port)) {
             socket.getOutputStream()
                 .write(("GET " + uri + " HTTP/1.1\r\n").getBytes());
             socket.getOutputStream()

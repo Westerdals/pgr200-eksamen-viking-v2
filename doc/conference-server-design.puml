@@ -1,0 +1,44 @@
+actor Client
+participant ConferenceServer
+participant ServerSocket
+participant Thread
+participant ClientThread
+participant Socket
+participant DataSource
+database Database
+
+-> ConferenceServer: main
+create DataSource
+ConferenceServer -> DataSource
+ConferenceServer -> DataSource: Migrate database
+DataSource -> Database: CREATE TABLE talks ...
+ConferenceServer -> ConferenceServer +++: start
+	create ServerSocket
+	ConferenceServer -> ServerSocket:
+	create Thread
+	ConferenceServer --\ Thread: start 
+ConferenceServer <-- ConferenceServer --
+
+activate Thread
+	loop forever
+		Thread -> ServerSocket ++: socket := accept
+		Client -> ServerSocket: connect
+		create Socket
+		ServerSocket -> Socket
+		Thread <-- ServerSocket --
+		create ClientThread
+		Thread -> ClientThread
+	end
+	Thread --\ ClientThread: handleClient(socket)
+
+	activate ClientThread
+		ClientThread -> Socket: requestLine := readLine
+		ClientThread -> ClientThread ++: handleGet
+			ClientThread -> ClientThread: handleGetTalks
+			ClientThread -> DataSource: SELECT * FROM talks
+			DataSource -> Database: SELECT * FROM talks
+			ClientThread -> Socket: write talks
+		ClientThread <-- ClientThread --
+	deactivate ClientThread
+	destroy ClientThread
+deactivate Thread
