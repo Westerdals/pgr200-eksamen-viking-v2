@@ -23,8 +23,9 @@ public class HttpRequest {
                 .write(("Host: " + hostname + "\r\n").getBytes());
             socket.getOutputStream()
                 .write("Connection: close\r\n".getBytes());
+            socket.getOutputStream()
+                    .write(("Content-Length: 0\r\n").getBytes());
             socket.getOutputStream().write("\r\n".getBytes());
-
 
             return new HttpResponse(socket);
         }

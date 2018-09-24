@@ -57,12 +57,7 @@ public class HttpClientTest {
                 .write("Connection: close\r\n".getBytes());
             socket.getOutputStream().write("\r\n".getBytes());
 
-            InputStream input = socket.getInputStream();
 
-            int c;
-            while ((c = input.read()) != -1) {
-                System.out.print((char)c);
-            }
 
         }
     }
