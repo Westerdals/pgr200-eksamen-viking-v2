@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 
+import org.flywaydb.core.Flyway;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +20,13 @@ public class ConferenceTalkDao {
     }
 
     public void createTableIfNotExists() throws SQLException {
-        try (Connection conn = dataSource.getConnection()) {
+        /*try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate("create table if not exists CONFERENCE_TALK (TITLE varchar primary key, DESCRIPTION text)");
-        }
+        }*/
+
+        Flyway flyway = Flyway.configure().dataSource("jdbc:postgresql://localhost/postgres", "postgres", "root").load();
+
+        flyway.migrate();
     }
 
     public List<ConferenceTalk> listTalks () {
