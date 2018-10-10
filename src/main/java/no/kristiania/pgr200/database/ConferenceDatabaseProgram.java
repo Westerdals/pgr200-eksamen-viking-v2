@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.sql.DataSource;
 
+import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGPoolingDataSource;
 
 public class ConferenceDatabaseProgram {
@@ -21,8 +22,13 @@ public class ConferenceDatabaseProgram {
     public static DataSource createDataSource() {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost/postgres");
-        dataSource.setUser("demouser");
+        dataSource.setUser("postgres");
         dataSource.setPassword("root");
+
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(dataSource);
+        flyway.migrate();
+
         return dataSource;
     }
 
