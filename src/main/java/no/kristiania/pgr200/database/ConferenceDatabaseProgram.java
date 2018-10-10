@@ -1,6 +1,6 @@
 package no.kristiania.pgr200.database;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.UUID;
 
 import javax.sql.DataSource;
@@ -20,14 +20,19 @@ public class ConferenceDatabaseProgram {
 
     public static DataSource createDataSource() {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
-        dataSource.setUrl("jdbc:postgresql://localhost/conferencedb_test");
-        dataSource.setUser("conference");
-        dataSource.setPassword("pZ853D#6*g");
+        dataSource.setUrl("jdbc:postgresql://localhost/postgres");
+        dataSource.setUser("demouser");
+        dataSource.setPassword("root");
         return dataSource;
     }
 
+
+
     public static void main(String[] args) throws SQLException {
         new ConferenceDatabaseProgram().run(args);
+        ConferenceTalkDao test = new ConferenceTalkDao(createDataSource());
+        test.listTalks();
+
     }
 
     private void run(String[] args) throws SQLException {
