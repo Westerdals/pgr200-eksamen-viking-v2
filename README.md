@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/Markusdreyer/database-exercise.svg?branch=master)](https://travis-ci.org/Markusdreyer/database-exercise)
 
 # Forelesning 7
 
