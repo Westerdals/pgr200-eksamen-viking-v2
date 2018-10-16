@@ -40,7 +40,7 @@ public class ConferenceTopicDao {
 
         public void insertTopic(ConferenceTopic topic) throws SQLException {
             try(Connection conn = dataSource.getConnection()) {
-                String sql = "insert into CONFERENCE_TALK (TITLE, DESCRIPTION) values (?, ?)";
+                String sql = "insert into topic (TITLE) values (?)";
                 try (PreparedStatement statement = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
                     statement.setString(1, topic.getTitle());
                     statement.executeUpdate();

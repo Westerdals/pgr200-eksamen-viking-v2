@@ -19,4 +19,12 @@ public class ConferenceTopic {
     public void setId(int id) {
         this.id = id;
     }
+
+    public ConferenceTopic (String title) {
+        this.title = title;
+    }
+
+    public ConferenceTopic() {
+
+    }
 }

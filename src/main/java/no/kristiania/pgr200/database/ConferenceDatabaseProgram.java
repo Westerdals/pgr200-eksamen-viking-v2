@@ -11,18 +11,21 @@ import org.postgresql.ds.PGPoolingDataSource;
 public class ConferenceDatabaseProgram {
 
     private DataSource dataSource;
-    private ConferenceTalkDao dao;
+    private ConferenceTalkDao talkDao;
+    private ConferenceTopicDao topicDao;
 
     public ConferenceDatabaseProgram() throws SQLException {
         this.dataSource = createDataSource();
-        this.dao = new ConferenceTalkDao(dataSource);
+        this.talkDao = new ConferenceTalkDao(dataSource);
+        this.topicDao = new ConferenceTopicDao(dataSource);
+
     }
 
     public static DataSource createDataSource() {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost/postgres");
         dataSource.setUser("postgres");
-        dataSource.setPassword("root");
+        dataSource.setPassword("admin");
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
@@ -45,15 +48,24 @@ public class ConferenceDatabaseProgram {
         }
 
         String command = args[0];
+        ConferenceTalk testTalk = new ConferenceTalk("test", "test");
+        ConferenceTopic testTopic = new ConferenceTopic("test");
 
-        if (command.equals("insert")) {
-            //insertTalk();
+        if (command.equals("talk")) {
+            insertTalk(testTalk);
+        } else if (command.equals("topic")) {
+            insertTopic(testTopic);
         } else {
+
             System.err.println("Unknown command!");
         }
     }
 
     private void insertTalk(ConferenceTalk talk) throws SQLException {
-        dao.insertTalk(talk);
+        talkDao.insertTalk(talk);
+    }
+
+    private void insertTopic(ConferenceTopic topic) throws SQLException {
+        topicDao.insertTopic(topic);
     }
 }
