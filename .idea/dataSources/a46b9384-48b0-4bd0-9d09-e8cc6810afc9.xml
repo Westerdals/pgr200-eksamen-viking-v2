@@ -74,8 +74,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2018-10-10.15:41:48.380</IntrospectionTimestamp>
-      <IntrospectionStateNumber>558</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-10-16.12:22:38.107</IntrospectionTimestamp>
+      <IntrospectionStateNumber>588</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -122,138 +122,178 @@
       <Type>index</Type>
     </access-method>
     <sequence id="21" parent="14" name="conference_talk_id_seq">
-      <ObjectId>16403</ObjectId>
+      <ObjectId>16586</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>558</StateNumber>
+      <StateNumber>588</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
-    <table id="22" parent="14" name="conference_talk">
-      <ObjectId>16405</ObjectId>
+    <sequence id="22" parent="14" name="topic_id_seq">
+      <ObjectId>16597</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>558</StateNumber>
-    </table>
-    <table id="23" parent="14" name="flyway_schema_history">
-      <ObjectId>16393</ObjectId>
+      <StateNumber>588</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="23" parent="14" name="conference_talk">
+      <ObjectId>16588</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>557</StateNumber>
+      <StateNumber>588</StateNumber>
     </table>
-    <column id="24" parent="22" name="id">
+    <table id="24" parent="14" name="flyway_schema_history">
+      <ObjectId>16576</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>587</StateNumber>
+    </table>
+    <table id="25" parent="14" name="topic">
+      <ObjectId>16599</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>588</StateNumber>
+    </table>
+    <column id="26" parent="23" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>558</StateNumber>
+      <StateNumber>588</StateNumber>
       <DefaultExpression>nextval(&apos;conference_talk_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>conference_talk_id_seq</SequenceName>
     </column>
-    <column id="25" parent="22" name="title">
+    <column id="27" parent="23" name="title">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>558</StateNumber>
+      <StateNumber>588</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="26" parent="22" name="description">
+    <column id="28" parent="23" name="description">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>558</StateNumber>
+      <StateNumber>588</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="27" parent="22" name="conference_talk_pkey">
-      <ObjectId>16412</ObjectId>
+    <index id="29" parent="23" name="conference_talk_pkey">
+      <ObjectId>16595</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="28" parent="22" name="conference_talk_pkey">
-      <ObjectId>16413</ObjectId>
+    <key id="30" parent="23" name="conference_talk_pkey">
+      <ObjectId>16596</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>conference_talk_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="29" parent="23" name="installed_rank">
+    <column id="31" parent="24" name="installed_rank">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="30" parent="23" name="version">
+    <column id="32" parent="24" name="version">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="31" parent="23" name="description">
+    <column id="33" parent="24" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="32" parent="23" name="type">
+    <column id="34" parent="24" name="type">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="33" parent="23" name="script">
+    <column id="35" parent="24" name="script">
       <Position>5</Position>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="34" parent="23" name="checksum">
+    <column id="36" parent="24" name="checksum">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="35" parent="23" name="installed_by">
+    <column id="37" parent="24" name="installed_by">
       <Position>7</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="23" name="installed_on">
+    <column id="38" parent="24" name="installed_on">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <DefaultExpression>now()</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <column id="37" parent="23" name="execution_time">
+    <column id="39" parent="24" name="execution_time">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="38" parent="23" name="success">
+    <column id="40" parent="24" name="success">
       <Position>10</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>557</StateNumber>
+      <StateNumber>587</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <index id="39" parent="23" name="flyway_schema_history_pk">
-      <ObjectId>16400</ObjectId>
+    <index id="41" parent="24" name="flyway_schema_history_pk">
+      <ObjectId>16583</ObjectId>
       <ColNames>installed_rank</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="40" parent="23" name="flyway_schema_history_s_idx">
-      <ObjectId>16402</ObjectId>
+    <index id="42" parent="24" name="flyway_schema_history_s_idx">
+      <ObjectId>16585</ObjectId>
       <ColNames>success</ColNames>
     </index>
-    <key id="41" parent="23" name="flyway_schema_history_pk">
-      <ObjectId>16401</ObjectId>
+    <key id="43" parent="24" name="flyway_schema_history_pk">
+      <ObjectId>16584</ObjectId>
       <ColNames>installed_rank</ColNames>
       <UnderlyingIndexName>flyway_schema_history_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>588</StateNumber>
+      <DefaultExpression>nextval(&apos;topic_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>topic_id_seq</SequenceName>
+    </column>
+    <column id="45" parent="25" name="title">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>588</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="46" parent="25" name="topic_pkey">
+      <ObjectId>16606</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="25" name="topic_pkey">
+      <ObjectId>16607</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>topic_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>

@@ -16,7 +16,6 @@ public class ConferenceDatabaseProgram {
     public ConferenceDatabaseProgram() throws SQLException {
         this.dataSource = createDataSource();
         this.dao = new ConferenceTalkDao(dataSource);
-        this.dao.createTableIfNotExists();
     }
 
     public static DataSource createDataSource() {
@@ -32,8 +31,6 @@ public class ConferenceDatabaseProgram {
         return dataSource;
     }
 
-
-
     public static void main(String[] args) throws SQLException {
         new ConferenceDatabaseProgram().run(args);
         ConferenceTalkDao test = new ConferenceTalkDao(createDataSource());
@@ -47,18 +44,16 @@ public class ConferenceDatabaseProgram {
             System.exit(1);
         }
 
-
         String command = args[0];
 
         if (command.equals("insert")) {
-            insertTalk();
+            //insertTalk();
         } else {
             System.err.println("Unknown command!");
         }
     }
 
-    private void insertTalk() throws SQLException {
-        dao.insertTalk("A new talk called " + UUID.randomUUID(), "This is a nice description");
+    private void insertTalk(ConferenceTalk talk) throws SQLException {
+        dao.insertTalk(talk);
     }
-
 }

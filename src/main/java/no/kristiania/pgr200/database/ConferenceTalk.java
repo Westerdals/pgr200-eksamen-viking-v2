@@ -2,6 +2,11 @@ package no.kristiania.pgr200.database;
 
 public class ConferenceTalk {
 
+    public ConferenceTalk(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     private String title, description;
     private int id;
 

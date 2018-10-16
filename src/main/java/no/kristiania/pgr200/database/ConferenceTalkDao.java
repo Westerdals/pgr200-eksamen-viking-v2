@@ -19,13 +19,6 @@ public class ConferenceTalkDao {
         this.dataSource = dataSource;
     }
 
-    public void createTableIfNotExists() throws SQLException {
-        try (Connection conn = dataSource.getConnection()) {
-            conn.createStatement().executeUpdate("create table if not exists CONFERENCE_TALK (TITLE varchar primary key, DESCRIPTION text)");
-        }
-
-    }
-
     public List<ConferenceTalk> listTalks () {
         try (Connection conn = dataSource.getConnection()) {
             String query = "select * from conference_talk";
@@ -34,6 +27,7 @@ public class ConferenceTalkDao {
                     List<ConferenceTalk> result = new ArrayList<>();
                     while(rs.next()) {
                         ConferenceTalk confTalk = new ConferenceTalk();
+                        confTalk.setId(rs.getInt("id"));
                         confTalk.setTitle(rs.getString("title"));
                         confTalk.setDescription(rs.getString("description"));
                         System.out.println("Title: " + confTalk.getTitle() + " - Description: " + confTalk.getDescription());
@@ -48,15 +42,22 @@ public class ConferenceTalkDao {
         return null;
     }
 
-    public void insertTalk(String title, String description) throws SQLException {
+    public void insertTalk(ConferenceTalk talk) throws SQLException {
         try(Connection conn = dataSource.getConnection()) {
             String sql = "insert into CONFERENCE_TALK (TITLE, DESCRIPTION) values (?, ?)";
-            try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                statement.setString(1, title);
-                statement.setString(2, description);
+            try (PreparedStatement statement = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                statement.setString(1, talk.getTitle());
+                statement.setString(2, talk.getDescription());
 
                 statement.executeUpdate();
+
+                try(ResultSet resultSet = statement.getGeneratedKeys()) {
+                    resultSet.next();
+                    talk.setId(resultSet.getInt(resultSet.getInt("id")));
+                }
             }
         }
     }
 }
+
+
