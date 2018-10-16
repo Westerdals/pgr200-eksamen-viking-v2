@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.sql.DataSource;
 
 import org.flywaydb.core.Flyway;
+import org.postgresql.core.SqlCommand;
 import org.postgresql.ds.PGPoolingDataSource;
 
 public class ConferenceDatabaseProgram {
@@ -61,6 +62,10 @@ public class ConferenceDatabaseProgram {
             } else {
                 System.err.println("Unknown command!");
             }
+        } else if(args[0].equals("view")) {
+            if (args[1].equals("join")){
+                joinTopic(testTalk, testTopic);
+            }
         }
 
     }
@@ -71,5 +76,9 @@ public class ConferenceDatabaseProgram {
 
     private void insertTopic(ConferenceTopic topic) throws SQLException {
         topicDao.insertTopic(topic);
+    }
+
+    private void joinTopic(ConferenceTalk talk, ConferenceTopic topic) throws SQLException {
+        topicDao.joinTopic(talk, topic);
     }
 }

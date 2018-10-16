@@ -54,11 +54,29 @@ public class ConferenceTopicDao {
         }
 
 
-        public void joinTopic(ConferenceTalk talk, ConferenceTopic topic) throws  SQLException {
+        public List<ConferenceTopic> joinTopic(ConferenceTalk talk, ConferenceTopic topic) throws  SQLException {
             try(Connection conn = dataSource.getConnection()) {
                 String sql = "SELECT topic.title, conference_talk.title from topic" +
                         "left join conference_talk on topic.id = conference_talk.id";
+                try(PreparedStatement statement = conn.prepareStatement(sql)) {
+                    try(ResultSet rs = statement.executeQuery()) {
+                        List<ConferenceTopic> result = new ArrayList<>();
+                        while(rs.next()) {
+                            ConferenceTopic confTopic = new ConferenceTopic();
+                            confTopic.setId(rs.getInt("id"));
+                            confTopic.setTitle(rs.getString("title"));
+                            System.out.println("Title: " + confTopic.getTitle());
+                            result.add(confTopic);
+                        }
+                        return result;
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        }
+            return null;
 
+        }
 }
+
+
