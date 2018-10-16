@@ -25,7 +25,7 @@ public class ConferenceDatabaseProgram {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost/postgres");
         dataSource.setUser("postgres");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("root");
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
