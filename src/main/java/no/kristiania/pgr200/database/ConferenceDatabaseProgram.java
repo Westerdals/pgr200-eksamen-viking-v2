@@ -36,8 +36,11 @@ public class ConferenceDatabaseProgram {
 
     public static void main(String[] args) throws SQLException {
         new ConferenceDatabaseProgram().run(args);
-        ConferenceTalkDao test = new ConferenceTalkDao(createDataSource());
-        test.listTalks();
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
+        ConferenceTopicDao topicDao = new ConferenceTopicDao(createDataSource());
+        talkDao.listTalks();
+        topicDao.listTopics();
+
 
     }
 
@@ -47,18 +50,19 @@ public class ConferenceDatabaseProgram {
             System.exit(1);
         }
 
-        String command = args[0];
-        ConferenceTalk testTalk = new ConferenceTalk("test", "test");
-        ConferenceTopic testTopic = new ConferenceTopic("test");
+        ConferenceTalk testTalk = new ConferenceTalk("My Talk Title", "A description of my Talk");
+        ConferenceTopic testTopic = new ConferenceTopic("Science");
 
-        if (command.equals("talk")) {
-            insertTalk(testTalk);
-        } else if (command.equals("topic")) {
-            insertTopic(testTopic);
-        } else {
-
-            System.err.println("Unknown command!");
+        if(args[0].equals("insert")) {
+            if (args[1].equals("talk")) {
+                insertTalk(testTalk);
+            } else if (args[1].equals("topic")) {
+                insertTopic(testTopic);
+            } else {
+                System.err.println("Unknown command!");
+            }
         }
+
     }
 
     private void insertTalk(ConferenceTalk talk) throws SQLException {

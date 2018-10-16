@@ -53,7 +53,7 @@ public class ConferenceTalkDao {
 
                 try(ResultSet resultSet = statement.getGeneratedKeys()) {
                     resultSet.next();
-                    talk.setId(resultSet.getInt(resultSet.getInt("id")));
+                    talk.setId(resultSet.getInt("id"));
                 }
             }
         }

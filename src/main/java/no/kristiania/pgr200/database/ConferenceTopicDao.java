@@ -26,7 +26,7 @@ public class ConferenceTopicDao {
                             ConferenceTopic confTopic = new ConferenceTopic();
                             confTopic.setId(rs.getInt("id"));
                             confTopic.setTitle(rs.getString("title"));
-                            System.out.println("Title: " + confTopic.getTitle() + " - Description: ");
+                            System.out.println("Title: " + confTopic.getTitle());
                             result.add(confTopic);
                         }
                         return result;
@@ -47,9 +47,17 @@ public class ConferenceTopicDao {
 
                     try(ResultSet resultSet = statement.getGeneratedKeys()) {
                         resultSet.next();
-                        topic.setId(resultSet.getInt(resultSet.getInt("id")));
+                        topic.setId(resultSet.getInt("id"));
                     }
                 }
+            }
+        }
+
+
+        public void joinTopic(ConferenceTalk talk, ConferenceTopic topic) throws  SQLException {
+            try(Connection conn = dataSource.getConnection()) {
+                String sql = "SELECT topic.title, conference_talk.title from topic" +
+                        "left join conference_talk on topic.id = conference_talk.id";
             }
         }
 
