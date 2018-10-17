@@ -16,12 +16,15 @@ public class AbstractDao {
         this.dataSource = dataSource;
     }
 
+
     public <T> T retrieveSingleObject(String sql, ResultSetMapper<T> mapper, int id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try(PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, id);
                 try(ResultSet rs = statement.executeQuery()) {
                     if(rs.next()) {
+                        T genericList = mapper.mapResultSet(rs);    //TODO: Seperate class for printing
+                        System.out.println(genericList.toString());
                         return mapper.mapResultSet(rs);
                     }
                     return null;
@@ -30,14 +33,15 @@ public class AbstractDao {
         }
     }
 
-
     protected <T> List<T> list(String sql, ResultSetMapper<T> mapper) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try(PreparedStatement statement = connection.prepareStatement(sql)) {
                 try(ResultSet rs = statement.executeQuery()) {
                     List<T> result = new ArrayList<>();
                     while (rs.next()) {
-                        result.add(mapper.mapResultSet(rs));
+                        T genericList = mapper.mapResultSet(rs);    //TODO: Seperate class for printing
+                        System.out.println(genericList.toString());
+                        result.add(genericList);
                     }
                     return result;
                 }

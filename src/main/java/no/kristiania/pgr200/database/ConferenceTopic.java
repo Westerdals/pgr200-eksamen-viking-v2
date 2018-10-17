@@ -27,4 +27,12 @@ public class ConferenceTopic {
     public ConferenceTopic() {
 
     }
+
+    @Override
+    public String toString() {
+        return "ConferenceTopic{" +
+                "title='" + title + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

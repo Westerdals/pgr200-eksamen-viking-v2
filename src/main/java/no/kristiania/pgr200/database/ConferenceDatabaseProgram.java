@@ -1,13 +1,8 @@
 package no.kristiania.pgr200.database;
 
 import java.sql.*;
-import java.util.List;
-import java.util.UUID;
-
 import javax.sql.DataSource;
-
 import org.flywaydb.core.Flyway;
-import org.postgresql.core.SqlCommand;
 import org.postgresql.ds.PGPoolingDataSource;
 
 public class ConferenceDatabaseProgram {
@@ -31,19 +26,13 @@ public class ConferenceDatabaseProgram {
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
-        flyway.migrate();
+        //flyway.migrate();
 
         return dataSource;
     }
 
     public static void main(String[] args) throws SQLException {
         new ConferenceDatabaseProgram().run(args);
-        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
-        ConferenceTopicDao topicDao = new ConferenceTopicDao(createDataSource());
-        talkDao.listTalk();
-        topicDao.listTopics();
-
-
     }
 
     private void run(String[] args) throws SQLException {
@@ -55,6 +44,7 @@ public class ConferenceDatabaseProgram {
         ConferenceTalk testTalk = new ConferenceTalk("My Talk Title", "A description of my Talk");
         ConferenceTopic testTopic = new ConferenceTopic("Science");
 
+        //TODO: Sexier solution here please
         if(args[0].equals("insert")) {
             if (args[1].equals("talk")) {
                 insertTalk(testTalk);
@@ -67,13 +57,24 @@ public class ConferenceDatabaseProgram {
             if (args[1].equals("single")){
                 if (args[2].equals("talk")){
                     retrieveTalk();
+                }else if (args[2].equals("topic")){
+                    retrieveTopic();
                 }
             } else if (args[1].equals("talks")) {
                     listTalks();
-
+            } else if (args[1].equals("topics")) {
+                listTopics();
             }
         }
 
+    }
+
+    private void retrieveTopic() throws SQLException {
+        topicDao.retrieve(1);
+    }
+
+    private void listTopics() throws SQLException {
+        topicDao.list();
     }
 
     private void insertTalk(ConferenceTalk talk) throws SQLException {
@@ -89,6 +90,6 @@ public class ConferenceDatabaseProgram {
     }
 
     private void listTalks() throws SQLException {
-        talkDao.listTalk();
+        talkDao.list();
     }
 }

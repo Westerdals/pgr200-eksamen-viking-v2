@@ -17,38 +17,16 @@ public class ConferenceTalkDao extends AbstractDao {
 
     public ConferenceTalkDao(DataSource dataSource) {
         super(dataSource);
+
+        this.dataSource = dataSource;
     }
 
     public ConferenceTalk retrieve(int id) throws SQLException {
         return retrieveSingleObject("select * from conference_talk where id = ?", this::mapToTalk, id);
     }
 
-    public List<ConferenceTalk> listTalk() throws SQLException {
+    public List<ConferenceTalk> list() throws SQLException {
         return list("select * from conference_talk", this::mapToTalk);
-    }
-
-
-    public List<ConferenceTalk> listTalks () {
-        try (Connection conn = dataSource.getConnection()) {
-            String query = "select * from conference_talk";
-            try(PreparedStatement statement = conn.prepareStatement(query)) {
-                try(ResultSet rs = statement.executeQuery()) {
-                    List<ConferenceTalk> result = new ArrayList<>();
-                    while(rs.next()) {
-                        ConferenceTalk confTalk = new ConferenceTalk();
-                        confTalk.setId(rs.getInt("id"));
-                        confTalk.setTitle(rs.getString("title"));
-                        confTalk.setDescription(rs.getString("description"));
-                        System.out.println("Title: " + confTalk.getTitle() + " - Description: " + confTalk.getDescription());
-                        result.add(confTalk);
-                    }
-                    return result;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private ConferenceTalk mapToTalk(ResultSet rs) throws SQLException {
@@ -58,7 +36,6 @@ public class ConferenceTalkDao extends AbstractDao {
         talk.setDescription(rs.getString("description"));
         return talk;
     }
-
 
     public void insertTalk(ConferenceTalk talk) throws SQLException {
         try(Connection conn = dataSource.getConnection()) {

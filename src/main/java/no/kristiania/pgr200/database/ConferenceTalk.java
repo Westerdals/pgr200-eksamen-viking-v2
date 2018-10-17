@@ -41,10 +41,7 @@ public class ConferenceTalk {
 
     @Override
     public String toString() {
-        return "ConferenceTalk{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", id=" + id +
-                '}';
+        return "________________________________________________\n" +
+                "| " + title + " | " + description + " | " + id + " | " ;
     }
 }
