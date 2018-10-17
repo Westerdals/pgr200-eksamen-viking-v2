@@ -1,7 +1,8 @@
 create table if not exists CONFERENCE_TALK (
   id          SERIAL PRIMARY key,
   title       varchar,
-  description text
+  description text,
+  topic varchar null
 );
 
 create table if not exists TOPIC (

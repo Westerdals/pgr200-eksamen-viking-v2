@@ -11,13 +11,22 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-public class ConferenceTalkDao {
+public class ConferenceTalkDao extends AbstractDao {
 
     private DataSource dataSource;
 
     public ConferenceTalkDao(DataSource dataSource) {
-        this.dataSource = dataSource;
+        super(dataSource);
     }
+
+    public ConferenceTalk retrieve(int id) throws SQLException {
+        return retrieveSingleObject("select * from conference_talk where id = ?", this::mapToTalk, id);
+    }
+
+    public List<ConferenceTalk> listTalk() throws SQLException {
+        return list("select * from conference_talk", this::mapToTalk);
+    }
+
 
     public List<ConferenceTalk> listTalks () {
         try (Connection conn = dataSource.getConnection()) {
@@ -41,6 +50,15 @@ public class ConferenceTalkDao {
         }
         return null;
     }
+
+    private ConferenceTalk mapToTalk(ResultSet rs) throws SQLException {
+        ConferenceTalk talk = new ConferenceTalk();
+        talk.setId(rs.getInt("id"));
+        talk.setTitle(rs.getString("title"));
+        talk.setDescription(rs.getString("description"));
+        return talk;
+    }
+
 
     public void insertTalk(ConferenceTalk talk) throws SQLException {
         try(Connection conn = dataSource.getConnection()) {

@@ -16,7 +16,9 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class ConferenceTalksDaoTest {
 
+    /*
     @Test
+    @Ignore
     public void shouldInsertConferenceTalks() throws SQLException {
         ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk");
         ConferenceTalkDao dao = new ConferenceTalkDao(createDataSource());
@@ -25,6 +27,7 @@ public class ConferenceTalksDaoTest {
     }
 
     @Test
+    @Ignore
     public void confirmCorrectId() throws SQLException {
         ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk");
         ConferenceTalkDao dao = new ConferenceTalkDao(createDataSource());
@@ -43,6 +46,6 @@ public class ConferenceTalksDaoTest {
         flyway.migrate();
         return dataSource;
     }
-
+*/
 
 }

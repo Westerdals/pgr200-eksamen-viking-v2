@@ -1,6 +1,7 @@
 package no.kristiania.pgr200.database;
 
 import java.sql.*;
+import java.util.List;
 import java.util.UUID;
 
 import javax.sql.DataSource;
@@ -39,7 +40,7 @@ public class ConferenceDatabaseProgram {
         new ConferenceDatabaseProgram().run(args);
         ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
         ConferenceTopicDao topicDao = new ConferenceTopicDao(createDataSource());
-        talkDao.listTalks();
+        talkDao.listTalk();
         topicDao.listTopics();
 
 
@@ -62,9 +63,14 @@ public class ConferenceDatabaseProgram {
             } else {
                 System.err.println("Unknown command!");
             }
-        } else if(args[0].equals("view")) {
-            if (args[1].equals("join")){
-                joinTopic(testTalk, testTopic);
+        } else if (args[0].equals("view")) {
+            if (args[1].equals("single")){
+                if (args[2].equals("talk")){
+                    retrieveTalk();
+                }
+            } else if (args[1].equals("talks")) {
+                    listTalks();
+
             }
         }
 
@@ -74,11 +80,15 @@ public class ConferenceDatabaseProgram {
         talkDao.insertTalk(talk);
     }
 
+    private void retrieveTalk() throws SQLException {
+        talkDao.retrieve(1);
+    }
+
     private void insertTopic(ConferenceTopic topic) throws SQLException {
         topicDao.insertTopic(topic);
     }
 
-    private void joinTopic(ConferenceTalk talk, ConferenceTopic topic) throws SQLException {
-        topicDao.joinTopic(talk, topic);
+    private void listTalks() throws SQLException {
+        talkDao.listTalk();
     }
 }
