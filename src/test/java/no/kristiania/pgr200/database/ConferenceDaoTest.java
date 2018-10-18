@@ -58,6 +58,4 @@ public class ConferenceDaoTest {
         dao.insertTopic(topic);
         assertThat(dao.list()).extracting(t -> t.getId()).contains(topic.getId());
     }
-
-
 }
