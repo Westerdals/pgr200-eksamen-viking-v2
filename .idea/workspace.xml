@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de73246d-8464-46c9-bde2-95bde3fd4b48" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/README-final.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V1__Create_conference_talk.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/migration/V1__Create_conference_talk.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalk.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalk.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalkDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceDaoTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceDaoTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/no.kristiania.pgr200.database.ConferenceDaoTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/no.kristiania.pgr200.database.ConferenceDaoTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/no/kristiania/pgr200/database/ConferenceDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/no/kristiania/pgr200/database/ConferenceDaoTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -152,18 +148,18 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="23" />
-          <entry key="java" value="4652" />
+          <entry key="java" value="4682" />
           <entry key="md" value="386" />
-          <entry key="sql" value="263" />
+          <entry key="sql" value="264" />
           <entry key="xml" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4652" />
+          <entry key="JAVA" value="4682" />
           <entry key="Markdown" value="386" />
           <entry key="PLAIN_TEXT" value="23" />
-          <entry key="SQL" value="176" />
+          <entry key="SQL" value="177" />
           <entry key="Scratch" value="87" />
           <entry key="XML" value="86" />
         </counts>
@@ -190,8 +186,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="40" column="74" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
+            <state relative-caret-position="555">
+              <caret line="48" column="76" lean-forward="true" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -199,8 +195,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+            <state relative-caret-position="-160">
+              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -208,26 +204,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -244,8 +222,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+            <state relative-caret-position="424">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -272,6 +250,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>flyway.</find>
+      <find>Pooled statement wrapping physical statement insert into CONFERENCE_TALK (TITLE, DESCRIPTION, TOPIC) values ('My Talk Title', 'A description of my Talk', 'Science') RETURNING *</find>
+      <find>system</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -297,10 +277,10 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a46b9384-48b0-4bd0-9d09-e8cc6810afc9/console_2.sql" />
         <option value="$PROJECT_DIR$/README-final.md" />
         <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" />
-        <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql" />
         <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceDaoTest.java" />
       </list>
     </option>
@@ -404,7 +384,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540384731034" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540386159785" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database" />
@@ -436,7 +416,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConferenceDaoTest.shouldInsertConferenceTalks">
+  <component name="RunManager" selected="JUnit.ConferenceDaoTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -548,9 +528,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ConferenceDaoTest.shouldInsertConferenceTalks" />
         <item itemvalue="JUnit.ConferenceDaoTest" />
         <item itemvalue="Application.ConferenceDatabaseProgram" />
+        <item itemvalue="JUnit.ConferenceDaoTest.shouldInsertConferenceTalks" />
         <item itemvalue="JUnit.no.kristiania.pgr200.database in database-exercise" />
       </list>
     </recent_temporary>
@@ -576,20 +556,11 @@
       <workItem from="1539784328550" duration="5106000" />
       <workItem from="1539790420815" duration="43000" />
       <workItem from="1539855660708" duration="8652000" />
-      <workItem from="1540368566093" duration="10919000" />
+      <workItem from="1540368566093" duration="12163000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConferenceDaoTest - 2018.10.24 at 13h 06m 24s.xml">
-      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ConferenceDaoTest - 2018.10.24 at 13h 06m 32s.xml">
-      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ConferenceDaoTest - 2018.10.24 at 13h 06m 39s.xml">
-      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ConferenceDaoTest - 2018.10.24 at 13h 08m 14s.xml">
       <configuration name="ConferenceDaoTest" configurationId="JUnit" />
     </history-entry>
@@ -611,9 +582,18 @@
     <history-entry file="ConferenceDaoTest_shouldInsertConferenceTalks - 2018.10.24 at 14h 37m 35s.xml">
       <configuration name="ConferenceDaoTest.shouldInsertConferenceTalks" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ConferenceDaoTest - 2018.10.24 at 14h 58m 53s.xml">
+      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConferenceDaoTest - 2018.10.24 at 14h 59m 41s.xml">
+      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConferenceDaoTest - 2018.10.24 at 15h 00m 53s.xml">
+      <configuration name="ConferenceDaoTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75259000" />
+    <option name="totallyTimeSpent" value="76503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -646,13 +626,13 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" sideWeight="0.49019608" visible="true" weight="0.16809729" />
+      <window_info anchor="right" id="Database" order="6" sideWeight="0.49019608" weight="0.16809729" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.50980395" side_tool="true" visible="true" weight="0.16809729" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.50980395" side_tool="true" weight="0.16809729" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18526466" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15164521" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -661,7 +641,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30063695" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28535032" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35031846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -671,7 +651,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31592357" />
       <window_info anchor="bottom" id="SQL Generator" order="11" weight="0.29347825" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.327252" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32611465" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -679,10 +659,10 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Database" order="6" sideWeight="0.4866242" weight="0.14949928" />
+      <window_info anchor="right" id="Database" order="6" sideWeight="0.49019608" visible="true" weight="0.16809729" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5133758" side_tool="true" weight="0.1881259" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.50980395" side_tool="true" visible="true" weight="0.16809729" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,90 +672,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -892,13 +788,6 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1027,6 +916,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-160">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -1034,24 +979,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__Create_conference_talk.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a46b9384-48b0-4bd0-9d09-e8cc6810afc9/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceDaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="40" column="74" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
+        <state relative-caret-position="555">
+          <caret line="48" column="76" lean-forward="true" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
         </state>
       </provider>
     </entry>

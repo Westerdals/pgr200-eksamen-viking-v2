@@ -11,3 +11,7 @@ create table if not exists CONFERENCE_TALK (
   foreign key (topic) REFERENCES topic(title)
 );
 
+INSERT INTO topic VALUES
+                         (DEFAULT , 'Science'),
+                         (DEFAULT , 'Programming'),
+                         (DEFAULT , 'Hacking');

@@ -45,7 +45,6 @@ public class ConferenceTalkDao extends AbstractDao {
                 statement.setString(1, talk.getTitle());
                 statement.setString(2, talk.getDescription());
                 statement.setString(3, talk.getTopic());
-                System.out.println(statement);
                 statement.executeUpdate();
 
                 try(ResultSet resultSet = statement.getGeneratedKeys()) {

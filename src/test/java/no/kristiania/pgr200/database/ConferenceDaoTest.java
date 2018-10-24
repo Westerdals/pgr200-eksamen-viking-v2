@@ -45,10 +45,10 @@ public class ConferenceDaoTest {
 
     @Test
     public void shouldInsertConferenceTopics() throws SQLException {
-        ConferenceTopic topic = new ConferenceTopic("Science");
+        ConferenceTopic topic = new ConferenceTopic("Crafting");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
         dao.insertTopic(topic);
-        assertThat(dao.list()).extracting(t -> t.getTitle()).contains("Science");
+        assertThat(dao.list()).extracting(t -> t.getTitle()).contains("Crafting");
     }
 
     @Test

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: no.kristiania.pgr200.database.ConferenceDaoTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.899 sec
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.809 sec
