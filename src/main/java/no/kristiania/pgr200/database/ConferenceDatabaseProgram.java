@@ -22,10 +22,11 @@ public class ConferenceDatabaseProgram {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost/postgres");
         dataSource.setUser("postgres");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("root");
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
+        // flyway.clean();
         flyway.migrate();
 
         return dataSource;
@@ -41,7 +42,7 @@ public class ConferenceDatabaseProgram {
             System.exit(1);
         }
 
-        ConferenceTalk testTalk = new ConferenceTalk("My Talk Title", "A description of my Talk");
+        ConferenceTalk testTalk = new ConferenceTalk("My Talk Title", "A description of my Talk", "Science");
         ConferenceTopic testTopic = new ConferenceTopic("Science");
 
         //TODO: Sexier solution here please

@@ -34,6 +34,10 @@
         <version>42.2.5</version>
     </dependency>
   </dependencies>
+
+    <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
   
   <build>
     <plugins>

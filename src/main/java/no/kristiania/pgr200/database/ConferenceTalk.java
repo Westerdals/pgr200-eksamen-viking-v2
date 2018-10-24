@@ -2,16 +2,22 @@ package no.kristiania.pgr200.database;
 
 public class ConferenceTalk {
 
-    public ConferenceTalk(String title, String description) {
+
+    public ConferenceTalk(String title, String description, String topic) {
         this.title = title;
         this.description = description;
+        this.topic = topic;
     }
 
-    private String title, description;
+    private String title, description, topic;
     private int id;
 
     public int getId() {
         return id;
+    }
+
+    public String getTopic(){
+        return topic;
     }
 
     public void setId(int id) {
@@ -34,6 +40,10 @@ public class ConferenceTalk {
         this.description = description;
     }
 
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
 
     public ConferenceTalk () {
 
@@ -41,7 +51,7 @@ public class ConferenceTalk {
 
     @Override
     public String toString() {
-        return "________________________________________________\n" +
-                "| " + title + " | " + description + " | " + id + " | " ;
+        return "_______________________________________________________\n" +
+                "| " + title + " | " + description + " | " + id + " | " + " | " + topic +  " | " ;
     }
 }

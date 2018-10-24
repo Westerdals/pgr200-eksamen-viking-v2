@@ -29,15 +29,15 @@ public class ConferenceDaoTest {
 
     @Test
     public void shouldInsertConferenceTalks() throws SQLException {
-        ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk");
-        ConferenceTalkDao dao = new ConferenceTalkDao(createDataSource());
-        dao.insertTalk(talk);
-        assertThat(dao.list()).extracting(t -> t.getTitle()).contains("My Talk Title");
+        ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk", null);
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
+        talkDao.insertTalk(talk);
+        assertThat(talkDao.list()).extracting(t -> t.getTitle()).contains("My Talk Title");
     }
 
     @Test
     public void confirmCorrectTalkId() throws SQLException {
-        ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk");
+        ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk", null);
         ConferenceTalkDao dao = new ConferenceTalkDao(createDataSource());
         dao.insertTalk(talk);
         assertThat(dao.list()).extracting(t -> t.getId()).contains(talk.getId());
@@ -53,7 +53,7 @@ public class ConferenceDaoTest {
 
     @Test
     public void confirmCorrectTopicId() throws SQLException {
-        ConferenceTopic topic = new ConferenceTopic("Fiction");
+        ConferenceTopic topic = new ConferenceTopic("Gardening");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
         dao.insertTopic(topic);
         assertThat(dao.list()).extracting(t -> t.getId()).contains(topic.getId());
