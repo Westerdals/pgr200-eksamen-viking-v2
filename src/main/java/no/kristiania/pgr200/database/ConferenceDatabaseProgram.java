@@ -22,12 +22,12 @@ public class ConferenceDatabaseProgram {
         PGPoolingDataSource dataSource = new PGPoolingDataSource();
         dataSource.setUrl("jdbc:postgresql://localhost/postgres");
         dataSource.setUser("postgres");
-        dataSource.setPassword("root");
+        dataSource.setPassword("admin");
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
         //flyway.clean();
-        //flyway.migrate();
+        flyway.migrate();
 
         return dataSource;
     }

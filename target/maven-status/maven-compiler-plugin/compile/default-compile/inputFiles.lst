@@ -1,8 +1,8 @@
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ResultSetMapper.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/TestDataSource.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/ConferenceTopicDao.java
-/Users/markusdreyer/Desktop/pgr200-database-exercise/src/main/java/no/kristiania/pgr200/database/AbstractDao.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ConferenceTopicDao.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\TestDataSource.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ConferenceTopic.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\AbstractDao.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ConferenceTalkDao.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ConferenceTalk.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ConferenceDatabaseProgram.java
+C:\Users\Marcus\Desktop\database-exercise\src\main\java\no\kristiania\pgr200\database\ResultSetMapper.java

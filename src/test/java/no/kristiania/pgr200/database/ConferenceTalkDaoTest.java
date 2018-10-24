@@ -14,7 +14,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
-public class ConferenceDaoTest {
+public class ConferenceTalkDaoTest {
     private DataSource createDataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
         dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
