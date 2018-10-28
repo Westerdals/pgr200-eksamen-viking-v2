@@ -18,32 +18,34 @@ public class ArgumentReader {
 
     public ArgumentReader(String[] arguments) throws SQLException {
         this.arguments = arguments;
-        this.methodArgument = arguments[0];
-        this.objectArgument = arguments[1];
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
 
-        if (arguments.length > 4) {
-            this.topicArgument = arguments[4];
-        } else System.out.println("Unknown Command");
+        for(int i = 0; i < arguments.length; i++) {
+            if(i == 0) { methodArgument = arguments[i]; }
+            else if(i == 1){ objectArgument = arguments[i]; }
+            else if(i == 2) { titleArgument = arguments[i]; }
+            else if(i == 3) { descriptionArgument = arguments[i]; }
+            else if(i == 4) { topicArgument = arguments[i]; }
+        }
 
-        if (methodArgument.equals("insert")) {
-            this.titleArgument = arguments[2];
-            this.descriptionArgument = arguments[3];
-            insert();
-        } else if (methodArgument.equals("retrieve")) {
-            this.titleArgument = arguments[2];
-            this.descriptionArgument = arguments[3];
-            retrieve();
-        } else if (methodArgument.equals("list")) {
-            list();
-        } else {
-            System.out.println("Unknown command");
+        switch (methodArgument) {
+            case "insert":
+                insert();
+                break;
+            case "retrieve":
+                retrieve();
+                break;
+            case "list":
+                list();
+                break;
+            default:
+                System.out.println("Unknown command");
+                break;
         }
     }
 
-
-    public void insert() throws SQLException {
+    private void insert() throws SQLException {
     if (methodArgument.equals("insert") && objectArgument.equals("talk") && arguments.length > 4) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
     } else if (objectArgument.equals("talk") && arguments.length > 3) {
@@ -56,7 +58,7 @@ public class ArgumentReader {
         talkDao.insertTalk(talk);
     }
 
-    public void retrieve() throws SQLException {
+    private void retrieve() throws SQLException {
         if(methodArgument.equals("retrieve") && objectArgument.equals("talk")) {
             talkDao.retrieve(1);
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
@@ -64,7 +66,7 @@ public class ArgumentReader {
         } else System.out.println("Unknown command");
     }
 
-    public void list() throws SQLException {
+    private void list() throws SQLException {
         if(methodArgument.equals("list") && objectArgument.equals("talks")) {
             talkDao.list();
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {

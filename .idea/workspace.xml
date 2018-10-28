@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de73246d-8464-46c9-bde2-95bde3fd4b48" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceProgramTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a46b9384-48b0-4bd0-9d09-e8cc6810afc9/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-exercise.iml" beforeDir="false" afterPath="$PROJECT_DIR$/database-exercise.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalk.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/no/kristiania/pgr200/database/ConferenceTalk.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -177,12 +165,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2014" />
+          <entry key="java" value="2349" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2014" />
+          <entry key="JAVA" value="2349" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -240,8 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+            <state relative-caret-position="255">
+              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -249,8 +237,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+            <state relative-caret-position="222">
+              <caret line="23" column="93" selection-start-line="23" selection-start-column="93" selection-end-line="23" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -324,8 +312,8 @@
         <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" />
         <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" />
+        <option value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" />
       </list>
     </option>
   </component>
@@ -444,7 +432,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540733024394" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540733854784" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database" />
@@ -479,7 +467,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConferenceTopicDaoTest.shouldInsertConferenceTopics">
+  <component name="RunManager" selected="Application.ConferenceDatabaseProgram">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -610,8 +598,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ConferenceTopicDaoTest.shouldInsertConferenceTopics" />
         <item itemvalue="Application.ConferenceDatabaseProgram" />
+        <item itemvalue="JUnit.ConferenceTopicDaoTest.shouldInsertConferenceTopics" />
         <item itemvalue="JUnit.ConferenceProgramTest.shouldRunMainWithDifferentArguments" />
         <item itemvalue="JUnit.no.kristiania.pgr200.database in database-exercise" />
         <item itemvalue="JUnit.ConferenceTopicDaoTest" />
@@ -643,14 +631,11 @@
       <workItem from="1540386262945" duration="6363000" />
       <workItem from="1540633895570" duration="16123000" />
       <workItem from="1540652309518" duration="3593000" />
-      <workItem from="1540725032967" duration="7984000" />
+      <workItem from="1540725032967" duration="8678000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConferenceTopicDaoTest - 2018.10.24 at 15h 08m 50s.xml">
-      <configuration name="ConferenceTopicDaoTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ConferenceTopicDaoTest - 2018.10.24 at 15h 09m 58s.xml">
       <configuration name="ConferenceTopicDaoTest" configurationId="JUnit" />
     </history-entry>
@@ -678,15 +663,18 @@
     <history-entry file="ConferenceTopicDaoTest_shouldInsertConferenceTopics - 2018.10.28 at 14h 19m 58s.xml">
       <configuration name="ConferenceTopicDaoTest.shouldInsertConferenceTopics" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ConferenceTopicDaoTest_shouldInsertConferenceTopics - 2018.10.28 at 14h 25m 19s.xml">
+      <configuration name="ConferenceTopicDaoTest.shouldInsertConferenceTopics" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110566000" />
+    <option name="totallyTimeSpent" value="111260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23892617" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23892617" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -695,14 +683,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6818792" visible="true" weight="0.3531915" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6818792" weight="0.3531915" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986577" weight="0.34893617" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49785176" weight="0.32839224" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.3181208" side_tool="true" visible="true" weight="0.3531915" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49731544" visible="true" weight="0.32765958" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5026846" side_tool="true" visible="true" weight="0.32765958" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.45033556" weight="0.31205675" />
       <window_info anchor="bottom" id="SQL Generator" order="11" weight="0.29347825" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32611465" />
@@ -859,15 +847,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        <state relative-caret-position="255">
+          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" column="44" lean-forward="true" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+        <state relative-caret-position="222">
+          <caret line="23" column="93" selection-start-line="23" selection-start-column="93" selection-end-line="23" selection-end-column="93" />
         </state>
       </provider>
     </entry>
