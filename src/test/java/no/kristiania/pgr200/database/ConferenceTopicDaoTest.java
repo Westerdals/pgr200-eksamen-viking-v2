@@ -27,7 +27,7 @@ public class ConferenceTopicDaoTest {
         ConferenceTopic topic = new ConferenceTopic("Gardening");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
         dao.insertTopic(topic);
-        assertThat(dao.list()).extracting(t -> t.getTitle()).contains("Gardening");
+        assertThat(dao.list()).extracting(ConferenceTopic::getTitle).contains("Gardening");
     }
 
     @Test
@@ -43,6 +43,6 @@ public class ConferenceTopicDaoTest {
         ConferenceTopic topic = new ConferenceTopic("Fiction");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
         dao.insertTopic(topic);
-        assertThat(dao.list()).extracting(t -> t.getId()).contains(topic.getId());
+        assertThat(dao.list()).extracting(ConferenceTopic::getId).contains(topic.getId());
     }
 }

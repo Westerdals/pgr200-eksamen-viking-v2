@@ -2,11 +2,17 @@ package no.kristiania.pgr200.database;
 
 public class ConferenceTalk {
 
-
+    //Constructor for creating a ConferenceTalk with a topic
     public ConferenceTalk(String title, String description, String topic) {
         this.title = title;
         this.description = description;
         this.topic = topic;
+    }
+
+    //Constructor for creating a talk and then adding a topic later
+    public ConferenceTalk(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     private String title, description, topic;

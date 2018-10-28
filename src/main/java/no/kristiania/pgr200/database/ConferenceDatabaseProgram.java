@@ -10,6 +10,7 @@ public class ConferenceDatabaseProgram {
     private DataSource dataSource;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
+    private ArgumentReader argumentReader;
 
     public ConferenceDatabaseProgram() throws SQLException {
         this.dataSource = createDataSource();
@@ -36,61 +37,15 @@ public class ConferenceDatabaseProgram {
         new ConferenceDatabaseProgram().run(args);
     }
 
-    private void run(String[] args) throws SQLException {
+    public void run(String[] args) throws SQLException {
         if (args.length == 0) {
-            System.out.println("Run the class with an argument, on of `insert`, or ...");
+            System.out.println("Run the class with one of these arguments:\n" +
+                    "For inserting a talk/topic type Insert [Talk/Topic] [Title] [Description] <- Only for Talk \n" +
+                    "To Retrieve a single object type Retrieve [Talk/Topic] and ID for talk \n" +
+                    "To List either every talk or topic type List [Talk/Topic]");
             System.exit(1);
         }
 
-        ConferenceTalk testTalk = new ConferenceTalk("My Talk Title", "A description of my Talk", "Science");
-        ConferenceTopic testTopic = new ConferenceTopic("Science");
-
-        //TODO: Sexier solution here please
-        if(args[0].equals("insert")) {
-            if (args[1].equals("talk")) {
-                insertTalk(testTalk);
-            } else if (args[1].equals("topic")) {
-                insertTopic(testTopic);
-            } else {
-                System.err.println("Unknown command!");
-            }
-        } else if (args[0].equals("view")) {
-            if (args[1].equals("single")){
-                if (args[2].equals("talk")){
-                    retrieveTalk();
-                }else if (args[2].equals("topic")){
-                    retrieveTopic();
-                }
-            } else if (args[1].equals("talks")) {
-                    listTalks();
-            } else if (args[1].equals("topics")) {
-                listTopics();
-            }
-        }
-
-    }
-
-    private void retrieveTopic() throws SQLException {
-        topicDao.retrieve(1);
-    }
-
-    private void listTopics() throws SQLException {
-        topicDao.list();
-    }
-
-    private void insertTalk(ConferenceTalk talk) throws SQLException {
-        talkDao.insertTalk(talk);
-    }
-
-    private void retrieveTalk() throws SQLException {
-        talkDao.retrieve(1);
-    }
-
-    private void insertTopic(ConferenceTopic topic) throws SQLException {
-        topicDao.insertTopic(topic);
-    }
-
-    private void listTalks() throws SQLException {
-        talkDao.list();
+        argumentReader = new ArgumentReader(args);
     }
 }
