@@ -1,9 +1,12 @@
 package no.kristiania.pgr200.database;
 
+import org.flywaydb.core.Flyway;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -34,23 +37,4 @@ public class ConferenceTalkDao extends AbstractDao {
         talk.setTopic(rs.getString("topic"));
         return talk;
     }
-
-    public void insertTalk(ConferenceTalk talk) throws SQLException {
-        try(Connection conn = dataSource.getConnection()) {
-            String sql = "insert into CONFERENCE_TALK (TITLE, DESCRIPTION, TOPIC) values (?, ?, ?)";
-            try (PreparedStatement statement = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, talk.getTitle());
-                statement.setString(2, talk.getDescription());
-                statement.setString(3, talk.getTopic());
-                statement.executeUpdate();
-
-                try(ResultSet resultSet = statement.getGeneratedKeys()) {
-                    resultSet.next();
-                    talk.setId(resultSet.getInt("id"));
-                }
-            }
-        }
-    }
 }
-
-

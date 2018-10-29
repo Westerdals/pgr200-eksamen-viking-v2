@@ -26,7 +26,7 @@ public class ConferenceTopicDaoTest {
     public void shouldInsertConferenceTopics() throws SQLException {
         ConferenceTopic topic = new ConferenceTopic("Gardening");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
-        dao.insertTopic(topic);
+        dao.insert(topic);
         assertThat(dao.list()).extracting(ConferenceTopic::getTitle).contains("Gardening");
     }
 
@@ -34,7 +34,7 @@ public class ConferenceTopicDaoTest {
     public void shouldListConferenceTopics() throws SQLException {
         ConferenceTopic topic = new ConferenceTopic("Technology");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
-        dao.insertTopic(topic);
+        dao.insert(topic);
         assertThat(dao.list().size()).isEqualTo(topic.getId());
     }
 
@@ -42,7 +42,7 @@ public class ConferenceTopicDaoTest {
     public void confirmCorrectTopicId() throws SQLException {
         ConferenceTopic topic = new ConferenceTopic("Fiction");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());
-        dao.insertTopic(topic);
+        dao.insert(topic);
         assertThat(dao.list()).extracting(ConferenceTopic::getId).contains(topic.getId());
     }
 }
