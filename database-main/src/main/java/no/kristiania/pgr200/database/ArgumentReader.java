@@ -52,10 +52,10 @@ public class ArgumentReader {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
         } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
-            topicDao.insertTopic(topic);
+            topicDao.insert(topic);
         } else System.out.println("Unknown Command.");
 
-        talkDao.insertTalk(talk);
+        talkDao.insert(talk);
     }
 
     private void retrieve() throws SQLException {

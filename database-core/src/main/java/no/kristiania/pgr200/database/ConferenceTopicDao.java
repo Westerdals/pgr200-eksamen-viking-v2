@@ -30,20 +30,6 @@ public class ConferenceTopicDao extends AbstractDao {
         topic.setTitle(rs.getString("title"));
         return topic;
     }
-
-    public void insertTopic(ConferenceTopic topic) throws SQLException {
-        try(Connection conn = dataSource.getConnection()) {
-            String sql = "insert into topic (TITLE) values (?)";
-            try (PreparedStatement statement = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, topic.getTitle());
-                statement.executeUpdate();
-                try(ResultSet resultSet = statement.getGeneratedKeys()) {
-                    resultSet.next();
-                    topic.setId(resultSet.getInt("id"));
-                }
-            }
-        }
-    }
 }
 
 
