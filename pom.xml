@@ -3,7 +3,14 @@
   <groupId>no.kristiania.pgr200</groupId>
   <artifactId>database-exercise</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
+    <modules>
+        <module>database-core</module>
+        <module>database-main</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
   <dependencies>
     <dependency>
         <groupId>junit</groupId>
