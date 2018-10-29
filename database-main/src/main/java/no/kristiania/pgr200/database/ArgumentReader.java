@@ -1,5 +1,8 @@
 package no.kristiania.pgr200.database;
 
+import org.flywaydb.core.Flyway;
+
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class ArgumentReader {
@@ -16,7 +19,7 @@ public class ArgumentReader {
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
 
-    public ArgumentReader(String[] arguments) throws SQLException {
+    public ArgumentReader(String[] arguments) throws SQLException, IOException, ClassNotFoundException {
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
@@ -30,6 +33,9 @@ public class ArgumentReader {
         }
 
         switch (methodArgument) {
+            case "reset":
+                reset();
+                break;
             case "insert":
                 insert();
                 break;
@@ -45,14 +51,22 @@ public class ArgumentReader {
         }
     }
 
-    private void insert() throws SQLException {
-    if (methodArgument.equals("insert") && objectArgument.equals("talk") && arguments.length > 4) {
+    private void reset() throws SQLException, IOException, ClassNotFoundException {
+        ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(program.createDataSource());
+        flyway.clean();
+    }
+
+    private void insert() {
+    if (objectArgument.equals("talk") && arguments.length > 4) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
     } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
         } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
+            return;
         } else System.out.println("Unknown Command.");
 
         talkDao.insert(talk);
