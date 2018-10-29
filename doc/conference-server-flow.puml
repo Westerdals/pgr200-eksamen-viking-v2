@@ -1,0 +1,31 @@
+@startuml
+
+actor User
+participant Client
+participant Server
+database Database
+
+== Adding a talk ==
+User -> Client ++: add -title "My Talk" -description ... 
+Client -> Server ++: POST http://.../api/talks title=My+Talk
+Server -> Database ++: INSERT INTO TABLE talks (title) VALUES ('My Talk') 
+Server <-- Database --
+Client <-- Server --: Location: http://.../api/id
+User <-- Client --: Id is <id>
+== Listing all talks ==
+User -> Client ++: list
+Client -> Server ++: GET http://.../api/talks
+Server -> Database ++: SELECT * FROM talks 
+Server <-- Database --: talk rows
+Client <-- Server --: csv
+User <-- Client --: [id, title]*
+== Showing a talk ==
+User -> Client ++: show -id <id>
+Client -> Server ++: GET http://.../api/talks/<id>
+Server -> Database ++: SELECT * FROM talks WHERE id = ? 
+Server <-- Database --: talk row
+Client <-- Server --: title, description
+User <-- Client --: title, description
+
+
+@enduml

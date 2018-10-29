@@ -1,0 +1,20 @@
+@startuml
+
+class Talks {
+    title
+    description
+    topic
+}
+
+class Days {
+    date
+}
+
+Conference -down- "*" Days
+Conference -down- "*" Tracks
+Days -down- "*" Timeslots
+Tracks -down- "*" Timeslots
+
+Timeslots -left- "0..1" Talks
+
+@enduml
