@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be234f1b-b0eb-45c5-8f4b-e3d77f1f3e31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ff94a8ad-1336-4570-a97d-34b313e19c4a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ff94a8ad-1336-4570-a97d-34b313e19c4a/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ff94a8ad-1336-4570-a97d-34b313e19c4a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceTalkDaoTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceTalkDaoTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceTopicDaoTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/surefire-reports/TEST-no.kristiania.pgr200.database.ConferenceTopicDaoTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/target/surefire-reports/no.kristiania.pgr200.database.ConferenceTalkDaoTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/surefire-reports/no.kristiania.pgr200.database.ConferenceTalkDaoTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/target/surefire-reports/no.kristiania.pgr200.database.ConferenceTopicDaoTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/surefire-reports/no.kristiania.pgr200.database.ConferenceTopicDaoTest.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/database-core/target/" />
@@ -34,12 +27,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="7" />
+          <entry key="java" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="7" />
+          <entry key="JAVA" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -59,17 +52,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="480">
+              <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="44" column="18" lean-forward="true" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="361">
+              <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
+            <state relative-caret-position="585">
               <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
               <folding>
                 <element signature="e#369#370#0" expanded="true" />
@@ -160,6 +162,18 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>insertTalk</find>
+      <find>insertT</find>
+      <find>insertTal</find>
+      <find>insert</find>
+    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database</dir>
+      <dir>$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -167,10 +181,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/BaseModel.java" />
-        <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" />
         <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java" />
         <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" />
         <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java" />
+        <option value="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java" />
+        <option value="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" />
+        <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" />
       </list>
     </option>
   </component>
@@ -281,7 +297,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540826068088" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540826637555" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -350,12 +366,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1540825543055</updated>
-      <workItem from="1540825545718" duration="423000" />
+      <workItem from="1540825545718" duration="872000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ConferenceTopicDaoTest - 2018.10.29 at 16h 14m 23s.xml">
+      <configuration name="ConferenceTopicDaoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="no_kristiania_pgr200_database_in_database-core - 2018.10.29 at 16h 14m 31s.xml">
+      <configuration name="no.kristiania.pgr200.database in database-core" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423000" />
+    <option name="totallyTimeSpent" value="872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -368,13 +392,14 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" weight="0.3299363" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -401,23 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -465,7 +473,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTopic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
+        <state relative-caret-position="585">
           <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
           <folding>
             <element signature="e#369#370#0" expanded="true" />
@@ -474,6 +482,30 @@
             <element signature="e#1082#1083#0" expanded="true" />
             <element signature="e#1127#1128#0" expanded="true" />
             <element signature="e#1161#1162#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="44" column="18" lean-forward="true" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
