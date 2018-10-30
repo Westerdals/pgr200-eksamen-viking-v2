@@ -1,8 +1,6 @@
 package no.kristiania.pgr200.database;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collector;
 
 public class ConferenceTalk implements BaseModel {
 
@@ -92,7 +90,6 @@ public class ConferenceTalk implements BaseModel {
 
     @Override
     public String toString() {
-        return "_______________________________________________________\n" +
-                "| " + title + " | " + description + " | " + id + " | " + " | " + topic +  " | " ;
+        return title + " " + description + " " + id + " " + " " + topic +  " " ;
     }
 }

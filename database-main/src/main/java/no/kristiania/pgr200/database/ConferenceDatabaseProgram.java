@@ -41,8 +41,7 @@ public class ConferenceDatabaseProgram {
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
-        //flyway.clean();
-        flyway.migrate();
+        //flyway.migrate();
 
         return dataSource;
     }

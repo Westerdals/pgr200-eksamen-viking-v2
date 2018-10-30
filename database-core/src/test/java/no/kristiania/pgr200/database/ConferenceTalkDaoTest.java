@@ -1,16 +1,10 @@
 package no.kristiania.pgr200.database;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import javax.sql.DataSource;
-
-import no.kristiania.pgr200.database.ConferenceTalkDao;
 import org.flywaydb.core.Flyway;
 import org.h2.jdbcx.JdbcDataSource;
-import org.junit.Ignore;
 import org.junit.Test;
-
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 

@@ -25,8 +25,6 @@ public class AbstractDao {
                 statement.setInt(1, id);
                 try(ResultSet rs = statement.executeQuery()) {
                     if(rs.next()) {
-                        T genericList = mapper.mapResultSet(rs);    //TODO: Seperate class for printing
-                        System.out.println(genericList.toString());
                         return mapper.mapResultSet(rs);
                     }
                     return null;
@@ -41,8 +39,7 @@ public class AbstractDao {
                 try(ResultSet rs = statement.executeQuery()) {
                     List<T> result = new ArrayList<>();
                     while (rs.next()) {
-                        T genericList = mapper.mapResultSet(rs);    //TODO: Seperate class for printing
-                        System.out.println(genericList.toString());
+                        T genericList = mapper.mapResultSet(rs);
                         result.add(genericList);
                     }
                     return result;

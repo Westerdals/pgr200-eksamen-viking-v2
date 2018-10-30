@@ -10,8 +10,5 @@
         <module name="database-main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="database-exercise" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

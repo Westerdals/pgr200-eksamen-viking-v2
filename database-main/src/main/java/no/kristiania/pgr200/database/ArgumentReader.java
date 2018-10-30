@@ -13,6 +13,7 @@ public class ArgumentReader {
     private String titleArgument;
     private String descriptionArgument;
     private String topicArgument;
+    private int id;
 
     private ConferenceTalk talk;
     private ConferenceTopic topic;
@@ -40,7 +41,11 @@ public class ArgumentReader {
                 insert();
                 break;
             case "retrieve":
-                retrieve();
+                if(titleArgument == null) {
+                    System.out.println("Retrieve command needs an id");
+                    break;
+                }
+                retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 break;
             case "list":
                 list();
@@ -72,19 +77,50 @@ public class ArgumentReader {
         talkDao.insert(talk);
     }
 
-    private void retrieve() throws SQLException {
+    private void retrieve(int id) throws SQLException {
+
         if(methodArgument.equals("retrieve") && objectArgument.equals("talk")) {
-            talkDao.retrieve(1);
+            if(id > talkDao.list().size()) {
+                System.out.println("There is no talk with id " + id);
+                return;
+            }
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talkDao.retrieve(id).getId(), "|", talkDao.retrieve(id).getTitle(), "|", talkDao.retrieve(id).getDescription(), "|", talkDao.retrieve(id).getTopic(), "|"));
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
-            topicDao.retrieve(1);
+            if(id > topicDao.list().size()) {
+                System.out.println("There is no topic with id " + id);
+                return;
+            }
+            System.out.println(String.format("%s", "--------------------------------------"));
+            System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
+            System.out.println(String.format("%s", "--------------------------------------"));
+            System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topicDao.retrieve(id).getId(), "|",  topicDao.retrieve(id).getTitle(), "|"));
+            System.out.println(String.format("%s", "--------------------------------------"));
         } else System.out.println("Unknown command");
     }
 
     private void list() throws SQLException {
-        if(methodArgument.equals("list") && objectArgument.equals("talks")) {
-            talkDao.list();
-        } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
-            topicDao.list();
-        } else System.out.println("Unknown command");
+        if (methodArgument.equals("list") && objectArgument.equals("talks")) {
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
+            for (ConferenceTalk talk : talkDao.list()) {
+                System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+            }
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+
+        } else if (methodArgument.equals("list") && objectArgument.equals("topics")) {
+            System.out.println(String.format("%s", "--------------------------------------"));
+            System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
+            for (ConferenceTopic topic : topicDao.list()) {
+                System.out.println(String.format("%s", "--------------------------------------"));
+                System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
+            }
+            System.out.println(String.format("%s", "--------------------------------------"));
+
+        }
     }
 }

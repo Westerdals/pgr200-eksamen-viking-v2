@@ -16,10 +16,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>no.kristiania.pgr200</groupId>
-            <artifactId>database-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <groupId>no.kristiania.pgr200</groupId>
+        <artifactId>database-core</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
