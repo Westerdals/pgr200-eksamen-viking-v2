@@ -16,7 +16,7 @@ public class ConferenceDatabaseProgram {
     private ConferenceTopicDao topicDao;
     private ArgumentReader argumentReader;
 
-    public ConferenceDatabaseProgram() throws SQLException, IOException, ClassNotFoundException {
+    public ConferenceDatabaseProgram() throws IOException {
         this.dataSource = createDataSource();
         this.talkDao = new ConferenceTalkDao(dataSource);
         this.topicDao = new ConferenceTopicDao(dataSource);
@@ -25,7 +25,7 @@ public class ConferenceDatabaseProgram {
 
     public static DataSource createDataSource() throws IOException {
         Properties props = new Properties();
-        FileInputStream in = new FileInputStream("/Users/markusdreyer/Desktop/database-exercise/database-main/src/main/resources/db/configuration/db.properties");
+        FileInputStream in = new FileInputStream("db.properties");
         props.load(in);
         in.close();
 
@@ -41,6 +41,7 @@ public class ConferenceDatabaseProgram {
 
         Flyway flyway = new Flyway();
         flyway.setDataSource(dataSource);
+        //flyway.clean();
         //flyway.migrate();
 
         return dataSource;

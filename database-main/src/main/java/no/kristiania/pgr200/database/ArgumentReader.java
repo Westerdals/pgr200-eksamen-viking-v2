@@ -13,14 +13,13 @@ public class ArgumentReader {
     private String titleArgument;
     private String descriptionArgument;
     private String topicArgument;
-    private int id;
 
     private ConferenceTalk talk;
     private ConferenceTopic topic;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
 
-    public ArgumentReader(String[] arguments) throws SQLException, IOException, ClassNotFoundException {
+    public ArgumentReader(String[] arguments) throws SQLException, IOException {
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
@@ -38,16 +37,24 @@ public class ArgumentReader {
                 reset();
                 break;
             case "insert":
+                if(titleArgument == null) {
+                    System.out.println("insert failed: insert command needs a title to insert");
+                    break;
+                }
                 insert();
                 break;
             case "retrieve":
                 if(titleArgument == null) {
-                    System.out.println("Retrieve command needs an id");
+                    System.out.println("retrieve failed: retrieve command needs an id");
                     break;
                 }
                 retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 break;
             case "list":
+                if(titleArgument == null) {
+                    System.out.println("list failed: specify which table you wish to list   ");
+                    break;
+                }
                 list();
                 break;
             default:
@@ -56,24 +63,27 @@ public class ArgumentReader {
         }
     }
 
-    private void reset() throws SQLException, IOException, ClassNotFoundException {
+    private void reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
         flyway.setDataSource(program.createDataSource());
         flyway.clean();
+        flyway.migrate();
     }
 
     private void insert() {
     if (objectArgument.equals("talk") && arguments.length > 4) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
+        System.out.println("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
     } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
-        } else if(objectArgument.equals("topic")) {
+        System.out.println("Successfully inserted " + titleArgument + " into conference_talk");
+    } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
-            return;
+        System.out.println("Successfully inserted " + titleArgument + " into topic");
+        return;
         } else System.out.println("Unknown Command.");
-
         talkDao.insert(talk);
     }
 
@@ -120,7 +130,6 @@ public class ArgumentReader {
                 System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
             }
             System.out.println(String.format("%s", "--------------------------------------"));
-
-        }
+        } else System.out.println("Unknown command");
     }
 }
