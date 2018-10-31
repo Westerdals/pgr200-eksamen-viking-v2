@@ -31,6 +31,15 @@ public class ConferenceTopicDaoTest {
     }
 
     @Test
+    public void shouldRetrieveOneTopic() throws SQLException {
+        ConferenceTopic topic = new ConferenceTopic("Cool Topic");
+        ConferenceTopicDao topicDao = new ConferenceTopicDao(createDataSource());
+        topicDao.insert(topic);
+
+        assertThat(topicDao.retrieve(1).getId()).isEqualTo(1);
+    }
+
+    @Test
     public void shouldListConferenceTopics() throws SQLException {
         ConferenceTopic topic = new ConferenceTopic("Technology");
         ConferenceTopicDao dao = new ConferenceTopicDao(createDataSource());

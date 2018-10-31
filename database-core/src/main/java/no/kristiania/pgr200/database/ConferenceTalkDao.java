@@ -3,6 +3,7 @@ package no.kristiania.pgr200.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.sql.DataSource;
 public class ConferenceTalkDao extends AbstractDao {
 
@@ -30,4 +31,10 @@ public class ConferenceTalkDao extends AbstractDao {
         talk.setTopic(rs.getString("topic"));
         return talk;
     }
+
+    public List<ConferenceTalk> listConferenceTalkWithTopic(String topic) throws SQLException {
+        return list("select * from conference_talk", this::mapToTalk)
+                .stream().filter(s -> topic.equals(s.getTopic())).collect(Collectors.toList());
+    }
+
 }

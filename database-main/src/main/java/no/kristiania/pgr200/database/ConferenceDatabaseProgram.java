@@ -25,10 +25,10 @@ public class ConferenceDatabaseProgram {
 
     public static DataSource createDataSource() throws IOException {
         Properties props = new Properties();
-        FileInputStream in = new FileInputStream("db.properties");
-        props.load(in);
-        in.close();
 
+        try( FileInputStream in = new FileInputStream("db.properties")) {
+            props.load(in);
+        }
 
         String url = props.getProperty("jdbc.url");
         String username = props.getProperty("jdbc.username");
@@ -47,11 +47,11 @@ public class ConferenceDatabaseProgram {
         return dataSource;
     }
 
-    public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, IOException {
         new ConferenceDatabaseProgram().run(args);
     }
 
-    public void run(String[] args) throws SQLException, IOException, ClassNotFoundException {
+    public void run(String[] args) throws SQLException, IOException {
         if (args.length == 0) {
             System.out.println("Run the class with one of these arguments:\n" +
                     "For inserting a talk/topic type Insert [Talk/Topic] [Title] [Description] <- Only for Talk \n" +

@@ -1,6 +1,8 @@
 package no.kristiania.pgr200.database;
 
 import org.flywaydb.core.Flyway;
+import org.flywaydb.core.internal.database.db2.DB2Table;
+import org.flywaydb.core.internal.util.AsciiTable;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,6 +20,7 @@ public class ArgumentReader {
     private ConferenceTopic topic;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
+
 
     public ArgumentReader(String[] arguments) throws SQLException, IOException {
         this.arguments = arguments;
@@ -51,7 +54,7 @@ public class ArgumentReader {
                 retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 break;
             case "list":
-                if(titleArgument == null) {
+                if(objectArgument == null) {
                     System.out.println("list failed: specify which table you wish to list   ");
                     break;
                 }
@@ -63,6 +66,7 @@ public class ArgumentReader {
         }
     }
 
+
     private void reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
@@ -73,7 +77,9 @@ public class ArgumentReader {
 
     private void insert() {
     if (objectArgument.equals("talk") && arguments.length > 4) {
-            talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
+        topic = new ConferenceTopic(topicArgument);
+        topicDao.insert(topic);
+        talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
         System.out.println("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
     } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
@@ -88,7 +94,6 @@ public class ArgumentReader {
     }
 
     private void retrieve(int id) throws SQLException {
-
         if(methodArgument.equals("retrieve") && objectArgument.equals("talk")) {
             if(id > talkDao.list().size()) {
                 System.out.println("There is no talk with id " + id);
@@ -97,7 +102,7 @@ public class ArgumentReader {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talkDao.retrieve(id).getId(), "|", talkDao.retrieve(id).getTitle(), "|", talkDao.retrieve(id).getDescription(), "|", talkDao.retrieve(id).getTopic(), "|"));
+            System.out.println(String.format("%1s %2s %1s %15s %1s %20s %20s %10s %10s", "|", talkDao.retrieve(id).getId(), "|", talkDao.retrieve(id).getTitle(), "|", talkDao.retrieve(id).getDescription(), "|", talkDao.retrieve(id).getTopic(), "|"));
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
             if(id > topicDao.list().size()) {
@@ -118,7 +123,7 @@ public class ArgumentReader {
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             for (ConferenceTalk talk : talkDao.list()) {
                 System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+                System.out.println(String.format("%1s %2s %1s %10s %10s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
 
