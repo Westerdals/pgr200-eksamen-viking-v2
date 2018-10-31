@@ -1,3 +1,8 @@
+#Generell Informasjon
+* Marcus Jøsendal (josmar17) og Markus Dreyer (dremar17)
+* Vi har jobbet godt sammen som gruppe og kommer til å jobbe videre sammen til den endelig innleveringen.
+* Youtube-link til parprogrammeringsvideoen: https://www.youtube.com/watch?v=o_rxW60PzoU
+* Vi har bare to tabeller, så vi følte ikke det var nødvendig å oprette et databasediagram i denne innleveringen. 
 # Kjøring
 ## Maven
 1. `mvn test`
@@ -31,5 +36,21 @@ Migration-scriptet er lagt opp slik at Id og Title er de første kolonnene, og f
   * Science
   * Programming
   * Hacking
- 
- 
+  
+#Tilbakemeldinger
+##Til annen gruppe
+* Gruppen vi ga tilbakemelding til bestå av Solveig og Mats.
+* Veldig god måte å kjøre programmet på. Oversiktlig for brukeren. Printer til brukeren på en fin måte.  
+* Mangler at man kan opprettet en talk med et Topic.
+* Bra at dere har mulighet til å ha flere Topics på en Talk og at man kan fjerne Topics.
+* Bra at programmet kjører helt til brukeren manuelt avslutter det. 
+* Bra at man kan slette ett object, men denne burde kanskje returnere en Boolean. Det samme gjelder Insert metoden. 
+
+##Tilbakemelding på vår løsning
+* Gi tilbakemelding til bruker når man resetter databasen.
+* Fin tabell for å skrive ut av resultater av de forskjellige kommandoene.
+* Bra generiske metoder.
+* Kanskje implemetere for å fjerne Topic, legge til Topic til en eksisterende talk og kasnkje bytte Topic på en eksisterende talk. 
+* Ryddig kode som har med mye som ikke er obligatorisk.
+* Kanskje finne en måte å handle User input på en annen måte, ble kanskje litt mye kode. 
+* Burde ha to separate Migrations filer for de forskjellige tabellene. 
