@@ -1,8 +1,6 @@
 package no.kristiania.pgr200.database;
 
 import org.flywaydb.core.Flyway;
-import org.flywaydb.core.internal.database.db2.DB2Table;
-import org.flywaydb.core.internal.util.AsciiTable;
 
 import java.io.IOException;
 import java.sql.SQLException;

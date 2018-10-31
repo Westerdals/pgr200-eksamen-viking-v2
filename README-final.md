@@ -12,12 +12,13 @@ med følgende kommandoer:
 * `list topics` - lister alle topics
 * `retrieve topic 1` - lister topic med id 1
 * `retrieve talk 1` - lister topic med id 1
-* `insert talk “Helvetes Hacking” “Hvordan å hacke” Hacking` - Legger til en talk med tittel, beskrivelse og topic
 * `insert talk Hacks hackerskills` - Legger til en talk med tittel og beskrivelse
+* `insert talk “Helvetes Hacking” “Hvordan å hacke” Hacking` - Legger til en talk med tittel, beskrivelse og topic 
+(Dersom topic ikke eksisterer i Topic-tabellen, vil den også bli insertet der før Talken insertes)
 
 Eksempel: `java -jar database-main-0.0.1-SNAPSHOT.jar list talks` (lister alle talks)
 
-# Designretningslinjer**
+# Designretningslinjer
 ##Migrations
 Migration-scriptet er lagt opp slik at Id og Title er de første kolonnene, og foreignkey
  er alltid den siste. Create table kjøres også alltid med "IF NOT EXISTS" slik at man 
