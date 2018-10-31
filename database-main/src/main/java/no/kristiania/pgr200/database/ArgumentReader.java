@@ -118,7 +118,7 @@ public class ArgumentReader {
     }
 
     private void list() throws SQLException {
-        if (objectArgument.equals("talks")) {
+        if (objectArgument.equals("talks") && arguments.length <= 2) {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             for (ConferenceTalk talk : talkDao.list()) {
@@ -135,6 +135,16 @@ public class ArgumentReader {
                 System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
             }
             System.out.println(String.format("%s", "--------------------------------------"));
-        } else System.out.println("Unknown command");
+        } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument.equals("topic") && topicArgument != null) {
+
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
+            for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(topicArgument)) {
+                System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+            }
+            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+        }
+        else System.out.println("Unknown command");
     }
 }
