@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be234f1b-b0eb-45c5-8f4b-e3d77f1f3e31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README-final.md" beforeDir="false" afterPath="$PROJECT_DIR$/README-final.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/target/classes/no/kristiania/pgr200/database/ConferenceTalkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/classes/no/kristiania/pgr200/database/ConferenceTalkDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-core/target/test-classes/no/kristiania/pgr200/database/ConferenceTalkDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/target/test-classes/no/kristiania/pgr200/database/ConferenceTalkDaoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/target/classes/no/kristiania/pgr200/database/ArgumentReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/target/classes/no/kristiania/pgr200/database/ArgumentReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/target/classes/no/kristiania/pgr200/database/ConferenceDatabaseProgram.class" afterDir="false" />
-    </list>
+    <list default="true" id="be234f1b-b0eb-45c5-8f4b-e3d77f1f3e31" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/database-core/target/" />
     <ignored path="$PROJECT_DIR$/database-main/target/" />
@@ -142,11 +130,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="530">
+              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            <state relative-caret-position="312">
+              <caret line="56" column="30" lean-forward="true" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -471,7 +459,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540990148113" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540990720981" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -496,11 +484,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConferenceTalkDaoTest.shouldInsertConferenceTalks">
+  <component name="RunManager" selected="Application.ConferenceDatabaseProgram">
     <configuration name="ConferenceDatabaseProgram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.ConferenceDatabaseProgram" />
       <module name="database-main" />
-      <option name="PROGRAM_PARAMETERS" value="list talks " />
+      <option name="PROGRAM_PARAMETERS" value="list talks" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
@@ -577,8 +565,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ConferenceTalkDaoTest.shouldInsertConferenceTalks" />
         <item itemvalue="Application.ConferenceDatabaseProgram" />
+        <item itemvalue="JUnit.ConferenceTalkDaoTest.shouldInsertConferenceTalks" />
         <item itemvalue="JUnit.ConferenceTalkDaoTest.shouldReturnConferenceTalkWithgiveTopic" />
         <item itemvalue="JUnit.All in database-core" />
         <item itemvalue="Cucumber java.All Features in: test" />
@@ -598,14 +586,11 @@
       <workItem from="1540825545718" duration="872000" />
       <workItem from="1540826880809" duration="6230000" />
       <workItem from="1540891425551" duration="22071000" />
-      <workItem from="1540986942399" duration="2902000" />
+      <workItem from="1540986942399" duration="3310000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="no_kristiania_pgr200_database_in_database-core - 2018.10.29 at 16h 14m 31s.xml">
-      <configuration name="no.kristiania.pgr200.database in database-core" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_Features_in__test - 2018.10.29 at 16h 42m 43s.xml">
       <configuration name="All Features in: test" configurationId="CucumberJavaRunConfigurationType" />
     </history-entry>
@@ -633,9 +618,12 @@
     <history-entry file="ConferenceTalkDaoTest_shouldReturnConferenceTalkWithgiveTopic - 2018.10.31 at 13h 26m 19s.xml">
       <configuration name="ConferenceTalkDaoTest.shouldReturnConferenceTalkWithgiveTopic" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ConferenceTalkDaoTest_shouldInsertConferenceTalks - 2018.10.31 at 13h 49m 11s.xml">
+      <configuration name="ConferenceTalkDaoTest.shouldInsertConferenceTalks" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32075000" />
+    <option name="totallyTimeSpent" value="32483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -778,16 +766,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-289">
@@ -814,8 +792,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        <state relative-caret-position="312">
+          <caret line="56" column="30" lean-forward="true" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

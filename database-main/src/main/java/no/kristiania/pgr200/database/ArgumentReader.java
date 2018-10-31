@@ -76,7 +76,7 @@ public class ArgumentReader {
     }
 
     private void insert() {
-    if (objectArgument.equals("talk") && arguments.length > 4) {
+    if (arguments.length > 4) {
         topic = new ConferenceTopic(topicArgument);
         topicDao.insert(topic);
         talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
@@ -94,7 +94,7 @@ public class ArgumentReader {
     }
 
     private void retrieve(int id) throws SQLException {
-        if(methodArgument.equals("retrieve") && objectArgument.equals("talk")) {
+        if(objectArgument.equals("talk")) {
             if(id > talkDao.list().size()) {
                 System.out.println("There is no talk with id " + id);
                 return;
@@ -118,16 +118,16 @@ public class ArgumentReader {
     }
 
     private void list() throws SQLException {
-        if (methodArgument.equals("list") && objectArgument.equals("talks")) {
+        if (objectArgument.equals("talks")) {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             for (ConferenceTalk talk : talkDao.list()) {
                 System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-                System.out.println(String.format("%1s %2s %1s %10s %10s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
 
-        } else if (methodArgument.equals("list") && objectArgument.equals("topics")) {
+        } else if (objectArgument.equals("topics")) {
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
             for (ConferenceTopic topic : topicDao.list()) {
