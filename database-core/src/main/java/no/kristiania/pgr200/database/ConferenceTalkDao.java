@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 
+import org.postgresql.core.SqlCommand;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,11 +17,15 @@ public class ConferenceTalkDao extends AbstractDao {
         this.dataSource = dataSource;
     }
 
-    public ConferenceTalk retrieve(int id) throws SQLException {
+    public ConferenceTalk retrieveTalk(int id) throws SQLException {
         return retrieveSingleObject("select * from conference_talk where id = ?", this::mapToTalk, id);
     }
 
-    public List<ConferenceTalk> list() throws SQLException {
+    public boolean deleteTalk(int id) throws SQLException {
+        return deleteSingleObject("delete from conference_talk where id = ?", id);
+    }
+
+    public List<ConferenceTalk> listTalks() throws SQLException {
         return list("select * from conference_talk", this::mapToTalk);
     }
 

@@ -44,16 +44,16 @@ public class ArgumentReader {
                 }
                 insert();
                 break;
-            case "retrieve":
+            case "retrieveTopic":
                 if(titleArgument == null) {
-                    System.out.println("retrieve failed: retrieve command needs an id");
+                    System.out.println("retrieveTopic failed: retrieveTopic command needs an id");
                     break;
                 }
                 retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 break;
-            case "list":
+            case "listTalks":
                 if(objectArgument == null) {
-                    System.out.println("list failed: specify which table you wish to list   ");
+                    System.out.println("listTalks failed: specify which table you wish to listTalks   ");
                     break;
                 }
                 list();
@@ -80,11 +80,11 @@ public class ArgumentReader {
         talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
         System.out.println("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
     } else if (objectArgument.equals("talk") && arguments.length > 3) {
-            talk = new ConferenceTalk(titleArgument, descriptionArgument);
+        talk = new ConferenceTalk(titleArgument, descriptionArgument);
         System.out.println("Successfully inserted " + titleArgument + " into conference_talk");
     } else if(objectArgument.equals("topic")) {
-            topic = new ConferenceTopic(titleArgument);
-            topicDao.insert(topic);
+        topic = new ConferenceTopic(titleArgument);
+        topicDao.insert(topic);
         System.out.println("Successfully inserted " + titleArgument + " into topic");
         return;
         } else System.out.println("Unknown Command.");
@@ -93,24 +93,24 @@ public class ArgumentReader {
 
     private void retrieve(int id) throws SQLException {
         if(objectArgument.equals("talk")) {
-            if(id > talkDao.list().size()) {
+            if(id > talkDao.listTalks().size()) {
                 System.out.println("There is no talk with id " + id);
                 return;
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %2s %1s %15s %1s %20s %20s %10s %10s", "|", talkDao.retrieve(id).getId(), "|", talkDao.retrieve(id).getTitle(), "|", talkDao.retrieve(id).getDescription(), "|", talkDao.retrieve(id).getTopic(), "|"));
+            System.out.println(String.format("%1s %2s %1s %15s %1s %20s %20s %10s %10s", "|", talkDao.retrieveTalk(id).getId(), "|", talkDao.retrieveTalk(id).getTitle(), "|", talkDao.retrieveTalk(id).getDescription(), "|", talkDao.retrieveTalk(id).getTopic(), "|"));
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-        } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
-            if(id > topicDao.list().size()) {
+        } else if (methodArgument.equals("retrieveTopic") && objectArgument.equals("topic")) {
+            if(id > topicDao.listTopics().size()) {
                 System.out.println("There is no topic with id " + id);
                 return;
             }
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
             System.out.println(String.format("%s", "--------------------------------------"));
-            System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topicDao.retrieve(id).getId(), "|",  topicDao.retrieve(id).getTitle(), "|"));
+            System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topicDao.retrieveTopic(id).getId(), "|",  topicDao.retrieveTopic(id).getTitle(), "|"));
             System.out.println(String.format("%s", "--------------------------------------"));
         } else System.out.println("Unknown command");
     }
@@ -119,7 +119,7 @@ public class ArgumentReader {
         if (objectArgument.equals("talks") && arguments.length <= 2) {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
-            for (ConferenceTalk talk : talkDao.list()) {
+            for (ConferenceTalk talk : talkDao.listTalks()) {
                 System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
                 System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
             }
@@ -128,7 +128,7 @@ public class ArgumentReader {
         } else if (objectArgument.equals("topics")) {
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
-            for (ConferenceTopic topic : topicDao.list()) {
+            for (ConferenceTopic topic : topicDao.listTopics()) {
                 System.out.println(String.format("%s", "--------------------------------------"));
                 System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
             }

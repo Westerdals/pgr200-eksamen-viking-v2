@@ -16,11 +16,15 @@ public class ConferenceTopicDao extends AbstractDao {
         this.dataSource = dataSource;
     }
 
-    public ConferenceTopic retrieve(int id) throws SQLException {
+    public ConferenceTopic retrieveTopic(int id) throws SQLException {
         return retrieveSingleObject("select * from topic where id = ?", this::mapToTopic, id);
     }
 
-    public List<ConferenceTopic> list() throws SQLException {
+    public boolean deleteTopic(int id) throws SQLException {
+        return deleteSingleObject("delete from topic where id = ?", id);
+    }
+
+    public List<ConferenceTopic> listTopics() throws SQLException {
         return list("select * from topic", this::mapToTopic);
     }
 

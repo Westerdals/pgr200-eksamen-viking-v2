@@ -29,13 +29,9 @@ public class ConferenceTalkDaoTest {
         ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk", null);
         ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
         talkDao.insert(talk);
-        assertThat(talkDao.list()).extracting(ConferenceTalk::getTitle).contains("My Talk Title");
+        assertThat(talkDao.listTalks()).extracting(ConferenceTalk::getTitle).contains("My Talk Title");
     }
 
-    @Test
-    public void shouldInsertConferenceTalkWithTopic() {
-
-    }
 
     @Test
     public void shouldRetrieveOneTalk() throws SQLException {
@@ -43,7 +39,18 @@ public class ConferenceTalkDaoTest {
         ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
         talkDao.insert(talk);
 
-        assertThat(talkDao.retrieve(1).getId()).isEqualTo(1);
+        assertThat(talkDao.retrieveTalk(talk.getId()).getId()).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldUpdateTalk() throws SQLException {
+        ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk", "Science");
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
+        talkDao.insert(talk);
+
+        talkDao.updateSingleObject(talk.getId(), "conference_talk", "description", "different description");
+
+        assertThat(talkDao.retrieveTalk(talk.getId()).getDescription()).isEqualTo("different description");
     }
 
     @Test
@@ -53,12 +60,9 @@ public class ConferenceTalkDaoTest {
         ConferenceTalk talk2 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Hacking");
         ConferenceTalk talk1 = new ConferenceTalk("My Talk Title", "A description of my Talk", topic);
 
-
         talkDao.insert(talk1);
         talkDao.insert(talk2);
         List<ConferenceTalk> list = talkDao.listConferenceTalkWithTopic(topic);
-
-        System.out.println(list.get(0));
 
         assertThat(list.get(0).getTopic()).isEqualTo(topic);
     }
@@ -68,6 +72,19 @@ public class ConferenceTalkDaoTest {
         ConferenceTalk talk = new ConferenceTalk("My Talk Title", "A description of my Talk", null);
         ConferenceTalkDao dao = new ConferenceTalkDao(createDataSource());
         dao.insert(talk);
-        assertThat(dao.list()).extracting(ConferenceTalk::getId).contains(talk.getId());
+        assertThat(dao.listTalks()).extracting(ConferenceTalk::getId).contains(talk.getId());
+    }
+
+    @Test
+    public void shouldDeleteOneTalk() throws SQLException {
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
+        ConferenceTalk talk2 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Hacking");
+        ConferenceTalk talk1 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Science");
+
+        talkDao.insert(talk1);
+        talkDao.insert(talk2);
+        talkDao.deleteTalk(talk1.getId());
+
+        assertThat(talkDao.retrieveTalk(talk1.getId())).isEqualTo(null);
     }
 }
