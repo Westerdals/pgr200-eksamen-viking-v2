@@ -49,7 +49,7 @@ public class ConferenceTopicDaoTest {
 
         topicDao.insert(topic1);
         topicDao.insert(topic2);
-        topicDao.deleteTopic(1);
+        topicDao.deleteTopic(topic1.getId());
 
         assertThat(topicDao.retrieveTopic(topic1.getId())).isEqualTo(null);
     }

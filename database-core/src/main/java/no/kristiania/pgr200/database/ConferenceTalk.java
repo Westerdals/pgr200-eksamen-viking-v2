@@ -1,8 +1,13 @@
 package no.kristiania.pgr200.database;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 
 public class ConferenceTalk implements BaseModel {
+
+
+    private String title, description, topic;
+    private int id;
 
     //Constructor for creating a ConferenceTalk with a topic
     public ConferenceTalk(String title, String description, String topic) {
@@ -16,9 +21,6 @@ public class ConferenceTalk implements BaseModel {
         this.title = title;
         this.description = description;
     }
-
-    private String title, description, topic;
-    private int id;
 
     public int getId() {
         return id;
@@ -35,7 +37,7 @@ public class ConferenceTalk implements BaseModel {
     @Override
     public String[] getColumnsWithValue() {
         return Arrays.stream(new String[]{
-                "id", "title", "description", "topic"
+                "id", "title", "description", "topic", "timeslot"
         }).filter(column -> this.getColumnValue(column) != null)
                 .filter(column ->  !(column.equals("id") && this.id == 0))
                 .toArray(String[]::new);
@@ -44,7 +46,7 @@ public class ConferenceTalk implements BaseModel {
     @Override
     public String[] getColumns() {
         return new String[] {
-                "id", "title", "description", "topic"
+                "id", "title", "description", "topic", "timeslot"
         };
     }
 
@@ -90,6 +92,7 @@ public class ConferenceTalk implements BaseModel {
 
     @Override
     public String toString() {
-        return title + " " + description + " " + id + " " + " " + topic +  " " ;
+        return title + " " + description + " " + id + " " + " " + topic + " " ;
     }
+
 }

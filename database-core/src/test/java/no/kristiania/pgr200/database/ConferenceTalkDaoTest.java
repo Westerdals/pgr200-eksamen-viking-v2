@@ -1,6 +1,8 @@
 package no.kristiania.pgr200.database;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.sql.DataSource;
 
@@ -78,7 +80,7 @@ public class ConferenceTalkDaoTest {
     @Test
     public void shouldDeleteOneTalk() throws SQLException {
         ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
-        ConferenceTalk talk2 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Hacking");
+        ConferenceTalk talk2 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Hacking" );
         ConferenceTalk talk1 = new ConferenceTalk("My Talk Title", "A description of my Talk", "Science");
 
         talkDao.insert(talk1);

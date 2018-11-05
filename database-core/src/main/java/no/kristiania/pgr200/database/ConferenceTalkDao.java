@@ -1,9 +1,8 @@
 package no.kristiania.pgr200.database;
 
-import org.postgresql.core.SqlCommand;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.sql.DataSource;

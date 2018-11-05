@@ -2,7 +2,10 @@ package no.kristiania.pgr200.database;
 import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalTime;
+
 public class ArgumentReader {
+
     private String[] arguments;
     private String methodArgument;
     private String objectArgument;
@@ -13,17 +16,28 @@ public class ArgumentReader {
     private ConferenceTopic topic;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
+    private HttpEchoServer server;
+
     public ArgumentReader(String[] arguments) throws SQLException, IOException {
+
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
         for(int i = 0; i < arguments.length; i++) {
-            if(i == 0) { methodArgument = arguments[i]; }
-            else if(i == 1){ objectArgument = arguments[i]; }
-            else if(i == 2) { titleArgument = arguments[i]; }
-            else if(i == 3) { descriptionArgument = arguments[i]; }
-            else if(i == 4) { topicArgument = arguments[i]; }
-        }
+            if (i == 0) {
+                methodArgument = arguments[i];
+            } else if (i == 1) {
+                objectArgument = arguments[i];
+            } else if (i == 2) {
+                titleArgument = arguments[i];
+            } else if (i == 3) {
+                descriptionArgument = arguments[i];
+            } else if (i == 4) {
+                topicArgument = arguments[i];
+            }
+         }
+
+
         switch (methodArgument) {
             case "reset":
                 reset();
