@@ -19,7 +19,6 @@ class AbstractDao {
         this.dataSource = dataSource;
     }
 
-
     <T> T retrieveSingleObject(String sql, ResultSetMapper<T> mapper, int id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try(PreparedStatement statement = connection.prepareStatement(sql)) {
