@@ -14,7 +14,7 @@ public class HttpEchoServer {
 
     public HttpEchoServer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
-        Thread thread = new Thread(() -> runServer());
+        Thread thread = new Thread(this::runServer);
         thread.start();
     }
 

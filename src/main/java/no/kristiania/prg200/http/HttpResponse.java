@@ -31,7 +31,7 @@ public class HttpResponse {
     private void readBody() throws IOException {
         int contentLength = getContentLength();
         StringBuilder body = new StringBuilder();
-        for (int i=0; i<contentLength; i++) {
+        for (int i=0; i < contentLength; i++) {
             int c = input.read();
             body.append((char)c);
         }
