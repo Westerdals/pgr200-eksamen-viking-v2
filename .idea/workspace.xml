@@ -323,10 +323,10 @@
       <path value="$PROJECT_DIR$/node_modules/10/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="15" />
-    <option name="width" value="580" />
-    <option name="height" value="705" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -620,7 +620,7 @@
     <configuration name="ConferenceDatabaseProgram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.ConferenceDatabaseProgram" />
       <module name="database-main" />
-      <option name="PROGRAM_PARAMETERS" value="listTalks" />
+      <option name="PROGRAM_PARAMETERS" value="list talks" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="no.kristiania.pgr200.database.*" />

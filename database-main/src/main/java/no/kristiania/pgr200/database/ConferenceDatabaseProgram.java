@@ -39,10 +39,6 @@ public class ConferenceDatabaseProgram {
         dataSource.setUser(username);
         dataSource.setPassword(password);
 
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(dataSource);
-        flyway.clean();
-        flyway.migrate();
 
         return dataSource;
     }
