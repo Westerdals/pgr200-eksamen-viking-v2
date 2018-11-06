@@ -14,7 +14,8 @@ public class ConferenceDatabaseProgram {
     private DataSource dataSource;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
-    private ArgumentReader argumentReader;
+    private UriBuilder builder;
+    private ArgumentReader reader;
 
     public ConferenceDatabaseProgram() throws IOException {
         this.dataSource = createDataSource();
@@ -56,6 +57,7 @@ public class ConferenceDatabaseProgram {
             System.exit(1);
         }
 
-        argumentReader = new ArgumentReader(args);
+        //reader = new ArgumentReader(args);
+        builder = new UriBuilder(args);
     }
 }

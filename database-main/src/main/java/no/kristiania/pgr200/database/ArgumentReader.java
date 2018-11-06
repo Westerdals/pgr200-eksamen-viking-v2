@@ -16,6 +16,7 @@ public class ArgumentReader {
     private ConferenceTopic topic;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
+    private int statusCode;
     private HttpEchoServer server;
 
     public ArgumentReader(String[] arguments) throws SQLException, IOException {
@@ -37,7 +38,14 @@ public class ArgumentReader {
             }
          }
 
+         readArguments();
+    }
 
+    public int getStatusCode() {
+        return this.statusCode;
+    }
+
+    public int readArguments() throws IOException, SQLException {
         switch (methodArgument) {
             case "reset":
                 reset();
@@ -58,45 +66,62 @@ public class ArgumentReader {
                 break;
             case "list":
                 if(objectArgument == null) {
-                    System.out.println("list failed: specify which table you wish to list   ");
+                    System.out.println("list failed: specify which table you wish to list");
                     break;
                 }
                 list();
                 break;
             default:
                 System.out.println("Unknown command");
+                this.statusCode = 404;
                 break;
         }
+        return statusCode;
     }
-    private void reset() throws IOException {
+
+    public int reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
         flyway.setDataSource(program.createDataSource());
         flyway.clean();
         flyway.migrate();
+        this.statusCode = 200;
+        return 200;
     }
-    private void insert() {
+
+    public int insert() {
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             topicDao.insert(topic);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             System.out.println("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
+            talkDao.insert(talk);
+            this.statusCode = 200;
+            return 200;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
             System.out.println("Successfully inserted " + titleArgument + " into conference_talk");
+            talkDao.insert(talk);
+            this.statusCode = 200;
+            return 200;
         } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
             System.out.println("Successfully inserted " + titleArgument + " into topic");
-            return;
-        } else System.out.println("Unknown Command.");
-        talkDao.insert(talk);
+            this.statusCode = 200;
+            return 200;
+        }
+        System.out.println("Unknown Command.");
+        this.statusCode = 404;
+        return 404;
     }
-    private void retrieve(int id) throws SQLException {
+
+    public int retrieve(int id) throws SQLException {
         if(objectArgument.equals("talk")) {
             if(id > talkDao.listTalks().size()) {
                 System.out.println("There is no talk with id " + id);
-                return;
+                this.statusCode = 404;
+                return 404;
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
@@ -106,16 +131,22 @@ public class ArgumentReader {
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
             if(id > topicDao.listTopics().size()) {
                 System.out.println("There is no topic with id " + id);
-                return;
+                this.statusCode = 404;
+                return 404;
             }
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topicDao.retrieveTopic(id).getId(), "|",  topicDao.retrieveTopic(id).getTitle(), "|"));
             System.out.println(String.format("%s", "--------------------------------------"));
-        } else System.out.println("Unknown command");
+            this.statusCode = 200;
+            return 200;
+        }
+        System.out.println("Unknown command");
+        this.statusCode = 404;
+        return 404;
     }
-    private void list() throws SQLException {
+    public int list() throws SQLException {
         if (objectArgument.equals("talks") && arguments.length <= 2) {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
@@ -124,6 +155,8 @@ public class ArgumentReader {
                 System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            this.statusCode = 200;
+            return 200;
         } else if (objectArgument.equals("topics")) {
             System.out.println(String.format("%s", "--------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
@@ -132,6 +165,8 @@ public class ArgumentReader {
                 System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
             }
             System.out.println(String.format("%s", "--------------------------------------"));
+            this.statusCode = 200;
+            return 200;
         } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument.equals("topic") && topicArgument != null) {
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
             System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
@@ -140,7 +175,11 @@ public class ArgumentReader {
                 System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
             }
             System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            this.statusCode = 200;
+            return 200;
         }
-        else System.out.println("Unknown command");
+        System.out.println("Unknown command");
+        this.statusCode = 404;
+        return 404;
     }
 }

@@ -13,6 +13,9 @@ import java.util.Map;
 public class HttpEchoServer {
 
     private ServerSocket serverSocket;
+    private ArgumentReader argumentReader;
+    private int statusCode;
+    private HttpRequest request;
 
     public static void main(String[] args) throws IOException {
         HttpEchoServer server = new HttpEchoServer(8080);
@@ -34,34 +37,24 @@ public class HttpEchoServer {
                 String uri = readLine(socket).split(" ")[1];
                 Map<String, String> parameters = readParameters(uri);
                 String[] arguments = readArguments(uri);
+
                 if(!uri.equals("/favicon.ico")) {
                     ArgumentReader argumentReader = new ArgumentReader(arguments);
+                    this.statusCode = argumentReader.getStatusCode();
+
                 }
 
-                String statusCode = parameters.get("status");
-
-                if (statusCode == null) {
-                    statusCode = "200";
-                }
-
-                String body = parameters.get("body");
+                String body = parameters.get("body"); //TODO
                 if (body == null) {
                     body = "Hello world";
                 }
 
 
-                String location = parameters.get("Location");
-                String command = parameters.get("list");
-
                 // Writes the response
-                socket.getOutputStream().write(("HTTP/1.1 " + statusCode + " OK\r\n").getBytes());
+                socket.getOutputStream().write(("HTTP/1.1 " + this.statusCode + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());
-                if (location != null) {
-                    socket.getOutputStream().write(("Location: " + location + "\r\n").getBytes());
-                }
                 socket.getOutputStream().write("Server: Kristiania Java Server!!\r\n".getBytes());
                 socket.getOutputStream().write(("Content-Length: " + body.length() + "\r\n").getBytes());
-                socket.getOutputStream().write(("Command: " + command + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write((body + "\r\n").getBytes());
                 socket.getOutputStream().flush();
@@ -76,14 +69,11 @@ public class HttpEchoServer {
         int questionPos = uri.indexOf('?');
         String query = uri.substring(questionPos+1);
         Map<String, String> parameters = new HashMap<>();
-
         for (String parameter : query.split("&")) {
             int equalsPos = parameter.indexOf('=');
-
             if(equalsPos < 0) {
                 break;
             }
-
             String paramName = URLDecoder.decode(parameter.substring(0, equalsPos), "UTF-8");
             String paramValue = URLDecoder.decode(parameter.substring(equalsPos+1), "UTF-8");
             parameters.put(paramName, paramValue);
