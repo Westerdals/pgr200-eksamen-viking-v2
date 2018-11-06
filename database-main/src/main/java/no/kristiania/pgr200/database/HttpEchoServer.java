@@ -16,6 +16,7 @@ public class HttpEchoServer {
     private ArgumentReader argumentReader;
     private int statusCode;
     private HttpRequest request;
+    private String body;
 
     public static void main(String[] args) throws IOException {
         HttpEchoServer server = new HttpEchoServer(8080);
@@ -37,17 +38,15 @@ public class HttpEchoServer {
                 String uri = readLine(socket).split(" ")[1];
                 Map<String, String> parameters = readParameters(uri);
                 String[] arguments = readArguments(uri);
-
+                System.out.println(uri);
                 if(!uri.equals("/favicon.ico")) {
                     ArgumentReader argumentReader = new ArgumentReader(arguments);
                     this.statusCode = argumentReader.getStatusCode();
+                    body = argumentReader.getBody();
 
                 }
 
-                String body = parameters.get("body"); //TODO
-                if (body == null) {
-                    body = "Hello world";
-                }
+
 
 
                 // Writes the response
@@ -57,6 +56,7 @@ public class HttpEchoServer {
                 socket.getOutputStream().write(("Content-Length: " + body.length() + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write((body + "\r\n").getBytes());
+                System.out.println(body);
                 socket.getOutputStream().flush();
 
             } catch (IOException | SQLException e) {
@@ -83,11 +83,11 @@ public class HttpEchoServer {
 
     // /echo?status=200&list=talks
     public String[] readArguments(String uri) {
-        String[] arguments = uri.split("/");
-        arguments = Arrays.stream(arguments)
-                .filter(s -> (s != null && s.length() > 0))
-                .toArray(String[]::new);
-
+        String[] argumentsUri = uri.split("/");
+        String[] arguments = new String[argumentsUri.length - 1];
+        for(int i = 1; i < argumentsUri.length; i++) {
+            arguments[i - 1] = argumentsUri[i];
+        }
         return arguments;
     }
 

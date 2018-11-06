@@ -20,8 +20,9 @@ public class HttpRequest {
 
     public HttpResponse execute() throws IOException {
         try(Socket socket = new Socket(hostname, port)) {
+
             socket.getOutputStream()
-                    .write((requestMethod + uri + " HTTP/1.1\r\n").getBytes());
+                    .write((requestMethod + " " + uri + " HTTP/1.1\r\n").getBytes());
             socket.getOutputStream()
                     .write(("Host: " + hostname + "\r\n").getBytes());
             socket.getOutputStream()

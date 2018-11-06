@@ -2,7 +2,6 @@ package no.kristiania.pgr200.database;
 import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalTime;
 
 public class ArgumentReader {
 
@@ -17,10 +16,10 @@ public class ArgumentReader {
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
     private int statusCode;
+    private String body;
     private HttpEchoServer server;
 
     public ArgumentReader(String[] arguments) throws SQLException, IOException {
-
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
@@ -43,6 +42,10 @@ public class ArgumentReader {
 
     public int getStatusCode() {
         return this.statusCode;
+    }
+
+    public String getBody() {
+        return this.body;
     }
 
     public int readArguments() throws IOException, SQLException {
@@ -79,35 +82,39 @@ public class ArgumentReader {
         return statusCode;
     }
 
-    public int reset() throws IOException {
+    public void reset() throws IOException {
+        StringBuilder sb = new StringBuilder();
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
         flyway.setDataSource(program.createDataSource());
         flyway.clean();
         flyway.migrate();
+        sb.append("Successfully reset the database");
         this.statusCode = 200;
-        return 200;
+        this.body = sb.toString();
+        return;
     }
 
     public int insert() {
+        StringBuilder sb = new StringBuilder();
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             topicDao.insert(topic);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
-            System.out.println("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
+            sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
             talkDao.insert(talk);
             this.statusCode = 200;
             return 200;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
-            System.out.println("Successfully inserted " + titleArgument + " into conference_talk");
+            sb.append("Successfully inserted " + titleArgument + " into conference_talk");
             talkDao.insert(talk);
             this.statusCode = 200;
             return 200;
         } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
-            System.out.println("Successfully inserted " + titleArgument + " into topic");
+            sb.append("Successfully inserted " + titleArgument + " into topic");
             this.statusCode = 200;
             return 200;
         }
@@ -116,70 +123,62 @@ public class ArgumentReader {
         return 404;
     }
 
-    public int retrieve(int id) throws SQLException {
+    public void retrieve(int id) throws SQLException {
+        StringBuilder sb = new StringBuilder();
         if(objectArgument.equals("talk")) {
             if(id > talkDao.listTalks().size()) {
-                System.out.println("There is no talk with id " + id);
+                sb.append("There is no talk with id " + id);
                 this.statusCode = 404;
-                return 404;
+                this.body = sb.toString();
+                return;
             }
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %2s %1s %15s %1s %20s %20s %10s %10s", "|", talkDao.retrieveTalk(id).getId(), "|", talkDao.retrieveTalk(id).getTitle(), "|", talkDao.retrieveTalk(id).getDescription(), "|", talkDao.retrieveTalk(id).getTopic(), "|"));
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            sb.append(talkDao.retrieveTalk(id).getId() + " " + talkDao.retrieveTalk(id).getTitle() + " " + talkDao.retrieveTalk(id).getDescription() + " " + talkDao.retrieveTalk(id).getTopic());
+            this.body = sb.toString();
+            this.statusCode = 200;
+            return;
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
             if(id > topicDao.listTopics().size()) {
-                System.out.println("There is no topic with id " + id);
+                sb.append("There is no topic with id " + id);
                 this.statusCode = 404;
-                return 404;
+                this.body = sb.toString();
+                return;
             }
-            System.out.println(String.format("%s", "--------------------------------------"));
-            System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
-            System.out.println(String.format("%s", "--------------------------------------"));
-            System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topicDao.retrieveTopic(id).getId(), "|",  topicDao.retrieveTopic(id).getTitle(), "|"));
-            System.out.println(String.format("%s", "--------------------------------------"));
+            sb.append(topicDao.retrieveTopic(id).getId() + " " + topicDao.retrieveTopic(id).getTitle() + " ");
             this.statusCode = 200;
-            return 200;
+            return;
         }
-        System.out.println("Unknown command");
+        sb.append("Unknown command");
         this.statusCode = 404;
-        return 404;
+        return;
     }
-    public int list() throws SQLException {
+
+    public void list() throws SQLException {
+        StringBuilder sb = new StringBuilder();
         if (objectArgument.equals("talks") && arguments.length <= 2) {
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             for (ConferenceTalk talk : talkDao.listTalks()) {
-                System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+                sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
             }
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            this.body = sb.toString();
             this.statusCode = 200;
-            return 200;
+            return;
         } else if (objectArgument.equals("topics")) {
-            System.out.println(String.format("%s", "--------------------------------------"));
-            System.out.println(String.format("%1s %1s %1s %15s %15s", "|", "ID", "|", "Title", "|"));
             for (ConferenceTopic topic : topicDao.listTopics()) {
-                System.out.println(String.format("%s", "--------------------------------------"));
-                System.out.println(String.format("%1s %2s %1s %15s %15s", "|", topic.getId(), "|", topic.getTitle(), "|"));
+                sb.append(" " + topic.getId() + " " + topic.getTitle() + " ");
             }
-            System.out.println(String.format("%s", "--------------------------------------"));
+            this.body = sb.toString();
             this.statusCode = 200;
-            return 200;
+            return;
         } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument.equals("topic") && topicArgument != null) {
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-            System.out.println(String.format("%1s %1s %1s %15s %15s %20s %20s %10s %10s", "|", "ID", "|", "Title", "|", "Description", "|", "Topic", "|"));
             for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(topicArgument)) {
-                System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
-                System.out.println(String.format("%1s %2s %1s %15s %15s %20s %20s %10s %10s", "|", talk.getId(), "|", talk.getTitle(), "|", talk.getDescription(), "|", talk.getTopic(), "|"));
+                sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
             }
-            System.out.println(String.format("%s", "------------------------------------------------------------------------------------------------------"));
+            this.body = sb.toString();
             this.statusCode = 200;
-            return 200;
+            return;
         }
-        System.out.println("Unknown command");
         this.statusCode = 404;
-        return 404;
+        sb.append("Unknown command");
+        this.body = sb.toString();
+        return;
     }
 }

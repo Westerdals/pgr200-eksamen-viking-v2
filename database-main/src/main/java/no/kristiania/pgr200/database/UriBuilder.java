@@ -1,9 +1,6 @@
 package no.kristiania.pgr200.database;
 
-//import no.kristiania.prg200.http.HttpRequest;
-
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class UriBuilder {
@@ -31,8 +28,11 @@ public class UriBuilder {
             else if(i == 4) { topicArgument = arguments[i]; }
         }
 
-        list();
+        //list();
+        //retrieve(Integer.parseInt(titleArgument));
+        reset();
     }
+
 
     private void run() {
         boolean run = true;
@@ -54,7 +54,20 @@ public class UriBuilder {
     private void createConference(String conferenceName) {
     }
 
-    private void retrieve() {
+    private HttpRequest retrieve(int id) throws IOException {
+        if(arguments.length == 2 && objectArgument.equals("talks")) {
+            return new HttpRequest("localhost", 8080, "/retrieve/talk/" + id, "GET");
+        } else if(arguments.length == 3 && titleArgument != null) {
+            return new HttpRequest("localhost", 8080, "/retrieve/talk/" + id, "GET");
+        } else {
+            System.out.println("you Broke the machine");
+        }
+        return null;
+        //TODO: retrieve topic
+    }
+
+    private HttpRequest reset() throws IOException {
+        return new HttpRequest("localhost", 8080, "/reset/", "PUT");
     }
 
     private void add() {

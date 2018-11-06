@@ -22,7 +22,6 @@ public class HttpResponse {
 
     public HttpResponse(Socket socket) throws IOException {
         input = socket.getInputStream();
-
         readStatusLine();
         readHeaderLines();
         readBody();
@@ -59,7 +58,6 @@ public class HttpResponse {
         String statusLine = readNextLine();
         String[] parts = statusLine.split(" ");
         statusCode = Integer.parseInt(parts[1]);
-        //System.out.println(statusLine);
     }
 
     private String readNextLine() throws IOException {
