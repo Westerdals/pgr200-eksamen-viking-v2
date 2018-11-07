@@ -1,4 +1,5 @@
-#Generell Informasjon
+[![Build Status](https://travis-ci.com/Westerdals/pgr200-eksamen-viking-v2.svg?token=hcaAw9PzjH9pgNPyimyp&branch=master)](https://travis-ci.com/Westerdals/pgr200-eksamen-viking-v2)
+# Generell Informasjon
 * Marcus Jøsendal (josmar17) og Markus Dreyer (dremar17)
 * Vi har jobbet godt sammen som gruppe og kommer til å jobbe videre sammen til den endelig innleveringen.
 * Youtube-link til parprogrammeringsvideoen: https://www.youtube.com/watch?v=o_rxW60PzoU
