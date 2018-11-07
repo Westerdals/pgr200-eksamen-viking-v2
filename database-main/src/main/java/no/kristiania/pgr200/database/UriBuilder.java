@@ -69,13 +69,14 @@ public class UriBuilder {
 
 
     //TODO: Make spaces to + signs
+    //TODO: proper body format
     private HttpRequest insert() throws IOException {
         if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null) {
-            return new HttpRequest(hostname, 8080, "/talks", "POST",
-                    "title=" + titleArgument + "&description=" + descriptionArgument);
+            return new HttpRequest(hostname, 8080, "/insert/talk", "POST",
+                    titleArgument + " " + descriptionArgument);
         } else if (objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
-            return new HttpRequest(hostname, 8080, "/talks", "POST",
-                    "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
+            return new HttpRequest(hostname, 8080, "/insert/talk", "POST",
+                     titleArgument + " " + descriptionArgument + " " + topicArgument);
         } System.out.println("Invalid input");
         return null;
     }

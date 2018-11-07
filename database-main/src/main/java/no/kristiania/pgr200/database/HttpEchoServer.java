@@ -40,16 +40,13 @@ public class HttpEchoServer {
                 String[] arguments = readArguments(uri);
                 System.out.println(uri);
 
-                /* TODO: Better handling for favicon
-                if(!uri.equals("/favicon.ico")) {
-                    ArgumentReader argumentReader = new ArgumentReader(arguments);
-                    this.statusCode = argumentReader.getStatusCode();
-                    body = argumentReader.getBody();
-                }
-                */
-
                 ArgumentReader argumentReader = new ArgumentReader(arguments);
                 this.statusCode = argumentReader.getStatusCode();
+
+                if(body != null) {
+                    readBody(body + uri);
+                }
+
 
                 body = argumentReader.getBody();
                 if(body == null) {
@@ -70,6 +67,12 @@ public class HttpEchoServer {
                 e.printStackTrace();
             }
         }
+    }
+
+    private String[] readBody(String body) {
+        String [] bodyArguments = body.split(" ");
+        System.out.println(bodyArguments);
+        return bodyArguments;
     }
 
     public Map<String, String> readParameters(String uri) throws UnsupportedEncodingException {

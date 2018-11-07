@@ -12,7 +12,7 @@ public class HttpRequest {
     private String body;
 
     public HttpRequest(String hostname, int port, String uri, String requestMethod) throws IOException {
-        this(hostname, port, uri, requestMethod, null);
+        this(hostname, port, uri, requestMethod, "This is the body");
     }
 
     public HttpRequest(String hostname, int port, String uri, String requestMethod, String body) throws IOException {
@@ -38,6 +38,7 @@ public class HttpRequest {
                 socket.getOutputStream()
                         .write(("Content-Length: " + body.trim().getBytes().length  +"\r\n").getBytes());
             }
+            System.out.println(body);
             socket.getOutputStream().write("\r\n".getBytes());
             if(body != null && !body.trim().isEmpty()) {
                 socket.getOutputStream().write(body.trim().getBytes());
