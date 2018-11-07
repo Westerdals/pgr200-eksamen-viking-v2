@@ -34,6 +34,7 @@ public class HttpResponse {
             int c = input.read();
             body.append((char)c);
         }
+        System.out.println(body);
         this.body = body.toString();
     }
 
@@ -74,6 +75,7 @@ public class HttpResponse {
             }
             currentLine.append((char)c);
         }
+
         return currentLine.toString();
     }
 

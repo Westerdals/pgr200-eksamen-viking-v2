@@ -46,9 +46,6 @@ public class HttpEchoServer {
 
                 }
 
-
-
-
                 // Writes the response
                 socket.getOutputStream().write(("HTTP/1.1 " + this.statusCode + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());

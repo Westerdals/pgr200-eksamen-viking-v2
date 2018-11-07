@@ -1,10 +1,17 @@
 package no.kristiania.pgr200.database;
 
+//import no.kristiania.prg200.http.HttpRequest;
+
 import java.io.IOException;
+import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class UriBuilder {
     private String[] arguments;
+    private String hostname;
     private String methodArgument;
     private String objectArgument;
     private String titleArgument;
@@ -14,11 +21,8 @@ public class UriBuilder {
 
 
     public UriBuilder(String[] arguments) throws IOException {
-        this.arguments = arguments;
-
-        for(int i = 0; i < arguments.length; i++) {
-            arguments[i] = arguments[i].toLowerCase();
-        }
+        this.arguments = Arrays.stream(arguments).map(String::toLowerCase).toArray(String[]::new);
+        this.hostname = "localhost";
 
         for(int i = 0; i < arguments.length; i++) {
             if(i == 0) { methodArgument = arguments[i]; }
@@ -28,60 +32,61 @@ public class UriBuilder {
             else if(i == 4) { topicArgument = arguments[i]; }
         }
 
-        //list();
-        //retrieve(Integer.parseInt(titleArgument));
-        reset();
-    }
-
-
-    private void run() {
-        boolean run = true;
-        while(run) {
-            System.out.println(" -     Hello and welcome to to this program    -");
-            System.out.println(" - Start by typing the name of your conference -");
-
-            String conferenceName = input.nextLine();
-
-            if(conferenceName != null) {
-                createConference(conferenceName);
-            } else {
-
-            }
+        switch (methodArgument) {
+            case "retrieve":
+                retrieve();
+                break;
+            case "delete":
+                delete();
+                break;
+            case "insert":
+                insert();
+                break;
+            case "list":
+                list();
+                break;
         }
-
     }
 
-    private void createConference(String conferenceName) {
-    }
-
-    private HttpRequest retrieve(int id) throws IOException {
-        if(arguments.length == 2 && objectArgument.equals("talks")) {
-            return new HttpRequest("localhost", 8080, "/retrieve/talk/" + id, "GET");
-        } else if(arguments.length == 3 && titleArgument != null) {
-            return new HttpRequest("localhost", 8080, "/retrieve/talk/" + id, "GET");
-        } else {
-            System.out.println("you Broke the machine");
-        }
+    // TODO: There has to be a better way to do this
+    private HttpRequest retrieve() throws IOException {
+        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
+            return new HttpRequest(hostname, 8080, "talks/" + titleArgument, "GET");
+        } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+            return new HttpRequest(hostname, 8080, "topics/" + titleArgument, "GET");
+        } System.out.println("Not valid input");
         return null;
-        //TODO: retrieve topic
     }
 
-    private HttpRequest reset() throws IOException {
-        return new HttpRequest("localhost", 8080, "/reset/", "PUT");
+    private HttpRequest delete() throws IOException {
+        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
+            return new HttpRequest(hostname, 8080, "talks/" + titleArgument, "DELETE");
+        } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+            return new HttpRequest(hostname, 8080, "topics/" + titleArgument, "DELETE");
+        } System.out.println("Invalid input");
+        return null;
     }
 
-    private void add() {
 
+    //TODO: Make spaces to + signs
+    private HttpRequest insert() throws IOException {
+        if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null) {
+            return new HttpRequest(hostname, 8080, "/talks", "POST",
+                    "title=" + titleArgument + "&description=" + descriptionArgument);
+        } else if (objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
+            return new HttpRequest(hostname, 8080, "/talks", "POST",
+                    "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
+        } System.out.println("Invalid input");
+        return null;
     }
 
+    // TODO: List talks with topic
     private HttpRequest list() throws IOException {
         if(arguments.length == 2 && objectArgument.equals("talks")) {
-            return new HttpRequest("localhost", 8080, "/list/talks", "GET");
-        } else if(arguments.length == 3 && titleArgument != null) {
-            return new HttpRequest("localhost", 8080, "/list/talks/" + titleArgument, "GET");
-        } else {
-            System.out.println("you Broke the machine");
-        }
+            return new HttpRequest(hostname, 8080, "/list/talks", "GET");
+        } else if(arguments.length == 2 && objectArgument.equals("topics")) {
+            return new HttpRequest(hostname, 8080, "/list/topics", "GET");
+        } System.out.println("Invalid input");
         return null;
     }
 }
