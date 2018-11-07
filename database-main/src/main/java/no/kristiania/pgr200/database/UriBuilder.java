@@ -51,10 +51,10 @@ public class UriBuilder {
     // TODO: There has to be a better way to do this
     private HttpRequest retrieve() throws IOException {
         if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "talks/" + titleArgument, "GET");
+            return new HttpRequest(hostname, 8080, "/retrieve/talk/" + titleArgument, "GET");
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "topics/" + titleArgument, "GET");
-        } System.out.println("Not valid input");
+            return new HttpRequest(hostname, 8080, "/retrieve/topic/" + titleArgument, "GET");
+        } System.out.println("Invalid input");
         return null;
     }
 

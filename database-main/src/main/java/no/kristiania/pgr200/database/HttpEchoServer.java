@@ -39,11 +39,21 @@ public class HttpEchoServer {
                 Map<String, String> parameters = readParameters(uri);
                 String[] arguments = readArguments(uri);
                 System.out.println(uri);
+
+                /* TODO: Better handling for favicon
                 if(!uri.equals("/favicon.ico")) {
                     ArgumentReader argumentReader = new ArgumentReader(arguments);
                     this.statusCode = argumentReader.getStatusCode();
                     body = argumentReader.getBody();
+                }
+                */
 
+                ArgumentReader argumentReader = new ArgumentReader(arguments);
+                this.statusCode = argumentReader.getStatusCode();
+
+                body = argumentReader.getBody();
+                if(body == null) {
+                    body = "Body is null";
                 }
 
                 // Writes the response
@@ -81,6 +91,7 @@ public class HttpEchoServer {
     // /echo?status=200&list=talks
     public String[] readArguments(String uri) {
         String[] argumentsUri = uri.split("/");
+        System.out.println(argumentsUri[0]);
         String[] arguments = new String[argumentsUri.length - 1];
         for(int i = 1; i < argumentsUri.length; i++) {
             arguments[i - 1] = argumentsUri[i];

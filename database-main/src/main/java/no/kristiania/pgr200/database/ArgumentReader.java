@@ -18,6 +18,9 @@ public class ArgumentReader {
     private int statusCode;
     private String body;
     private HttpEchoServer server;
+    private StringBuilder sb = new StringBuilder();
+
+
 
     public ArgumentReader(String[] arguments) throws SQLException, IOException {
         this.arguments = arguments;
@@ -55,27 +58,39 @@ public class ArgumentReader {
                 break;
             case "insert":
                 if(titleArgument == null) {
-                    System.out.println("insert failed: insert command needs a title to insert");
+                    sb.append("insert failed: insert command needs a title to insert");
+                    this.body = sb.toString();
+                    this.statusCode = 404;
                     break;
                 }
                 insert();
                 break;
             case "retrieve":
                 if(titleArgument == null) {
-                    System.out.println("retrieve failed: retrieve command needs an id");
+                    sb.append("retrieve failed: failed: retrieve command needs an id");
+                    this.body = sb.toString();
+                    this.statusCode = 404;
                     break;
                 }
-                retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
+                try {retrieve(Integer.parseInt(titleArgument));  //Converts string input to integer id
+                } catch (NumberFormatException e) {
+                    sb.append("retrieve failed: id has to be a number");
+                    this.body = sb.toString();
+                }
+
                 break;
             case "list":
                 if(objectArgument == null) {
-                    System.out.println("list failed: specify which table you wish to list");
+                    sb.append("list failed: specify which table you wish to list");
+                    this.body = sb.toString();
+                    this.statusCode = 404;
                     break;
                 }
                 list();
                 break;
             default:
-                System.out.println("Unknown command");
+                sb.append("Unkown command");
+                this.body = sb.toString();
                 this.statusCode = 404;
                 break;
         }
@@ -83,7 +98,6 @@ public class ArgumentReader {
     }
 
     public void reset() throws IOException {
-        StringBuilder sb = new StringBuilder();
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
         flyway.setDataSource(program.createDataSource());
@@ -96,35 +110,37 @@ public class ArgumentReader {
     }
 
     public int insert() {
-        StringBuilder sb = new StringBuilder();
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             topicDao.insert(topic);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
             talkDao.insert(talk);
+            this.body = sb.toString();
             this.statusCode = 200;
             return 200;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
             sb.append("Successfully inserted " + titleArgument + " into conference_talk");
             talkDao.insert(talk);
+            this.body = sb.toString();
             this.statusCode = 200;
             return 200;
         } else if(objectArgument.equals("topic")) {
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
             sb.append("Successfully inserted " + titleArgument + " into topic");
+            this.body = sb.toString();
             this.statusCode = 200;
             return 200;
         }
-        System.out.println("Unknown Command.");
+        sb.append("Unknown Command");
+        this.body = sb.toString();
         this.statusCode = 404;
         return 404;
     }
 
     public void retrieve(int id) throws SQLException {
-        StringBuilder sb = new StringBuilder();
         if(objectArgument.equals("talk")) {
             if(id > talkDao.listTalks().size()) {
                 sb.append("There is no talk with id " + id);
@@ -144,16 +160,17 @@ public class ArgumentReader {
                 return;
             }
             sb.append(topicDao.retrieveTopic(id).getId() + " " + topicDao.retrieveTopic(id).getTitle() + " ");
+            this.body = sb.toString();
             this.statusCode = 200;
             return;
         }
         sb.append("Unknown command");
+        this.body = sb.toString();
         this.statusCode = 404;
         return;
     }
 
     public void list() throws SQLException {
-        StringBuilder sb = new StringBuilder();
         if (objectArgument.equals("talks") && arguments.length <= 2) {
             for (ConferenceTalk talk : talkDao.listTalks()) {
                 sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
