@@ -1,28 +1,28 @@
 package no.kristiania.pgr200.database;
 
-//import no.kristiania.prg200.http.HttpRequest;
-
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Arrays;
-import java.util.Scanner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class UriBuilder {
     private String[] arguments;
     private String hostname;
+    private int port;
     private String methodArgument;
     private String objectArgument;
     private String titleArgument;
     private String descriptionArgument;
     private String topicArgument;
-    Scanner input = new Scanner(System.in);
 
 
     public UriBuilder(String[] arguments) throws IOException {
-        this.arguments = Arrays.stream(arguments).map(String::toLowerCase).toArray(String[]::new);
+        this.arguments = Arrays.stream(arguments).map(s -> s.replace(" ", "+").toLowerCase()).toArray(String[]::new);
         this.hostname = "localhost";
+        this.port = 8080;
+
+        commandRedirect();
+    }
+
+    private void commandRedirect() throws IOException {
 
         for(int i = 0; i < arguments.length; i++) {
             if(i == 0) { methodArgument = arguments[i]; }
@@ -31,6 +31,8 @@ public class UriBuilder {
             else if(i == 3) { descriptionArgument = arguments[i]; }
             else if(i == 4) { topicArgument = arguments[i]; }
         }
+
+        Arrays.stream(this.arguments).forEach(s-> System.out.println(s));
 
         switch (methodArgument) {
             case "retrieve":
@@ -48,35 +50,35 @@ public class UriBuilder {
         }
     }
 
-    // TODO: There has to be a better way to do this
+
     private HttpRequest retrieve() throws IOException {
         if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "/retrieve/talk/" + titleArgument, "GET");
-        } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "/retrieve/topic/" + titleArgument, "GET");
-        } System.out.println("Invalid input");
+            return new HttpRequest(hostname, port, "/retrieve/talk/" + titleArgument, "GET");
+        } else if(arguments.length == 3 && objectArgument.equals("/retrieve/topic") && titleArgument != null) {
+            return new HttpRequest(hostname, port, "topics/" + titleArgument, "GET");
+        } System.out.println("Not valid input");
         return null;
     }
 
     private HttpRequest delete() throws IOException {
         if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "talks/" + titleArgument, "DELETE");
+            return new HttpRequest(hostname, port, "/talks/" + titleArgument, "DELETE");
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, 8080, "topics/" + titleArgument, "DELETE");
+            return new HttpRequest(hostname, port, "/topics/" + titleArgument, "DELETE");
         } System.out.println("Invalid input");
         return null;
     }
 
-
-    //TODO: Make spaces to + signs
-    //TODO: proper body format
     private HttpRequest insert() throws IOException {
-        if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null) {
-            return new HttpRequest(hostname, 8080, "/insert/talk", "POST",
-                    titleArgument + " " + descriptionArgument);
+        if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
+            return new HttpRequest(hostname, port, "/insert/talks", "POST",
+                    "title=" + titleArgument + "&description=" + descriptionArgument);
         } else if (objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
-            return new HttpRequest(hostname, 8080, "/insert/talk", "POST",
-                     titleArgument + " " + descriptionArgument + " " + topicArgument);
+            return new HttpRequest(hostname, port, "/insert/talks", "POST",
+                    "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
+        } else if (arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+            return new HttpRequest(hostname, port, "/talks", "POST",
+                    "topic=" + titleArgument);
         } System.out.println("Invalid input");
         return null;
     }
@@ -84,9 +86,9 @@ public class UriBuilder {
     // TODO: List talks with topic
     private HttpRequest list() throws IOException {
         if(arguments.length == 2 && objectArgument.equals("talks")) {
-            return new HttpRequest(hostname, 8080, "/list/talks", "GET");
+            return new HttpRequest(hostname, port, "/list/talks", "GET");
         } else if(arguments.length == 2 && objectArgument.equals("topics")) {
-            return new HttpRequest(hostname, 8080, "/list/topics", "GET");
+            return new HttpRequest(hostname, port, "/list/topics", "GET");
         } System.out.println("Invalid input");
         return null;
     }

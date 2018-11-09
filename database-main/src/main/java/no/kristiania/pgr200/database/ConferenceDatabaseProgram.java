@@ -44,6 +44,8 @@ public class ConferenceDatabaseProgram {
         return dataSource;
     }
 
+
+    //TODO: Tell user to start server + Handle crash if server is not started
     public static void main(String[] args) throws SQLException, IOException {
         new ConferenceDatabaseProgram().run(args);
     }

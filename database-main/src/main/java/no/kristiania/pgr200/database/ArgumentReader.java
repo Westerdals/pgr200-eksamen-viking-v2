@@ -29,6 +29,7 @@ public class ArgumentReader {
         for(int i = 0; i < arguments.length; i++) {
             if (i == 0) {
                 methodArgument = arguments[i];
+                System.out.println(arguments[i]);
             } else if (i == 1) {
                 objectArgument = arguments[i];
             } else if (i == 2) {
@@ -40,7 +41,9 @@ public class ArgumentReader {
             }
          }
 
-         readArguments();
+        //Arrays.stream(this.arguments).forEach(s-> System.out.println(s));
+
+        readArguments();
     }
 
     public int getStatusCode() {

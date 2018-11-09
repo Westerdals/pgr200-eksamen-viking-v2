@@ -38,7 +38,6 @@ public class HttpRequest {
                 socket.getOutputStream()
                         .write(("Content-Length: " + body.trim().getBytes().length  +"\r\n").getBytes());
             }
-            System.out.println(body);
             socket.getOutputStream().write("\r\n".getBytes());
             if(body != null && !body.trim().isEmpty()) {
                 socket.getOutputStream().write(body.trim().getBytes());
