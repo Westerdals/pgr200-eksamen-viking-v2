@@ -1,6 +1,5 @@
 package no.kristiania.pgr200.database;
 
-import com.sun.tools.javac.util.ArrayUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
