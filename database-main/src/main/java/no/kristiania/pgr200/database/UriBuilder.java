@@ -3,10 +3,10 @@ package no.kristiania.pgr200.database;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class UriBuilder {
+class UriBuilder {
+    private int port;
     private String[] arguments;
     private String hostname;
-    private int port;
     private String methodArgument;
     private String objectArgument;
     private String titleArgument;
@@ -14,7 +14,7 @@ public class UriBuilder {
     private String topicArgument;
 
 
-    public UriBuilder(String[] arguments) throws IOException {
+    UriBuilder(String[] arguments) throws IOException {
         this.arguments = Arrays.stream(arguments).map(s -> s.replace(" ", "+").toLowerCase()).toArray(String[]::new);
         this.hostname = "localhost";
         this.port = 8080;
@@ -23,7 +23,6 @@ public class UriBuilder {
     }
 
     private void commandRedirect() throws IOException {
-
         for(int i = 0; i < arguments.length; i++) {
             if(i == 0) { methodArgument = arguments[i]; }
             else if(i == 1){ objectArgument = arguments[i]; }
@@ -69,7 +68,7 @@ public class UriBuilder {
         return null;
     }
 
-    private HttpRequest insert() throws IOException {
+    public HttpRequest insert() throws IOException {
         if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
             return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument);
@@ -77,14 +76,14 @@ public class UriBuilder {
             return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
         } else if (arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, port, "/talk", "POST",
+            return new HttpRequest(hostname, port, "/insert/topic", "POST",
                     "topic=" + titleArgument);
         } System.out.println("Not valid input");
         return null;
     }
 
     // TODO: List talks with topic
-    private HttpRequest list() throws IOException {
+    public HttpRequest list() throws IOException {
         if(arguments.length == 2 && objectArgument.equals("talks")) {
             return new HttpRequest(hostname, port, "/list/talks", "GET");
         } else if(arguments.length == 2 && objectArgument.equals("topics")) {

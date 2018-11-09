@@ -12,7 +12,7 @@ public class HttpQuery {
 	private Map<String, String> parameters = new LinkedHashMap<>();
 	
 	public HttpQuery(String query) {
-		if (!query.isEmpty()) {
+		if (!query.equals(null)) {
 			for (String parameter : query.split("&")) {
 				int equalsPos = parameter.indexOf('=');
 				String key = urlDecode(parameter.substring(0, equalsPos));
