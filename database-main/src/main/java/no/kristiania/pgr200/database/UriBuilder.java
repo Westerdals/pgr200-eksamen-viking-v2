@@ -47,6 +47,8 @@ public class UriBuilder {
             case "list":
                 list();
                 break;
+            default:
+                System.out.println("Invalid input");
         }
     }
 
@@ -65,7 +67,7 @@ public class UriBuilder {
             return new HttpRequest(hostname, port, "/talks/" + titleArgument, "DELETE");
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/topics/" + titleArgument, "DELETE");
-        } System.out.println("Invalid input");
+        } System.out.println("Not valid input");
         return null;
     }
 
@@ -79,7 +81,7 @@ public class UriBuilder {
         } else if (arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/talks", "POST",
                     "topic=" + titleArgument);
-        } System.out.println("Invalid input");
+        } System.out.println("Not valid input");
         return null;
     }
 

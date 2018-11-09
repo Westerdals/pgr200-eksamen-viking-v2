@@ -26,6 +26,7 @@ public class ArgumentReader {
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
+
         for(int i = 0; i < arguments.length; i++) {
             if (i == 0) {
                 methodArgument = arguments[i];
@@ -40,8 +41,6 @@ public class ArgumentReader {
                 topicArgument = arguments[i];
             }
          }
-
-        //Arrays.stream(this.arguments).forEach(s-> System.out.println(s));
 
         readArguments();
     }
@@ -80,7 +79,6 @@ public class ArgumentReader {
                     sb.append("retrieve failed: id has to be a number");
                     this.body = sb.toString();
                 }
-
                 break;
             case "list":
                 if(objectArgument == null) {
@@ -92,7 +90,7 @@ public class ArgumentReader {
                 list();
                 break;
             default:
-                sb.append("Unkown command");
+                sb.append("Unknown command");
                 this.body = sb.toString();
                 this.statusCode = 404;
                 break;
@@ -112,13 +110,18 @@ public class ArgumentReader {
         return;
     }
 
-    public int insert() {
+    public int insert() throws SQLException {
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
-            topicDao.insert(topic);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
+
+            if(!topicDao.listTopics().contains(topicArgument)) {
+                topicDao.insert(topic);
+            }
+
             talkDao.insert(talk);
+
             this.body = sb.toString();
             this.statusCode = 200;
             return 200;
