@@ -17,7 +17,6 @@ public class ArgumentReader {
     private ConferenceTopicDao topicDao;
     private int statusCode;
     private String body;
-    private HttpEchoServer server;
     private StringBuilder sb = new StringBuilder();
 
 
