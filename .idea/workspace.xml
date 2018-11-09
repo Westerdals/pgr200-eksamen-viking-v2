@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47df7cfe-a920-4bc5-bee8-b6964554ec97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/af6b0a39-90c4-4a70-992f-df2bacd7c63d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/af6b0a39-90c4-4a70-992f-df2bacd7c63d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/database-main/target/" />
     <ignored path="$PROJECT_DIR$/database-core/target/" />
@@ -177,7 +171,8 @@
         <counts>
           <entry key="class" value="1" />
           <entry key="conference" value="1" />
-          <entry key="conference_talk" value="12" />
+          <entry key="conference_talk" value="13" />
+          <entry key="gitignore" value="1" />
           <entry key="java" value="43" />
           <entry key="md" value="1" />
           <entry key="properties" value="1" />
@@ -189,9 +184,10 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Database Element" value="19" />
+          <entry key="Database Element" value="20" />
           <entry key="JAVA" value="43" />
           <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="11" />
           <entry key="Scratch" value="4" />
@@ -199,6 +195,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="gitignore" value="2" />
           <entry key="java" value="6136" />
           <entry key="md" value="2" />
           <entry key="properties" value="4" />
@@ -209,6 +206,7 @@
         <counts>
           <entry key="JAVA" value="6136" />
           <entry key="Markdown" value="2" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="4" />
           <entry key="SQL" value="183" />
           <entry key="Scratch" value="208" />
@@ -230,20 +228,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="465">
               <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/conference_talk">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -263,11 +252,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="34" column="58" selection-start-line="34" selection-end-line="35" />
+            <state relative-caret-position="386">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/conference_talk">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -356,11 +363,12 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/af6b0a39-90c4-4a70-992f-df2bacd7c63d/console.sql" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpRequest.java" />
-        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" />
+        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -456,53 +464,6 @@
               <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
               <item name="database-main" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pgr200-eksamen-viking-v2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pgr200-eksamen-viking-v2" type="462c0819:PsiDirectoryNode" />
-              <item name="database-main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="migration" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -585,7 +546,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541520810764" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541763784700" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -713,7 +674,7 @@
       <workItem from="1541436997269" duration="23027000" />
       <workItem from="1541583196767" duration="16868000" />
       <workItem from="1541612139646" duration="53000" />
-      <workItem from="1541755991359" duration="5821000" />
+      <workItem from="1541755991359" duration="6996000" />
     </task>
     <servers />
   </component>
@@ -750,7 +711,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95569000" />
+    <option name="totallyTimeSpent" value="96744000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -763,9 +724,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1881259" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1881259" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -774,14 +734,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32866243" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.21910828" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4986577" weight="0.21910828" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32907802" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" sideWeight="0.49932885" weight="0.32907802" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3299363" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013423" side_tool="true" weight="0.45106384" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32866243" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3299363" />
@@ -913,26 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="34" column="58" selection-start-line="34" selection-end-line="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -957,13 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/conference_talk">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -974,10 +907,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="465">
           <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/conference_talk">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
         </state>
       </provider>
     </entry>
