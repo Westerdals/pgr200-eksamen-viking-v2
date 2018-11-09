@@ -30,7 +30,6 @@ public class ArgumentReader {
         for(int i = 0; i < arguments.length; i++) {
             if (i == 0) {
                 methodArgument = arguments[i];
-                System.out.println(arguments[i]);
             } else if (i == 1) {
                 objectArgument = arguments[i];
             } else if (i == 2) {
@@ -116,10 +115,11 @@ public class ArgumentReader {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
 
-            if(!topicDao.listTopics().contains(topicArgument)) {
+            if(!topicDao.listTopics().toString().toLowerCase().contains(topicArgument)) {
+                System.out.println(topicArgument);
+                System.out.println(topicDao.listTopics());
                 topicDao.insert(topic);
             }
-
             talkDao.insert(talk);
 
             this.body = sb.toString();

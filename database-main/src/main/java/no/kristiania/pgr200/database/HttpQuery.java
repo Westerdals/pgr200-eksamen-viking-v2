@@ -12,11 +12,13 @@ public class HttpQuery {
 	private Map<String, String> parameters = new LinkedHashMap<>();
 	
 	public HttpQuery(String query) {
-		for (String parameter : query.split("&")) {
-			int equalsPos = parameter.indexOf('=');
-			String key = urlDecode(parameter.substring(0, equalsPos));
-			String value = urlDecode(parameter.substring(equalsPos+1));
-			parameters.put(key, value);
+		if (!query.isEmpty()) {
+			for (String parameter : query.split("&")) {
+				int equalsPos = parameter.indexOf('=');
+				String key = urlDecode(parameter.substring(0, equalsPos));
+				String value = urlDecode(parameter.substring(equalsPos + 1));
+				parameters.put(key, value);
+			}
 		}
 	}
 	

@@ -10,6 +10,7 @@
 *.pdb
 *.sql
 *.sqlite3
+*db.properties
 
 ### Java ###
 # Compiled class file

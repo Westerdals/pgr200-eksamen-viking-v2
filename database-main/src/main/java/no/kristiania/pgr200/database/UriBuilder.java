@@ -32,8 +32,6 @@ public class UriBuilder {
             else if(i == 4) { topicArgument = arguments[i]; }
         }
 
-        Arrays.stream(this.arguments).forEach(s-> System.out.println(s));
-
         switch (methodArgument) {
             case "retrieve":
                 retrieve();
@@ -73,13 +71,13 @@ public class UriBuilder {
 
     private HttpRequest insert() throws IOException {
         if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
-            return new HttpRequest(hostname, port, "/insert/talks", "POST",
+            return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument);
         } else if (objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
-            return new HttpRequest(hostname, port, "/insert/talks", "POST",
+            return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
         } else if (arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, port, "/talks", "POST",
+            return new HttpRequest(hostname, port, "/talk", "POST",
                     "topic=" + titleArgument);
         } System.out.println("Not valid input");
         return null;

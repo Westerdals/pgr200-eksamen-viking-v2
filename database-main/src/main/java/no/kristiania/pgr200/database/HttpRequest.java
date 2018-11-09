@@ -12,7 +12,7 @@ public class HttpRequest {
     private String body;
 
     public HttpRequest(String hostname, int port, String uri, String requestMethod) throws IOException {
-        this(hostname, port, uri, requestMethod, "This is the body");
+        this(hostname, port, uri, requestMethod, "");
     }
 
     public HttpRequest(String hostname, int port, String uri, String requestMethod, String body) throws IOException {

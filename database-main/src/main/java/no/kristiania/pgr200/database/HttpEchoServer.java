@@ -35,78 +35,101 @@ public class HttpEchoServer {
 
             try {
                 Socket socket = serverSocket.accept();
-
-
-
                 String uri = readLine(socket).split(" ")[1];
-
                 System.out.println(uri);
-                Map<String, String> parameters = readParameters(uri);
-                String[] uriArguments = getUriArguments(uri);
-
-                /*
-                if(!uri.equals("/favicon.ico")) {
-                    ArgumentReader argumentReader = new ArgumentReader(uriArguments);
-                    this.statusCode = argumentReader.getStatusCode();
-
-                }*/
-
-
                 Map<String, String> headers = new HashMap<>();
-
                 String line;
-
                 while (!(line = this.readLine(socket)).trim().isEmpty()) {
                     String[] parts = line.split(":", 2);
                     headers.put(parts[0].trim().toLowerCase(), parts[1].trim().toLowerCase());
                 }
 
-                StringBuilder bodyBuilder = new StringBuilder();
 
-                int contentLength = Integer.parseInt(headers.getOrDefault("content-length", "0"));
-                if (contentLength != 0) {
-                    int c;
-                    int counter = 0;
-                    while ((c = socket.getInputStream().read()) != -1) {
-                        bodyBuilder.append((char) c);
-                        if (++counter == contentLength) {
-                            break;
-                        }
-                    }
-                }
+                String body = readBody(headers, socket);
 
 
-                //TODO: Needs to work with Topic aswell
-                String body = bodyBuilder.toString();
-                if (!body.isEmpty()) {
-                    HttpQuery query = new HttpQuery(body);
-                    body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
-                    ArgumentReader reader = new ArgumentReader(getArguments(uri, body));
-                    System.out.println("URI: " + uri + "\nBody: " + body);
-                    this.statusCode = reader.getStatusCode();
-                    body = reader.getBody();
-                }
-
+                argumentReader = new ArgumentReader(getArguments(uri, body));
 
                 // Writes the response
-                socket.getOutputStream().write(("HTTP/1.1 " + this.statusCode + " OK\r\n").getBytes());
+                socket.getOutputStream().write(("HTTP/1.1 " + setStatusCode() + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());
                 socket.getOutputStream().write("Server: Kristiania Java Server!!\r\n".getBytes());
-                socket.getOutputStream().write(("Content-Length: " + body.length() + "\r\n").getBytes());
+                socket.getOutputStream().write(("Content-Length: " + setBody().length() + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
-                socket.getOutputStream().write((body + "\r\n").getBytes());
-                System.out.println(body);
+                socket.getOutputStream().write((setBody() + "\r\n").getBytes());
+                System.out.println(setBody());
                 socket.getOutputStream().flush();
 
             } catch (IOException | SQLException e) {
+                //TODO: Do something here?
                 e.printStackTrace();
+                System.out.println("Something went wrong with the server");
             }
         }
     }
 
+    public String setBody() {
+        String body = argumentReader.getBody();
+        return body;
+    }
+
+    public int setStatusCode() {
+        int statusCode = argumentReader.getStatusCode();
+        return statusCode;
+    }
+
+    //TODO: LØRDAG: FINNE UT HVORFOR LIST TALKS SISTE TALK IKKE LISTES FULLSTENDIG
+
+    /*
+    public void setBodyAndStatusCode(String uri, String body) throws IOException, SQLException {
+        //TODO: Needs to work with Topic aswell
+        if (uri.contains("insert")) {
+            HttpQuery query = new HttpQuery(body);
+            body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+            ArgumentReader reader = new ArgumentReader(getArguments(uri, body));
+            this.statusCode = reader.getStatusCode();
+            body = reader.getBody();
+        } else {
+            ArgumentReader argumentReader = new ArgumentReader(getUriArguments(uri));
+            this.statusCode = argumentReader.getStatusCode();
+            body = argumentReader.getBody();
+        }
+    }
+    */
+
+    public int getStatusCode() {
+        this.statusCode = 0;
+        return statusCode;
+    }
+
+    //TODO: Refactor setting the body
+
+    public String readBody(Map<String, String> headers, Socket socket) throws IOException {
+        StringBuilder bodyBuilder = new StringBuilder();
+        int contentLength = Integer.parseInt(headers.getOrDefault("content-length", "0"));
+        if (contentLength != 0) {
+            int c;
+            int counter = 0;
+            while ((c = socket.getInputStream().read()) != -1) {
+                bodyBuilder.append((char) c);
+                if (++counter == contentLength) {
+                    break;
+                }
+            }
+        }
+        String body = bodyBuilder.toString();
+        HttpQuery query = new HttpQuery(body);
+        body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+        System.out.println(body);
+        return body;
+    }
+
+
     public String[] getArguments(String uri, String body) {
         String[] arguments = Stream.concat(Arrays.stream(getUriArguments(uri)), Arrays.stream(getBodyArguments(body)))
+                .filter(Arrays -> !"null".equals(Arrays))
                 .toArray(String[]::new);
+        Arrays.stream(arguments).forEach(System.out::println);
         return arguments;
     }
 
