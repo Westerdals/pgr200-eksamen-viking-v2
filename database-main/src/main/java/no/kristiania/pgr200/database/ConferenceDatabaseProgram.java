@@ -42,7 +42,6 @@ public class ConferenceDatabaseProgram {
         dataSource.setUser(username);
         dataSource.setPassword(password);
 
-
         return dataSource;
     }
 

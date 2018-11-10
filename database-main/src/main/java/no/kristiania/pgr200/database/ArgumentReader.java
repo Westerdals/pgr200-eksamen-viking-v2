@@ -116,7 +116,6 @@ public class ArgumentReader {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
 
-
             /*
             TODO: Brag about this in documentation
             Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
@@ -125,6 +124,7 @@ public class ArgumentReader {
             System.out.println(topics.toString().toLowerCase().contains(topicArgument.toLowerCase()));
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
+
                 topicDao.insert(topic);
             } else {
                 topicArgument = topics.stream().map(ConferenceTopic::getTitle)
