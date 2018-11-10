@@ -5,9 +5,9 @@ import java.net.Socket;
 
 public class HttpRequest {
 
+    String requestMethod;
     private String hostname;
     private String uri;
-    String requestMethod;
     private int port;
     private String body;
 

@@ -54,8 +54,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2018-11-09.14:12:48.798</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1335</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-11-10.14:51:48.060</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1759</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -98,7 +98,7 @@
     <table id="18" parent="10" name="conference_talk">
       <ObjectId>44501</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1335</StateNumber>
+      <StateNumber>1759</StateNumber>
     </table>
     <table id="19" parent="10" name="flyway_schema_history">
       <ObjectId>44476</ObjectId>

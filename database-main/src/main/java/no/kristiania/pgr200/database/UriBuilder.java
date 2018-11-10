@@ -14,12 +14,16 @@ class UriBuilder {
     private String topicArgument;
 
 
-    UriBuilder(String[] arguments) throws IOException {
+    UriBuilder(int port, String[] arguments) throws IOException {
         this.arguments = Arrays.stream(arguments).map(s -> s.replace(" ", "+").toLowerCase()).toArray(String[]::new);
         this.hostname = "localhost";
-        this.port = 8080;
+        this.port = port;
 
         commandRedirect();
+    }
+
+    UriBuilder(String[] arguments) throws IOException {
+        this(8080, arguments);
     }
 
     private void commandRedirect() throws IOException {
@@ -50,25 +54,25 @@ class UriBuilder {
     }
 
 
-    private HttpRequest retrieve() throws IOException {
+    HttpRequest retrieve() throws IOException {
         if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/retrieve/talk/" + titleArgument, "GET");
-        } else if(arguments.length == 3 && objectArgument.equals("/retrieve/topic") && titleArgument != null) {
-            return new HttpRequest(hostname, port, "topics/" + titleArgument, "GET");
-        } System.out.println("Not valid input");
-        return null;
-    }
-
-    private HttpRequest delete() throws IOException {
-        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
-            return new HttpRequest(hostname, port, "/talks/" + titleArgument, "DELETE");
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
-            return new HttpRequest(hostname, port, "/topics/" + titleArgument, "DELETE");
+            return new HttpRequest(hostname, port, "/retrieve/topic/" + titleArgument, "GET");
         } System.out.println("Not valid input");
         return null;
     }
 
-    public HttpRequest insert() throws IOException {
+    HttpRequest delete() throws IOException {
+        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
+            return new HttpRequest(hostname, port, "/delete/talk/" + titleArgument, "DELETE");
+        } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+            return new HttpRequest(hostname, port, "/delete/topic/" + titleArgument, "DELETE");
+        } System.out.println("Not valid input");
+        return null;
+    }
+
+    HttpRequest insert() throws IOException {
         if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
             return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument);
@@ -82,12 +86,13 @@ class UriBuilder {
         return null;
     }
 
-    // TODO: List talks with topic
-    public HttpRequest list() throws IOException {
+    HttpRequest list() throws IOException {
         if(arguments.length == 2 && objectArgument.equals("talks")) {
             return new HttpRequest(hostname, port, "/list/talks", "GET");
         } else if(arguments.length == 2 && objectArgument.equals("topics")) {
             return new HttpRequest(hostname, port, "/list/topics", "GET");
+        } else if(arguments.length == 4 && objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument != null) {
+            return new HttpRequest(hostname, port, "/list/talks/with/" + descriptionArgument, "GET");
         } System.out.println("Invalid input");
         return null;
     }

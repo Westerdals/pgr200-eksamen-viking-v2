@@ -115,8 +115,6 @@ public class ArgumentReader {
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
 
             if(!topicDao.listTopics().toString().toLowerCase().contains(topicArgument)) {
-                System.out.println(topicArgument);
-                System.out.println(topicDao.listTopics());
                 topicDao.insert(topic);
             }
             talkDao.insert(talk);
