@@ -2,6 +2,8 @@ package no.kristiania.pgr200.database;
 import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class ArgumentReader {
 
@@ -114,11 +116,23 @@ public class ArgumentReader {
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
             sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
 
-            if(!topicDao.listTopics().toString().toLowerCase().contains(topicArgument)) {
-                System.out.println(topicArgument);
-                System.out.println(topicDao.listTopics());
+
+            /*
+            TODO: Brag about this in documentation
+            Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
+             */
+            List<ConferenceTopic> topics = topicDao.listTopics();
+            System.out.println(topics.toString().toLowerCase().contains(topicArgument.toLowerCase()));
+            if(topics.stream().map(ConferenceTopic::getTitle)
+                    .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
                 topicDao.insert(topic);
+            } else {
+                topicArgument = topics.stream().map(ConferenceTopic::getTitle)
+                        .filter(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))
+                        .findFirst().get();
+                talk.setTopic(topicArgument);
             }
+
             talkDao.insert(talk);
 
             this.body = sb.toString();

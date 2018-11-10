@@ -3,6 +3,8 @@ package no.kristiania.pgr200.database;
 import java.io.IOException;
 import java.net.Socket;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class HttpRequest {
 
     private String hostname;
@@ -36,11 +38,11 @@ public class HttpRequest {
                 socket.getOutputStream()
                         .write("Content-type: application/x-www-form-urlencoded\r\n".getBytes());
                 socket.getOutputStream()
-                        .write(("Content-Length: " + body.trim().getBytes().length  +"\r\n").getBytes());
+                        .write(("Content-Length: " + body.trim().getBytes(UTF_8).length  +"\r\n").getBytes());
             }
             socket.getOutputStream().write("\r\n".getBytes());
             if(body != null && !body.trim().isEmpty()) {
-                socket.getOutputStream().write(body.trim().getBytes());
+                socket.getOutputStream().write(body.trim().getBytes(UTF_8));
             }
 
             return new HttpResponse(socket);

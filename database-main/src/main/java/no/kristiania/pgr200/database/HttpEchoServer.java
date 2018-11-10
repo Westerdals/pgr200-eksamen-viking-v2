@@ -1,16 +1,20 @@
 package no.kristiania.pgr200.database;
 
 
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class HttpEchoServer {
 
@@ -35,8 +39,11 @@ public class HttpEchoServer {
 
             try {
                 Socket socket = serverSocket.accept();
-                String uri = readLine(socket).split(" ")[1];
+                String[] requestLine = readLine(socket).split(" ");
+                String requestMethod = requestLine[0];
+                String uri = requestLine[1];
                 System.out.println(uri);
+
                 Map<String, String> headers = new HashMap<>();
                 String line;
                 while (!(line = this.readLine(socket)).trim().isEmpty()) {
@@ -44,19 +51,24 @@ public class HttpEchoServer {
                     headers.put(parts[0].trim().toLowerCase(), parts[1].trim().toLowerCase());
                 }
 
-
                 String body = readBody(headers, socket);
 
-
-                argumentReader = new ArgumentReader(getArguments(uri, body));
+                if(requestMethod.equals("GET") || requestMethod.equals("DELETE")) {
+                    argumentReader = new ArgumentReader(getUriArguments(uri));
+                } else if(requestMethod.equals("POST") || requestMethod.equals("PUT")) {
+                    argumentReader = new ArgumentReader(getArguments(uri, body));
+                } else {
+                    System.out.println("Unsupported request method: " + requestMethod);
+                }
 
                 // Writes the response
                 socket.getOutputStream().write(("HTTP/1.1 " + setStatusCode() + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());
                 socket.getOutputStream().write("Server: Kristiania Java Server!!\r\n".getBytes());
-                socket.getOutputStream().write(("Content-Length: " + setBody().length() + "\r\n").getBytes());
+                socket.getOutputStream().write(("Content-Length: " + setBody().getBytes(UTF_8).length + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
-                socket.getOutputStream().write((setBody() + "\r\n").getBytes());
+                socket.getOutputStream().write(setBody().getBytes(UTF_8));
+                System.out.println(setBody().getBytes(UTF_8).length);
                 System.out.println(setBody());
                 socket.getOutputStream().flush();
 
@@ -77,8 +89,6 @@ public class HttpEchoServer {
         int statusCode = argumentReader.getStatusCode();
         return statusCode;
     }
-
-    //TODO: LØRDAG: FINNE UT HVORFOR LIST TALKS SISTE TALK IKKE LISTES FULLSTENDIG
 
     /*
     public void setBodyAndStatusCode(String uri, String body) throws IOException, SQLException {
@@ -107,6 +117,7 @@ public class HttpEchoServer {
     public String readBody(Map<String, String> headers, Socket socket) throws IOException {
         StringBuilder bodyBuilder = new StringBuilder();
         int contentLength = Integer.parseInt(headers.getOrDefault("content-length", "0"));
+        String body = null;
         if (contentLength != 0) {
             int c;
             int counter = 0;
@@ -116,11 +127,11 @@ public class HttpEchoServer {
                     break;
                 }
             }
+            body = bodyBuilder.toString();
+            HttpQuery query = new HttpQuery(body);
+            body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+            System.out.println(body);
         }
-        String body = bodyBuilder.toString();
-        HttpQuery query = new HttpQuery(body);
-        body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
-        System.out.println(body);
         return body;
     }
 

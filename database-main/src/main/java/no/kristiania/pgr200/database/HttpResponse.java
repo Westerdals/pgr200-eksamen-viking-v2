@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class HttpResponse {
 
     private int statusCode;
@@ -29,13 +31,18 @@ public class HttpResponse {
 
     private void readBody() throws IOException {
         int contentLength = getContentLength();
+        System.out.println(contentLength);
         StringBuilder body = new StringBuilder();
-        for (int i=0; i<contentLength; i++) {
-            int c = input.read();
-            body.append((char)c);
+        int c;
+        int read = 0;
+        while ((c = input.read()) != -1) {
+            body.append((char) c);
+            read = read + String.valueOf((char) c).getBytes(UTF_8).length;
+            if (read >= contentLength) break;
         }
+        int length = body.toString().getBytes(UTF_8).length;
         this.body = body.toString();
-        System.out.println(body);
+        System.out.println(this.body);
     }
 
     private int getContentLength() {
@@ -66,11 +73,7 @@ public class HttpResponse {
         int c;
         while ((c = input.read()) != -1) {
             if (c == '\r') {
-                input.mark(1);
-                c = input.read();
-                if (c != '\n') {
-                    input.reset();
-                }
+                input.read();
                 break;
             }
             currentLine.append((char)c);

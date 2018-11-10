@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 import javax.sql.DataSource;
+
+import com.sun.org.apache.xpath.internal.Arg;
 import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGPoolingDataSource;
 
@@ -59,7 +61,15 @@ public class ConferenceDatabaseProgram {
             System.exit(1);
         }
 
+        if(args[0].equals("reset")) {
+            String[] reset = new String[1];
+            reset[0] = "reset";
+            ArgumentReader reader = new ArgumentReader(reset);
+            reader.reset();
+            System.out.println("reset");
+        }
         //reader = new ArgumentReader(args);
         builder = new UriBuilder(args);
+
     }
 }
