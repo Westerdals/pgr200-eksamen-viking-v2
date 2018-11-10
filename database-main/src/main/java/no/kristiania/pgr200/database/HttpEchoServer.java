@@ -21,6 +21,7 @@ public class HttpEchoServer {
     private ServerSocket serverSocket;
     private ArgumentReader argumentReader;
     private int statusCode;
+    String requestMethod;
     private HttpRequest request;
 
     public static void main(String[] args) throws IOException {
@@ -40,9 +41,10 @@ public class HttpEchoServer {
             try {
                 Socket socket = serverSocket.accept();
                 String[] requestLine = readLine(socket).split(" ");
-                String requestMethod = requestLine[0];
+                this.requestMethod = requestLine[0];
                 String uri = requestLine[1];
-                System.out.println(uri);
+
+
 
                 Map<String, String> headers = new HashMap<>();
                 String line;
@@ -129,7 +131,13 @@ public class HttpEchoServer {
             }
             body = bodyBuilder.toString();
             HttpQuery query = new HttpQuery(body);
-            body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+            if (this.requestMethod.equals("POST")) {
+                body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+            } else if (this.requestMethod.equals("PUT")) {
+                body = query.getParameter("id") + " " + query.getParameter("column") + " " + query.getParameter("value");
+            } else {
+                System.out.println("Invalid body arguments");
+            }
             System.out.println(body);
         }
         return body;
@@ -140,7 +148,6 @@ public class HttpEchoServer {
         String[] arguments = Stream.concat(Arrays.stream(getUriArguments(uri)), Arrays.stream(getBodyArguments(body)))
                 .filter(Arrays -> !"null".equals(Arrays))
                 .toArray(String[]::new);
-        Arrays.stream(arguments).forEach(System.out::println);
         return arguments;
     }
 
@@ -149,7 +156,6 @@ public class HttpEchoServer {
         return bodyArguments;
     }
 
-    // /echo?status=200&list=talks
     public String[] getUriArguments(String uri) {
         String[] argumentsUri = uri.split("/");
         String[] uriArguments = new String[argumentsUri.length - 1];

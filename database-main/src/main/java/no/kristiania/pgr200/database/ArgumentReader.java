@@ -2,6 +2,7 @@ package no.kristiania.pgr200.database;
 import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,6 +28,8 @@ public class ArgumentReader {
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
+
+        Arrays.stream(arguments).forEach(s -> System.out.println("argumentreader32" + s));
 
         for(int i = 0; i < arguments.length; i++) {
             if (i == 0) {
@@ -89,6 +92,31 @@ public class ArgumentReader {
                 }
                 list();
                 break;
+            case "update":
+                if(objectArgument == null) {
+                    sb.append("Update failed");
+                    this.body = sb.toString();
+                    this.statusCode = 404;
+                    break;
+                }
+                try {update(Integer.parseInt(titleArgument));  //Converts string input to integer id
+                } catch (NumberFormatException e) {
+                    sb.append("retrieve failed: id has to be a number");
+                    this.body = sb.toString();
+                }
+                break;
+            case "delete":
+                if(objectArgument == null) {
+                    sb.append("Delete failed");
+                    this.body = sb.toString();
+                    this.statusCode = 404;
+                    break;
+                } try {delete(Integer.parseInt(titleArgument));  //Converts string input to integer id
+                } catch (NumberFormatException e) {
+                    sb.append("retrieve failed: id has to be a number");
+                    this.body = sb.toString();
+                }
+                break;
             default:
                 sb.append("Unknown command");
                 this.body = sb.toString();
@@ -97,6 +125,7 @@ public class ArgumentReader {
         }
         return statusCode;
     }
+
 
     public void reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
@@ -121,7 +150,6 @@ public class ArgumentReader {
             Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
              */
             List<ConferenceTopic> topics = topicDao.listTopics();
-            System.out.println(topics.toString().toLowerCase().contains(topicArgument.toLowerCase()));
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
 
@@ -157,6 +185,49 @@ public class ArgumentReader {
         this.body = sb.toString();
         this.statusCode = 404;
         return 404;
+    }
+
+    private void delete(int id) throws SQLException {
+        if(talkDao.retrieveTalk(id) != null) {
+            String talkTitle = talkDao.retrieveTalk(id).getTitle();
+            talkDao.deleteTalk(id);
+            sb.append("Successfully deleted conference talk " + talkTitle);
+            this.body = sb.toString();
+            this.statusCode = 200;
+        } else {
+            sb.append("The talk you tried to delete does not exist");
+            this.body = sb.toString();
+            this.statusCode = 404;
+        }
+    }
+
+    public void update(int id) throws SQLException {
+        if(descriptionArgument.equals("topic")) {
+            List<ConferenceTopic> topics = topicDao.listTopics();
+            if (topics.stream().map(ConferenceTopic::getTitle)
+                    .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
+                topic = new ConferenceTopic(topicArgument);
+                topicDao.insert(topic);
+            } else {
+                topicArgument = topics.stream().map(ConferenceTopic::getTitle)
+                        .filter(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))
+                        .findFirst().get();
+                talkDao.updateSingleObject(id, "conference_talk", descriptionArgument, topicArgument);
+            }
+        }
+
+        if(talkDao.retrieveTalk(id) != null) {
+            talkDao.updateSingleObject(id, "conference_talk", descriptionArgument, topicArgument);
+            sb.append("Successfully updated conference talk " + id + "with " + topicArgument + " in " + descriptionArgument);
+            this.body = sb.toString();
+            this.statusCode = 200;
+            return;
+        } else {
+            sb.append("The talk you tried to update does not exist");
+            this.body = sb.toString();
+            this.statusCode = 404;
+            return;
+        }
     }
 
     public void retrieve(int id) throws SQLException {
@@ -204,8 +275,8 @@ public class ArgumentReader {
             this.body = sb.toString();
             this.statusCode = 200;
             return;
-        } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument.equals("topic") && topicArgument != null) {
-            for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(topicArgument)) {
+        } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument != null) {
+            for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(descriptionArgument)) {
                 sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
             }
             this.body = sb.toString();

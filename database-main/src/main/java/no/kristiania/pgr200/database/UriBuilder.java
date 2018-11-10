@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -48,6 +50,9 @@ class UriBuilder {
             case "list":
                 list();
                 break;
+            case "update":
+                update();
+                break;
             default:
                 System.out.println("Invalid input");
         }
@@ -60,6 +65,14 @@ class UriBuilder {
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/retrieve/topic/" + titleArgument, "GET");
         } System.out.println("Not valid input");
+        return null;
+    }
+
+    HttpRequest update() throws IOException {
+        if(arguments.length == 5 && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
+            return new HttpRequest(hostname, port, "/update/talk", "PUT",
+                     "id=" + titleArgument + "&column=" + descriptionArgument + "&value=" + topicArgument);
+        }
         return null;
     }
 

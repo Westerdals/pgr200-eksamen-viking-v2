@@ -2,42 +2,23 @@
 <dataSource name="postgres@localhost">
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.11">
     <root id="1">
-      <ServerVersion>10.5</ServerVersion>
+      <ServerVersion>9.3.24</ServerVersion>
     </root>
     <database id="2" parent="1" name="postgres">
-      <ObjectId>13255</ObjectId>
+      <ObjectId>12029</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>116</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
-    <role id="3" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
+    <role id="3" parent="1" name="demouser">
+      <ObjectId>16401</ObjectId>
       <Inherit>1</Inherit>
+      <CanLogin>1</CanLogin>
       <ConnectionLimit>-1</ConnectionLimit>
     </role>
-    <role id="4" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
-    </role>
-    <role id="5" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
-    </role>
-    <role id="6" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
-    </role>
-    <role id="7" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
-      <Inherit>1</Inherit>
-      <ConnectionLimit>-1</ConnectionLimit>
-    </role>
-    <role id="8" parent="1" name="postgres">
+    <role id="4" parent="1" name="postgres">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
       <Inherit>1</Inherit>
@@ -46,288 +27,260 @@
       <CanLogin>1</CanLogin>
       <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
-      <BypassRls>1</BypassRls>
     </role>
-    <schema id="9" parent="2" name="information_schema">
-      <ObjectId>12965</ObjectId>
+    <schema id="5" parent="2" name="conference_server">
+      <ObjectId>44603</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionTimestamp>2018-11-10.18:41:20.982</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1799</IntrospectionStateNumber>
+    </schema>
+    <schema id="6" parent="2" name="information_schema">
+      <ObjectId>11480</ObjectId>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="10" parent="2" name="pg_catalog">
+    <schema id="7" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
       <Comment>system catalog schema</Comment>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="11" parent="2" name="pg_temp_1">
-      <ObjectId>11736</ObjectId>
+    <schema id="8" parent="2" name="pg_temp_1">
+      <ObjectId>11215</ObjectId>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="12" parent="2" name="pg_toast">
+    <schema id="9" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
       <Comment>reserved schema for TOAST tables</Comment>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="13" parent="2" name="pg_toast_temp_1">
-      <ObjectId>11737</ObjectId>
+    <schema id="10" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11216</ObjectId>
       <Owner>postgres</Owner>
     </schema>
-    <schema id="14" parent="2" name="public">
+    <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-<<<<<<< HEAD
-      <IntrospectionTimestamp>2018-11-10.15:05:43.402</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1632</IntrospectionStateNumber>
-=======
-      <IntrospectionTimestamp>2018-11-10.14:51:48.060</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1759</IntrospectionStateNumber>
->>>>>>> 22f2c424029a157157f54a65ea4a2c8ef202e5c3
+      <IntrospectionTimestamp>2018-11-10.18:41:46.793</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1783</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <access-method id="15" parent="2" name="btree">
+    <access-method id="12" parent="2" name="btree">
       <ObjectId>403</ObjectId>
       <Comment>b-tree index access method</Comment>
-      <Handler>pg_catalog.bthandler</Handler>
-      <HandlerId>330</HandlerId>
-      <Type>index</Type>
     </access-method>
-    <access-method id="16" parent="2" name="hash">
+    <access-method id="13" parent="2" name="hash">
       <ObjectId>405</ObjectId>
       <Comment>hash index access method</Comment>
-      <Handler>pg_catalog.hashhandler</Handler>
-      <HandlerId>331</HandlerId>
-      <Type>index</Type>
     </access-method>
-    <access-method id="17" parent="2" name="gist">
+    <access-method id="14" parent="2" name="gist">
       <ObjectId>783</ObjectId>
       <Comment>GiST index access method</Comment>
-      <Handler>pg_catalog.gisthandler</Handler>
-      <HandlerId>332</HandlerId>
-      <Type>index</Type>
     </access-method>
-    <access-method id="18" parent="2" name="gin">
+    <access-method id="15" parent="2" name="gin">
       <ObjectId>2742</ObjectId>
       <Comment>GIN index access method</Comment>
-      <Handler>pg_catalog.ginhandler</Handler>
-      <HandlerId>333</HandlerId>
-      <Type>index</Type>
     </access-method>
-    <access-method id="19" parent="2" name="spgist">
+    <access-method id="16" parent="2" name="spgist">
       <ObjectId>4000</ObjectId>
       <Comment>SP-GiST index access method</Comment>
-      <Handler>pg_catalog.spghandler</Handler>
-      <HandlerId>334</HandlerId>
-      <Type>index</Type>
     </access-method>
-    <access-method id="20" parent="2" name="brin">
-      <ObjectId>3580</ObjectId>
-      <Comment>block range index (BRIN) access method</Comment>
-      <Handler>pg_catalog.brinhandler</Handler>
-      <HandlerId>335</HandlerId>
-      <Type>index</Type>
-    </access-method>
-    <sequence id="21" parent="14" name="conference_talk_id_seq">
-      <ObjectId>29319</ObjectId>
+    <sequence id="17" parent="11" name="conference_talk_id_seq">
+      <ObjectId>44586</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1632</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <StateNumber>1783</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
     </sequence>
-    <sequence id="22" parent="14" name="topic_id_seq">
-      <ObjectId>29306</ObjectId>
+    <sequence id="18" parent="11" name="topic_id_seq">
+      <ObjectId>44573</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1631</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <StateNumber>1782</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
       <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
     </sequence>
-    <table id="23" parent="14" name="conference_talk">
-      <ObjectId>29321</ObjectId>
+    <table id="19" parent="11" name="conference_talk">
+      <ObjectId>44588</ObjectId>
       <Owner>postgres</Owner>
-<<<<<<< HEAD
-      <StateNumber>1632</StateNumber>
-=======
-      <StateNumber>1759</StateNumber>
->>>>>>> 22f2c424029a157157f54a65ea4a2c8ef202e5c3
+      <StateNumber>1783</StateNumber>
     </table>
-    <table id="24" parent="14" name="flyway_schema_history">
-      <ObjectId>29296</ObjectId>
+    <table id="20" parent="11" name="flyway_schema_history">
+      <ObjectId>44563</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
     </table>
-    <table id="25" parent="14" name="topic">
-      <ObjectId>29308</ObjectId>
+    <table id="21" parent="11" name="topic">
+      <ObjectId>44575</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1632</StateNumber>
+      <StateNumber>1783</StateNumber>
     </table>
-    <column id="26" parent="23" name="id">
+    <column id="22" parent="19" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1632</StateNumber>
+      <StateNumber>1783</StateNumber>
       <DefaultExpression>nextval(&apos;conference_talk_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>conference_talk_id_seq</SequenceName>
     </column>
-    <column id="27" parent="23" name="title">
+    <column id="23" parent="19" name="title">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1632</StateNumber>
+      <StateNumber>1783</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="28" parent="23" name="description">
+    <column id="24" parent="19" name="description">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>1632</StateNumber>
+      <StateNumber>1783</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="29" parent="23" name="topic">
+    <column id="25" parent="19" name="topic">
       <Position>4</Position>
       <DataType>varchar|0s</DataType>
-      <StateNumber>1632</StateNumber>
+      <StateNumber>1783</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="30" parent="23" name="conference_talk_pkey">
-      <ObjectId>29328</ObjectId>
+    <index id="26" parent="19" name="conference_talk_pkey">
+      <ObjectId>44595</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="31" parent="23" name="conference_talk_pkey">
-      <ObjectId>29329</ObjectId>
+    <key id="27" parent="19" name="conference_talk_pkey">
+      <ObjectId>44596</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>conference_talk_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="32" parent="23" name="conference_talk_topic_fkey">
-      <ObjectId>29330</ObjectId>
+    <foreign-key id="28" parent="19" name="conference_talk_topic_fkey">
+      <ObjectId>44597</ObjectId>
       <ColNames>topic</ColNames>
-      <RefTableId>29308</RefTableId>
+      <RefTableId>44575</RefTableId>
       <RefColPositions>2</RefColPositions>
       <RefTableName>topic</RefTableName>
       <RefKeyName>topic_title_key</RefKeyName>
       <RefColNames>title</RefColNames>
     </foreign-key>
-    <column id="33" parent="24" name="installed_rank">
+    <column id="29" parent="20" name="installed_rank">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="34" parent="24" name="version">
+    <column id="30" parent="20" name="version">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="24" name="description">
+    <column id="31" parent="20" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="36" parent="24" name="type">
+    <column id="32" parent="20" name="type">
       <Position>4</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="37" parent="24" name="script">
+    <column id="33" parent="20" name="script">
       <Position>5</Position>
       <DataType>varchar(1000)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="38" parent="24" name="checksum">
+    <column id="34" parent="20" name="checksum">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="39" parent="24" name="installed_by">
+    <column id="35" parent="20" name="installed_by">
       <Position>7</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="40" parent="24" name="installed_on">
+    <column id="36" parent="20" name="installed_on">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <DefaultExpression>now()</DefaultExpression>
       <TypeId>1114</TypeId>
     </column>
-    <column id="41" parent="24" name="execution_time">
+    <column id="37" parent="20" name="execution_time">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="42" parent="24" name="success">
+    <column id="38" parent="20" name="success">
       <Position>10</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1630</StateNumber>
+      <StateNumber>1781</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <index id="43" parent="24" name="flyway_schema_history_pk">
-      <ObjectId>29303</ObjectId>
+    <index id="39" parent="20" name="flyway_schema_history_pk">
+      <ObjectId>44570</ObjectId>
       <ColNames>installed_rank</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="44" parent="24" name="flyway_schema_history_s_idx">
-      <ObjectId>29305</ObjectId>
+    <index id="40" parent="20" name="flyway_schema_history_s_idx">
+      <ObjectId>44572</ObjectId>
       <ColNames>success</ColNames>
     </index>
-    <key id="45" parent="24" name="flyway_schema_history_pk">
-      <ObjectId>29304</ObjectId>
+    <key id="41" parent="20" name="flyway_schema_history_pk">
+      <ObjectId>44571</ObjectId>
       <ColNames>installed_rank</ColNames>
       <UnderlyingIndexName>flyway_schema_history_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="25" name="id">
+    <column id="42" parent="21" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1631</StateNumber>
+      <StateNumber>1782</StateNumber>
       <DefaultExpression>nextval(&apos;topic_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
       <SequenceName>topic_id_seq</SequenceName>
     </column>
-    <column id="47" parent="25" name="title">
+    <column id="43" parent="21" name="title">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1631</StateNumber>
+      <StateNumber>1782</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="48" parent="25" name="topic_pkey">
-      <ObjectId>29315</ObjectId>
+    <index id="44" parent="21" name="topic_pkey">
+      <ObjectId>44582</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="49" parent="25" name="topic_title_key">
-      <ObjectId>29317</ObjectId>
+    <index id="45" parent="21" name="topic_title_key">
+      <ObjectId>44584</ObjectId>
       <ColNames>title</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="50" parent="25" name="topic_pkey">
-      <ObjectId>29316</ObjectId>
+    <key id="46" parent="21" name="topic_pkey">
+      <ObjectId>44583</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>topic_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="51" parent="25" name="topic_title_key">
-      <ObjectId>29318</ObjectId>
+    <key id="47" parent="21" name="topic_title_key">
+      <ObjectId>44585</ObjectId>
       <ColNames>title</ColNames>
       <UnderlyingIndexName>topic_title_key</UnderlyingIndexName>
     </key>
