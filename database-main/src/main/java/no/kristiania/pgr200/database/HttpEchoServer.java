@@ -1,6 +1,5 @@
 package no.kristiania.pgr200.database;
 
-
 import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -22,7 +21,6 @@ public class HttpEchoServer {
     private ArgumentReader argumentReader;
     private int statusCode;
     String requestMethod;
-    private HttpRequest request;
 
     public static void main(String[] args) throws IOException {
         HttpEchoServer server = new HttpEchoServer(8080);
@@ -88,30 +86,8 @@ public class HttpEchoServer {
         return statusCode;
     }
 
-    /*
-    public void setBodyAndStatusCode(String uri, String body) throws IOException, SQLException {
-        //TODO: Needs to work with Topic aswell
-        if (uri.contains("insert")) {
-            HttpQuery query = new HttpQuery(body);
-            body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
-            ArgumentReader reader = new ArgumentReader(getArguments(uri, body));
-            this.statusCode = reader.getStatusCode();
-            body = reader.getBody();
-        } else {
-            ArgumentReader argumentReader = new ArgumentReader(getUriArguments(uri));
-            this.statusCode = argumentReader.getStatusCode();
-            body = argumentReader.getBody();
-        }
-    }
-    */
-
-    public int getStatusCode() {
-        this.statusCode = 0;
-        return statusCode;
-    }
 
     //TODO: Refactor setting the body
-
     public String readBody(Map<String, String> headers, Socket socket) throws IOException {
         StringBuilder bodyBuilder = new StringBuilder();
         int contentLength = Integer.parseInt(headers.getOrDefault("content-length", "0"));
@@ -158,23 +134,6 @@ public class HttpEchoServer {
             uriArguments[i - 1] = argumentsUri[i];
         }
         return uriArguments;
-    }
-
-
-    public Map<String, String> readParameters(String uri) throws UnsupportedEncodingException {
-        int questionPos = uri.indexOf('?');
-        String query = uri.substring(questionPos+1);
-        Map<String, String> parameters = new HashMap<>();
-        for (String parameter : query.split("&")) {
-            int equalsPos = parameter.indexOf('=');
-            if(equalsPos < 0) {
-                break;
-            }
-            String paramName = URLDecoder.decode(parameter.substring(0, equalsPos), "UTF-8");
-            String paramValue = URLDecoder.decode(parameter.substring(equalsPos+1), "UTF-8");
-            parameters.put(paramName, paramValue);
-        }
-        return parameters;
     }
 
 

@@ -3,6 +3,7 @@ package no.kristiania.pgr200.database;
 
 import org.flywaydb.core.Flyway;
 import org.h2.jdbcx.JdbcDataSource;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,28 +16,26 @@ import java.sql.SQLException;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class HttpTest {
-
-    private static DataSource createDataSource() {
-        JdbcDataSource dataSource = new JdbcDataSource();
-        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
-        dataSource.setUser("sa");
-
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(dataSource);
-        flyway.clean();
-        flyway.migrate();
-        return dataSource;
-    }
-
-    String query;
     private static HttpEchoServer server;
+    private String query;
+
 
     @BeforeClass
-    public static void createServer() throws IOException, SQLException {
+    public static void startServer() throws IOException {
         server = new HttpEchoServer(0);
-        ConferenceTalkDao talkDao = new ConferenceTalkDao(createDataSource());
-        ConferenceTalk talk = new ConferenceTalk("talk", "description", "hacking");
-        talkDao.insert(talk);
+        populateDatabase();
+
+    }
+
+    public static void populateDatabase() throws IOException {
+        HttpRequest insert = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
+                "title=hacks" + "&description=hacking" + "&topic=hacking");
+    }
+
+    @AfterClass
+    public static void logout() throws IOException {
+        ConferenceDatabaseProgram client = new ConferenceDatabaseProgram();
+        client.resetDatabase();
     }
 
     @Test
@@ -57,7 +56,7 @@ public class HttpTest {
     @Test
     public void shouldPutData() throws IOException {
         HttpRequest request = new HttpRequest("localhost", server.getPort(), "/update/talk", "PUT",
-                "id=1&column=title&value=newtitle");
+                "id=1&column=title&value=hacks");
         HttpResponse response = request.execute();
         assertThat(response.getBody()).isEqualTo("The talk you tried to update does not exist");
     }
