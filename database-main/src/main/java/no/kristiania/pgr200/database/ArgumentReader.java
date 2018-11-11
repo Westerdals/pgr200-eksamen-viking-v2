@@ -150,7 +150,6 @@ public class ArgumentReader {
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
-
                 topicDao.insert(topic);
             } else {
                 topicArgument = topics.stream().map(ConferenceTopic::getTitle)
@@ -158,26 +157,32 @@ public class ArgumentReader {
                         .findFirst().get();
                 talk.setTopic(topicArgument);
             }
-
             talkDao.insert(talk);
-
             this.body = sb.toString();
-            this.statusCode = 200;
-            return 200;
+            this.statusCode = 202;
+            return 202;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
             sb.append("Successfully inserted " + titleArgument + " into conference_talk");
             talkDao.insert(talk);
             this.body = sb.toString();
-            this.statusCode = 200;
-            return 200;
-        } else if(objectArgument.equals("topic")) {
-            topic = new ConferenceTopic(titleArgument);
-            topicDao.insert(topic);
-            sb.append("Successfully inserted " + titleArgument + " into topic");
-            this.body = sb.toString();
-            this.statusCode = 200;
-            return 200;
+            this.statusCode = 201;
+            return 201;
+        } else if(objectArgument.equals("topic")) { //Insert topic
+            List<ConferenceTopic> topics = topicDao.listTopics();
+            if(topics.stream().map(ConferenceTopic::getTitle)
+                    .anyMatch(topic -> topic.toLowerCase().equals(titleArgument.toLowerCase()))) {
+                sb.append(titleArgument + " already exists in topics");
+                this.body = sb.toString();
+                this.statusCode = 202;
+                return 201;
+            }
+                topic = new ConferenceTopic(titleArgument);
+                topicDao.insert(topic);
+                sb.append("Successfully inserted " + titleArgument + " into topic");
+                this.body = sb.toString();
+                this.statusCode = 201;
+                return 201;
         }
         sb.append("Unknown Command");
         this.body = sb.toString();

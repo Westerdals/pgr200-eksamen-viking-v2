@@ -1,7 +1,4 @@
 package no.kristiania.pgr200.database;
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.IOException;
 import java.util.Arrays;
 
