@@ -1,5 +1,9 @@
 package no.kristiania.pgr200.database;
 
+
+import org.flywaydb.core.Flyway;
+import org.h2.jdbcx.JdbcDataSource;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -15,6 +19,19 @@ public class UriBuilderTest {
     @BeforeClass
     public static void startServer() throws IOException {
         server = new HttpEchoServer(0);
+
+        JdbcDataSource dataSource = new JdbcDataSource();
+        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+        dataSource.setUser("sa");
+
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(dataSource);
+        flyway.clean();
+        flyway.migrate();
+
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(dataSource);
+        ConferenceTalk talk = new ConferenceTalk("Talk", "Description", "topic");
+        talkDao.insert(talk);
     }
 
     @Test
@@ -26,19 +43,19 @@ public class UriBuilderTest {
 
         //What the UriBuilder-request should look like
         HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
-                "title=my+talk" + "&description=my+description");
+                "title=my+talk&description=my+description");
 
         assertThat(request).isEqualToComparingFieldByField(compareRequest);
     }
 
     @Test
     public void ShouldReturnCorrectHttpRequestForInsertingTalkWithTopic() throws IOException {
-        String[] testSet = {"Insert", "topic", "my topic"};
+        String[] testSet = {"Insert", "talk", "mytalk", "mydescription", "skateboarding"};
 
         HttpRequest request = new UriBuilder(server.getPort(), testSet).insert();
 
-        HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/topic", "POST",
-                "topic=my+topic");
+        HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
+                "title=mytalk&description=mydescription&topic=skateboarding");
 
         assertThat(request).isEqualToComparingFieldByField(compareRequest);
     }

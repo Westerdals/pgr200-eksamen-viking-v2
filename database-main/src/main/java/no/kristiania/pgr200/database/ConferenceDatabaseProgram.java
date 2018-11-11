@@ -67,7 +67,7 @@ public class ConferenceDatabaseProgram {
             reader.reset();
             System.out.println("reset");
         }
-        //reader = new ArgumentReader(args);
+
         builder = new UriBuilder(args);
 
     }

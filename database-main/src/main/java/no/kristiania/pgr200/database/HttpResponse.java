@@ -31,7 +31,6 @@ public class HttpResponse {
 
     private void readBody() throws IOException {
         int contentLength = getContentLength();
-        System.out.println(contentLength);
         StringBuilder body = new StringBuilder();
         int c;
         int read = 0;
@@ -80,10 +79,6 @@ public class HttpResponse {
         }
 
         return currentLine.toString();
-    }
-
-    public int getStatusCode() {
-        return statusCode;
     }
 
     public String getHeader(String headerName) {

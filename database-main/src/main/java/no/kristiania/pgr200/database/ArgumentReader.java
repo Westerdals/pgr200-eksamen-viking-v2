@@ -29,8 +29,6 @@ public class ArgumentReader {
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
 
-        Arrays.stream(arguments).forEach(s -> System.out.println("argumentreader32" + s));
-
         for(int i = 0; i < arguments.length; i++) {
             if (i == 0) {
                 methodArgument = arguments[i];

@@ -24,6 +24,12 @@
         <version>3.11.1</version>
         <scope>test</scope>
     </dependency>
+
+      <dependency>
+          <groupId>org.logevents</groupId>
+          <artifactId>logevents</artifactId>
+          <version>0.1.7</version>
+      </dependency>
     
     <dependency>
         <groupId>com.h2database</groupId>

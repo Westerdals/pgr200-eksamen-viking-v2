@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c35e0ba-95c9-4d81-b28c-9d095d163bbf" name="Default Changelist" comment="" />
+    <list default="true" id="2c35e0ba-95c9-4d81-b28c-9d095d163bbf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceProgramTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database-main/src/test/java/no/kristiania/pgr200/database/UriBuilderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database-main/src/test/java/no/kristiania/pgr200/database/UriBuilderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/database-core/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/database-main/target/" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,72 +100,43 @@
     <session id="1228753785">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="conference_talk" value="2" />
+          <entry key="conference_talk" value="4" />
           <entry key="flyway_schema_history" value="1" />
-          <entry key="java" value="11" />
-          <entry key="topic" value="1" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="25" />
+          <entry key="properties" value="1" />
+          <entry key="topic" value="3" />
+          <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Database Element" value="4" />
-          <entry key="JAVA" value="11" />
-          <entry key="XML" value="1" />
+          <entry key="Database Element" value="8" />
+          <entry key="JAVA" value="25" />
+          <entry key="Properties" value="1" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1669" />
+          <entry key="java" value="2086" />
+          <entry key="xml" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1669" />
+          <entry key="JAVA" value="2086" />
+          <entry key="XML" value="21" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <element signature="e#429#430#0" expanded="true" />
-                <element signature="e#456#457#0" expanded="true" />
-                <element signature="e#1255#1256#0" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-24">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="80" column="64" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
+            <state relative-caret-position="272">
+              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -160,35 +144,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpQuery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+            <state relative-caret-position="-462">
+              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpRequest.java">
+        <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="240" selection-start-line="240" selection-end-line="241" />
-              <folding>
-                <element signature="e#1524#1525#0" expanded="true" />
-                <element signature="e#1562#1563#0" expanded="true" />
-                <element signature="e#1593#1594#0" expanded="true" />
-                <element signature="e#1625#1626#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="201">
+              <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -196,17 +162,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="357">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/conference_talk">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+        <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -215,9 +184,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>system</find>
       <find>s</find>
       <find>unkn</find>
+      <find>system</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -227,8 +196,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java" />
-        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" />
+        <option value="$PROJECT_DIR$/database-main/src/test/java/no/kristiania/pgr200/database/UriBuilderTest.java" />
         <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java" />
+        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java" />
+        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java" />
+        <option value="$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/logevents.properties" />
+        <option value="$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java" />
       </list>
     </option>
   </component>
@@ -458,7 +433,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541877660380" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541934935017" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -486,7 +461,7 @@
     <configuration name="ConferenceDatabaseProgram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.ConferenceDatabaseProgram" />
       <module name="database-main" />
-      <option name="PROGRAM_PARAMETERS" value="delete talk 1" />
+      <option name="PROGRAM_PARAMETERS" value="insert conference aslkd sasxkc sdfdksjd sdd" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
@@ -510,13 +485,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConferenceTalkDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="database-core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="no.kristiania.pgr200.database" />
+      <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.ConferenceTalkDaoTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UriBuilderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="database-main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="no.kristiania.pgr200.database" />
+      <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.UriBuilderTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalk" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="database-main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="no.kristiania.pgr200.database" />
+      <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.UriBuilderTest" />
+      <option name="METHOD_NAME" value="ShouldReturnCorrectHttpRequestForInsertingTalk" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestInsertingForTopic" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="database-main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="no.kristiania.pgr200.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="no.kristiania.pgr200.database" />
+      <option name="MAIN_CLASS_NAME" value="no.kristiania.pgr200.database.UriBuilderTest" />
+      <option name="METHOD_NAME" value="ShouldReturnCorrectHttpRequestInsertingForTopic" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.HttpEchoServer" />
       <item itemvalue="Application.ConferenceDatabaseProgram" />
+      <item itemvalue="JUnit.UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalk" />
+      <item itemvalue="JUnit.UriBuilderTest.ShouldReturnCorrectHttpRequestInsertingForTopic" />
+      <item itemvalue="JUnit.UriBuilderTest" />
+      <item itemvalue="JUnit.ConferenceTalkDaoTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ConferenceDatabaseProgram" />
+        <item itemvalue="JUnit.ConferenceTalkDaoTest" />
+        <item itemvalue="JUnit.UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalk" />
+        <item itemvalue="JUnit.UriBuilderTest" />
+        <item itemvalue="JUnit.UriBuilderTest.ShouldReturnCorrectHttpRequestInsertingForTopic" />
       </list>
     </recent_temporary>
   </component>
@@ -544,44 +587,44 @@
       <workItem from="1541612139646" duration="53000" />
       <workItem from="1541755991359" duration="7469000" />
       <workItem from="1541769514778" duration="12315000" />
-      <workItem from="1541849810676" duration="22335000" />
+      <workItem from="1541849810676" duration="30589000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UriBuilderTest - 2018.11.10 at 13h 56m 20s.xml">
-      <configuration name="UriBuilderTest" configurationId="JUnit" />
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForDeletingTopic - 2018.11.11 at 10h 44m 40s.xml">
+      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForDeletingTopic" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UriBuilderTest - 2018.11.10 at 13h 58m 48s.xml">
-      <configuration name="UriBuilderTest" configurationId="JUnit" />
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForInsertingTalk - 2018.11.11 at 10h 45m 40s.xml">
+      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalk" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_database-main - 2018.11.10 at 14h 01m 31s.xml">
-      <configuration name="All in database-main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_Features_in__database-main - 2018.11.10 at 14h 01m 54s.xml">
-      <configuration name="All Features in: database-main" configurationId="CucumberJavaRunConfigurationType" />
-    </history-entry>
-    <history-entry file="no_kristiania_pgr200_database_in_database-main - 2018.11.10 at 14h 02m 06s.xml">
-      <configuration name="no.kristiania.pgr200.database in database-main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UriBuilderTest - 2018.11.10 at 14h 05m 20s.xml">
-      <configuration name="UriBuilderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UriBuilderTest - 2018.11.10 at 14h 24m 27s.xml">
-      <configuration name="UriBuilderTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForInsertingTalkWithTopic - 2018.11.10 at 15h 15m 50s.xml">
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForInsertingTalkWithTopic - 2018.11.11 at 10h 45m 58s.xml">
       <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalkWithTopic" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UriBuilderTest - 2018.11.10 at 15h 16m 56s.xml">
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestInsertingForTopic - 2018.11.11 at 10h 46m 03s.xml">
+      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestInsertingForTopic" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic - 2018.11.11 at 10h 46m 19s.xml">
+      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UriBuilderTest - 2018.11.11 at 10h 53m 06s.xml">
       <configuration name="UriBuilderTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic - 2018.11.10 at 15h 17m 06s.xml">
-      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic" configurationId="JUnit" />
+    <history-entry file="UriBuilderTest - 2018.11.11 at 11h 04m 13s.xml">
+      <configuration name="UriBuilderTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UriBuilderTest_ShouldReturnCorrectHttpRequestForInsertingTalk - 2018.11.11 at 11h 04m 24s.xml">
+      <configuration name="UriBuilderTest.ShouldReturnCorrectHttpRequestForInsertingTalk" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConferenceTalkDaoTest - 2018.11.11 at 11h 40m 39s.xml">
+      <configuration name="ConferenceTalkDaoTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConferenceTalkDaoTest - 2018.11.11 at 11h 46m 02s.xml">
+      <configuration name="ConferenceTalkDaoTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10633000" />
+    <option name="totallyTimeSpent" value="18887000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -594,8 +637,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24228188" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24496645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -604,14 +648,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32866243" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798658" weight="0.26832846" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798658" weight="0.31085044" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986577" weight="0.398827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32844576" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" sideWeight="0.49932885" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.40762463" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.39149562" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50201344" side_tool="true" weight="0.33870968" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3240469" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32991204" />
@@ -620,7 +664,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" sideWeight="0.49002218" visible="true" weight="0.23288591" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49002218" visible="true" weight="0.12214765" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
@@ -660,61 +704,10 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="52" column="65" selection-start-line="52" selection-start-column="50" selection-end-line="52" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/test/java/no/kristiania/pgr200/database/UriBuilderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-546">
-          <caret line="85" column="61" selection-start-line="85" selection-start-column="61" selection-end-line="85" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceProgramTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-460">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/conference_server/table/flyway_schema_history">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/topic">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -731,44 +724,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java">
+    <entry file="file://$PROJECT_DIR$/database-core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceProgramTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#1255#1256#0" expanded="true" />
-            <element signature="e#1323#1324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/UriBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="80" column="64" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
+        <state relative-caret-position="123">
+          <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTopicDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/TestDataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -779,16 +762,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://af6b0a39-90c4-4a70-992f-df2bacd7c63d/database/postgres/schema/public/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/test/java/no/kristiania/pgr200/database/UriBuilderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-974">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ArgumentReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="240" selection-start-line="240" selection-end-line="241" />
+        <state relative-caret-position="-1549">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
           <folding>
             <element signature="e#1524#1525#0" expanded="true" />
             <element signature="e#1562#1563#0" expanded="true" />
             <element signature="e#1593#1594#0" expanded="true" />
             <element signature="e#1625#1626#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/test/java/no/kristiania/pgr200/database/ConferenceTalkDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/AbstractDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="21" column="74" selection-start-line="21" selection-start-column="74" selection-end-line="21" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logevents.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/ConferenceDatabaseProgram.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalkDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-core/src/main/java/no/kristiania/pgr200/database/ConferenceTalk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="68" column="27" selection-start-line="68" selection-start-column="27" selection-end-line="68" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database-main/src/main/java/no/kristiania/pgr200/database/HttpEchoServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
         </state>
       </provider>
     </entry>

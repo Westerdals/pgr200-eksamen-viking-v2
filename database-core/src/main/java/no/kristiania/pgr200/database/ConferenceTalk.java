@@ -34,6 +34,7 @@ public class ConferenceTalk implements BaseModel {
     public String getTable() {
         return "conference_talk";
     }
+
     @Override
     public String[] getColumnsWithValue() {
         return Arrays.stream(new String[]{
