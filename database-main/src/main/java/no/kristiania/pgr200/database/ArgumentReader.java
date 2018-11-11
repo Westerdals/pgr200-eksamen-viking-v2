@@ -1,14 +1,12 @@
 package no.kristiania.pgr200.database;
-import org.flywaydb.core.Flyway;
-import org.postgresql.core.SqlCommand;
 
+import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class ArgumentReader {
+
+class ArgumentReader {
 
     private String[] arguments;
     private String methodArgument;
@@ -26,7 +24,7 @@ public class ArgumentReader {
 
 
 
-    public ArgumentReader(String[] arguments) throws SQLException, IOException {
+    ArgumentReader(String[] arguments) throws SQLException, IOException {
         this.arguments = arguments;
         this.talkDao = new ConferenceTalkDao(ConferenceDatabaseProgram.createDataSource());
         this.topicDao = new ConferenceTopicDao(ConferenceDatabaseProgram.createDataSource());
@@ -43,24 +41,24 @@ public class ArgumentReader {
             } else if (i == 4) {
                 topicArgument = arguments[i];
             }
-         }
+        }
 
         readArguments();
     }
 
-    public ArgumentReader() {
+    ArgumentReader() {
 
     }
 
-    public int getStatusCode() {
+    int getStatusCode() {
         return this.statusCode;
     }
 
-    public String getBody() {
+    String getBody() {
         return this.body;
     }
 
-    public void readArguments() throws IOException, SQLException {
+    private void readArguments() throws IOException, SQLException {
         switch (methodArgument) {
             case "reset":
                 reset();
@@ -116,10 +114,10 @@ public class ArgumentReader {
                     this.statusCode = 404;
                     break;
                 } try {delete(Integer.parseInt(titleArgument));  //Converts string input to integer id
-                } catch (NumberFormatException e) {
-                    sb.append("retrieve failed: id has to be a number");
-                    this.body = sb.toString();
-                }
+            } catch (NumberFormatException e) {
+                sb.append("retrieve failed: id has to be a number");
+                this.body = sb.toString();
+            }
                 break;
             default:
                 sb.append("Unknown command");
@@ -130,7 +128,7 @@ public class ArgumentReader {
     }
 
 
-    public void reset() throws IOException {
+    void reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
         flyway.setDataSource(program.createDataSource());
@@ -139,17 +137,13 @@ public class ArgumentReader {
         sb.append("Successfully reset the database");
         this.statusCode = 200;
         this.body = sb.toString();
-        return;
     }
 
-    public int insert() throws SQLException {
+    private int insert() throws SQLException {
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
-            /*
-            TODO: Brag about this in documentation
-            Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
-             */
+
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
@@ -161,13 +155,13 @@ public class ArgumentReader {
                 talk.setTopic(topicArgument);
             }
             talkDao.insert(talk);
-            sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
+            sb.append("Successfully inserted ").append(titleArgument).append(" with topic: ").append(topicArgument).append(" into conference_talks");
             this.body = sb.toString();
             this.statusCode = 201;
             return 201;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
-            sb.append("Successfully inserted " + titleArgument + " into conference_talk");
+            sb.append("Successfully inserted ").append(titleArgument).append(" into conference_talk");
             talkDao.insert(talk);
             this.body = sb.toString();
             this.statusCode = 201;
@@ -176,17 +170,17 @@ public class ArgumentReader {
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .anyMatch(topic -> topic.toLowerCase().equals(titleArgument.toLowerCase()))) {
-                sb.append("topic " + titleArgument + " already exists");
+                sb.append("topic ").append(titleArgument).append(" already exists");
                 this.body = sb.toString();
                 this.statusCode = 202;
                 return 201;
             }
-                topic = new ConferenceTopic(titleArgument);
-                topicDao.insert(topic);
-                sb.append("Successfully inserted " + titleArgument + " into topic");
-                this.body = sb.toString();
-                this.statusCode = 201;
-                return 201;
+            topic = new ConferenceTopic(titleArgument);
+            topicDao.insert(topic);
+            sb.append("Successfully inserted ").append(titleArgument).append(" into topic");
+            this.body = sb.toString();
+            this.statusCode = 201;
+            return 201;
         }
         sb.append("Unknown Command");
         this.body = sb.toString();
@@ -198,7 +192,7 @@ public class ArgumentReader {
         if(talkDao.retrieveTalk(id) != null) {
             String talkTitle = talkDao.retrieveTalk(id).getTitle();
             talkDao.deleteTalk(id);
-            sb.append("Successfully deleted conference talk " + talkTitle);
+            sb.append("Successfully deleted conference talk ").append(talkTitle);
             this.body = sb.toString();
             this.statusCode = 200;
         } else {
@@ -208,7 +202,7 @@ public class ArgumentReader {
         }
     }
 
-    public void update(int id) throws SQLException {
+    private void update(int id) throws SQLException {
         if(descriptionArgument.equals("topic")) {
             List<ConferenceTopic> topics = topicDao.listTopics();
             if (topics.stream().map(ConferenceTopic::getTitle)
@@ -225,30 +219,28 @@ public class ArgumentReader {
 
         if(talkDao.retrieveTalk(id) != null) {
             talkDao.updateSingleObject(id, "conference_talk", descriptionArgument, topicArgument);
-            sb.append("Successfully updated conference talk " + id + "with " + topicArgument + " in " + descriptionArgument);
+            sb.append("Successfully updated conference talk ").append(id).append("with ").append(topicArgument).append(" in ").append(descriptionArgument);
             this.body = sb.toString();
             this.statusCode = 200;
-            return;
         } else {
             sb.append("The talk you tried to update does not exist");
             this.body = sb.toString();
             this.statusCode = 404;
-            return;
         }
     }
 
-    public void retrieve(int id) throws SQLException {
+    private void retrieve(int id) throws SQLException {
         if(objectArgument.equals("talk")) {
             if(id > talkDao.listTalks().size()) {
-                sb.append("There is no talk with id " + id);
+                sb.append("There is no talk with id ").append(id);
                 this.statusCode = 404;
                 this.body = sb.toString();
                 return;
             }
             try {
-                sb.append(talkDao.retrieveTalk(id).getId() + " " + talkDao.retrieveTalk(id).getTitle() + " " + talkDao.retrieveTalk(id).getDescription() + " " + talkDao.retrieveTalk(id).getTopic());
+                sb.append(talkDao.retrieveTalk(id).getId()).append(" ").append(talkDao.retrieveTalk(id).getTitle()).append(" ").append(talkDao.retrieveTalk(id).getDescription()).append(" ").append(talkDao.retrieveTalk(id).getTopic());
             } catch (NullPointerException e) {
-                sb.append("id " + id + " does not exist in conference talk");
+                sb.append("id ").append(id).append(" does not exist in conference talk");
                 this.body = sb.toString();
                 this.statusCode = 403;
                 return;
@@ -258,12 +250,12 @@ public class ArgumentReader {
             return;
         } else if (methodArgument.equals("retrieve") && objectArgument.equals("topic")) {
             if(id > topicDao.listTopics().size()) {
-                sb.append("There is no topic with id " + id);
+                sb.append("There is no topic with id ").append(id);
                 this.statusCode = 404;
                 this.body = sb.toString();
                 return;
             }
-            sb.append(topicDao.retrieveTopic(id).getId() + " " + topicDao.retrieveTopic(id).getTitle() + " ");
+            sb.append(topicDao.retrieveTopic(id).getId()).append(" ").append(topicDao.retrieveTopic(id).getTitle()).append(" ");
             this.body = sb.toString();
             this.statusCode = 200;
             return;
@@ -271,10 +263,9 @@ public class ArgumentReader {
         sb.append("Unknown command");
         this.body = sb.toString();
         this.statusCode = 404;
-        return;
     }
 
-    public void list() throws SQLException {
+    private void list() throws SQLException {
         if (objectArgument.equals("talks") && arguments.length <= 2) {
             if(talkDao.listTalks().isEmpty()) {
                 sb.append("There are no talks in conference talk");
@@ -283,7 +274,7 @@ public class ArgumentReader {
                 return;
             }
             for (ConferenceTalk talk : talkDao.listTalks()) {
-                sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
+                sb.append(talk.getId()).append(" ").append(talk.getTitle()).append(" ").append(talk.getDescription()).append(" ").append(talk.getTopic()).append(" \n");
             }
             this.body = sb.toString();
             this.statusCode = 200;
@@ -293,13 +284,13 @@ public class ArgumentReader {
             if (topics.stream().map(ConferenceTopic::getTitle)
                     .anyMatch(topic -> topic.toLowerCase().equals(descriptionArgument.toLowerCase()))) {
                 for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(descriptionArgument)) {
-                    sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
+                    sb.append(talk.getId()).append(" ").append(talk.getTitle()).append(" ").append(talk.getDescription()).append(" ").append(talk.getTopic()).append(" \n");
                 }
                 this.body = sb.toString();
                 this.statusCode = 200;
                 return;
             } else {
-                sb.append("there are not talks with " + descriptionArgument + " as topic");
+                sb.append("there are not talks with ").append(descriptionArgument).append(" as topic");
                 this.body = sb.toString();
                 this.statusCode = 403;
                 return;
@@ -308,7 +299,7 @@ public class ArgumentReader {
 
         if (objectArgument.equals("topics")) {
             for (ConferenceTopic topic : topicDao.listTopics()) {
-                sb.append(" " + topic.getId() + " " + topic.getTitle() + "\n");
+                sb.append(" ").append(topic.getId()).append(" ").append(topic.getTitle()).append("\n");
             }
             this.body = sb.toString();
             this.statusCode = 200;
@@ -317,6 +308,5 @@ public class ArgumentReader {
         this.statusCode = 404;
         sb.append("Unknown command");
         this.body = sb.toString();
-        return;
     }
 }
