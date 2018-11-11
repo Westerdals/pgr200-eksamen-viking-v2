@@ -31,7 +31,6 @@ public class HttpResponse {
 
     private void readBody() throws IOException {
         int contentLength = getContentLength();
-        System.out.println(contentLength);
         StringBuilder body = new StringBuilder();
         int c;
         int read = 0;

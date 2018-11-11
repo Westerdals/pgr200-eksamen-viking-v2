@@ -70,8 +70,6 @@ public class HttpEchoServer {
                 socket.getOutputStream().write(("Content-Length: " + setBody().getBytes(UTF_8).length + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write(setBody().getBytes(UTF_8));
-                System.out.println(setBody().getBytes(UTF_8).length);
-                System.out.println(setBody());
                 socket.getOutputStream().flush();
 
             } catch (IOException | SQLException e) {
@@ -138,7 +136,6 @@ public class HttpEchoServer {
             } else {
                 System.out.println("Invalid body arguments");
             }
-            System.out.println(body);
         }
         return body;
     }

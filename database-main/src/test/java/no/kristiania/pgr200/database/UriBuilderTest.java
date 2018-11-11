@@ -19,26 +19,26 @@ public class UriBuilderTest {
 
     @Test
     public void ShouldReturnCorrectHttpRequestForInsertingTalk() throws IOException {
-        String[] testSet = {"Insert", "talk", "my talk", "my description"};
+        String[] testSet = {"Insert", "talk", "my", "description"};
 
         //The UriBuilder doing a request
         HttpRequest request = new UriBuilder(server.getPort(), testSet).insert();
 
         //What the UriBuilder-request should look like
         HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
-                "title=my+talk" + "&description=my+description");
+                "title=my" + "&description=description");
 
         assertThat(request).isEqualToComparingFieldByField(compareRequest);
     }
 
     @Test
     public void ShouldReturnCorrectHttpRequestForInsertingTalkWithTopic() throws IOException {
-        String[] testSet = {"Insert", "topic", "my topic"};
+        String[] testSet = {"Insert", "topic", "my"};
 
         HttpRequest request = new UriBuilder(server.getPort(), testSet).insert();
 
         HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/topic", "POST",
-                "topic=my+topic");
+                "topic=my");
 
         assertThat(request).isEqualToComparingFieldByField(compareRequest);
     }
@@ -79,7 +79,7 @@ public class UriBuilderTest {
 
     @Test
     public void ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic() throws IOException {
-        String[] testSet = {"list", "talks", "with", "hacking"};
+        String[] testSet = {"list", "talks", "with", "my"};
 
         HttpRequest request = new UriBuilder(server.getPort(), testSet).list();
 
