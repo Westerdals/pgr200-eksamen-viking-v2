@@ -103,7 +103,7 @@ class ArgumentReader {
                 }
                 try {update(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 } catch (NumberFormatException e) {
-                    sb.append("retrieve failed: id has to be a number");
+                    sb.append("update failed: id has to be a number");
                     this.body = sb.toString();
                 }
                 break;
@@ -219,7 +219,7 @@ class ArgumentReader {
 
         if(talkDao.retrieveTalk(id) != null) {
             talkDao.updateSingleObject(id, "conference_talk", descriptionArgument, topicArgument);
-            sb.append("Successfully updated conference talk ").append(id).append("with ").append(topicArgument).append(" in ").append(descriptionArgument);
+            sb.append("Successfully updated conference talk ").append(id).append(" with ").append(topicArgument).append(" in ").append(descriptionArgument);
             this.body = sb.toString();
             this.statusCode = 200;
         } else {
@@ -242,7 +242,7 @@ class ArgumentReader {
             } catch (NullPointerException e) {
                 sb.append("id ").append(id).append(" does not exist in conference talk");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
             this.body = sb.toString();
@@ -270,7 +270,7 @@ class ArgumentReader {
             if(talkDao.listTalks().isEmpty()) {
                 sb.append("There are no talks in conference talk");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
             for (ConferenceTalk talk : talkDao.listTalks()) {
@@ -292,7 +292,7 @@ class ArgumentReader {
             } else {
                 sb.append("there are not talks with ").append(descriptionArgument).append(" as topic");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
         }

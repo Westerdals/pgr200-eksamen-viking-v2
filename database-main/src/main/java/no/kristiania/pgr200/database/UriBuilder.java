@@ -70,6 +70,7 @@ class UriBuilder {
             return new HttpRequest(hostname, port, "/update/talk", "PUT",
                      "id=" + titleArgument + "&column=" + descriptionArgument + "&value=" + topicArgument);
         }
+        System.out.println("Not valid input");
         return null;
     }
 
