@@ -86,4 +86,7 @@ public class HttpResponse {
         return headers.get(headerName);
     }
 
+    public int getStatusCode() {
+        return this.statusCode;
+    }
 }
