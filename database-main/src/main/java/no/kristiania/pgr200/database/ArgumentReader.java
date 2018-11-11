@@ -279,6 +279,7 @@ public class ArgumentReader {
             this.statusCode = 200;
             return;
         } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument != null) {
+
             for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(descriptionArgument)) {
                 sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
             }
