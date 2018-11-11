@@ -21,11 +21,7 @@ public class HttpQuery {
 			}
 		}
 	}
-	
-	public void addParameter(String key, String value) {
-		parameters.put(key, value);
-	}
-	
+
 	private String urlEncode(String substring) {
 		try {
 			return URLEncoder.encode(substring, StandardCharsets.ISO_8859_1.name());

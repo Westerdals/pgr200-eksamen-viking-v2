@@ -65,6 +65,7 @@ public class HttpResponse {
         String statusLine = readNextLine();
         String[] parts = statusLine.split(" ");
         statusCode = Integer.parseInt(parts[1]);
+        System.out.println(statusCode);
     }
 
     private String readNextLine() throws IOException {

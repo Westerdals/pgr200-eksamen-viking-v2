@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Properties;
 import javax.sql.DataSource;
 
@@ -51,7 +52,7 @@ public class ConferenceDatabaseProgram {
         new ConferenceDatabaseProgram().run(args);
     }
 
-    public void run(String[] args) throws SQLException, IOException {
+    public void run(String[] args) throws IOException {
         if (args.length == 0) {
             System.out.println("Run the class with one of these arguments:\n" +
                     "For inserting a talk/topic type Insert [Talk/Topic] [Title] [Description] <- Only for Talk \n" +
@@ -61,14 +62,16 @@ public class ConferenceDatabaseProgram {
         }
 
         if(args[0].equals("reset")) {
-            String[] reset = new String[1];
-            reset[0] = "reset";
-            ArgumentReader reader = new ArgumentReader(reset);
-            reader.reset();
-            System.out.println("reset");
+            resetDatabase();
         }
 
         builder = new UriBuilder(args);
 
+    }
+
+    public void resetDatabase() throws IOException {
+            ArgumentReader reader = new ArgumentReader();
+            reader.reset();
+            System.out.println("reset");
     }
 }

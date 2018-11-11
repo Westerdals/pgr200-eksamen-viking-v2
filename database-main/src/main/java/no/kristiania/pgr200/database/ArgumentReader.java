@@ -1,5 +1,7 @@
 package no.kristiania.pgr200.database;
 import org.flywaydb.core.Flyway;
+import org.postgresql.core.SqlCommand;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -46,6 +48,10 @@ public class ArgumentReader {
         readArguments();
     }
 
+    public ArgumentReader() {
+
+    }
+
     public int getStatusCode() {
         return this.statusCode;
     }
@@ -54,7 +60,7 @@ public class ArgumentReader {
         return this.body;
     }
 
-    public int readArguments() throws IOException, SQLException {
+    public void readArguments() throws IOException, SQLException {
         switch (methodArgument) {
             case "reset":
                 reset();
@@ -121,7 +127,6 @@ public class ArgumentReader {
                 this.statusCode = 404;
                 break;
         }
-        return statusCode;
     }
 
 
@@ -141,8 +146,6 @@ public class ArgumentReader {
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
-            sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
-
             /*
             TODO: Brag about this in documentation
             Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
@@ -158,9 +161,10 @@ public class ArgumentReader {
                 talk.setTopic(topicArgument);
             }
             talkDao.insert(talk);
+            sb.append("Successfully inserted " + titleArgument + " with topic: " + topicArgument + " into conference_talks");
             this.body = sb.toString();
-            this.statusCode = 202;
-            return 202;
+            this.statusCode = 201;
+            return 201;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
             sb.append("Successfully inserted " + titleArgument + " into conference_talk");
@@ -172,7 +176,7 @@ public class ArgumentReader {
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .anyMatch(topic -> topic.toLowerCase().equals(titleArgument.toLowerCase()))) {
-                sb.append(titleArgument + " already exists in topics");
+                sb.append("topic " + titleArgument + " already exists");
                 this.body = sb.toString();
                 this.statusCode = 202;
                 return 201;
@@ -241,7 +245,14 @@ public class ArgumentReader {
                 this.body = sb.toString();
                 return;
             }
-            sb.append(talkDao.retrieveTalk(id).getId() + " " + talkDao.retrieveTalk(id).getTitle() + " " + talkDao.retrieveTalk(id).getDescription() + " " + talkDao.retrieveTalk(id).getTopic());
+            try {
+                sb.append(talkDao.retrieveTalk(id).getId() + " " + talkDao.retrieveTalk(id).getTitle() + " " + talkDao.retrieveTalk(id).getDescription() + " " + talkDao.retrieveTalk(id).getTopic());
+            } catch (NullPointerException e) {
+                sb.append("id " + id + " does not exist in conference talk");
+                this.body = sb.toString();
+                this.statusCode = 403;
+                return;
+            }
             this.body = sb.toString();
             this.statusCode = 200;
             return;
@@ -265,23 +276,39 @@ public class ArgumentReader {
 
     public void list() throws SQLException {
         if (objectArgument.equals("talks") && arguments.length <= 2) {
+            if(talkDao.listTalks().isEmpty()) {
+                sb.append("There are no talks in conference talk");
+                this.body = sb.toString();
+                this.statusCode = 403;
+                return;
+            }
             for (ConferenceTalk talk : talkDao.listTalks()) {
                 sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
             }
             this.body = sb.toString();
             this.statusCode = 200;
             return;
-        } else if (objectArgument.equals("topics")) {
-            for (ConferenceTopic topic : topicDao.listTopics()) {
-                sb.append(" " + topic.getId() + " " + topic.getTitle() + " ");
-            }
-            this.body = sb.toString();
-            this.statusCode = 200;
-            return;
         } else if(objectArgument.equals("talks") && titleArgument.equals("with") && descriptionArgument != null) {
+            List<ConferenceTopic> topics = topicDao.listTopics();
+            if (topics.stream().map(ConferenceTopic::getTitle)
+                    .anyMatch(topic -> topic.toLowerCase().equals(descriptionArgument.toLowerCase()))) {
+                for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(descriptionArgument)) {
+                    sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
+                }
+                this.body = sb.toString();
+                this.statusCode = 200;
+                return;
+            } else {
+                sb.append("there are not talks with " + descriptionArgument + " as topic");
+                this.body = sb.toString();
+                this.statusCode = 403;
+                return;
+            }
+        }
 
-            for (ConferenceTalk talk : talkDao.listConferenceTalkWithTopic(descriptionArgument)) {
-                sb.append(talk.getId() + " " + talk.getTitle() + " " + talk.getDescription() + " " + talk.getTopic() + " \n");
+        if (objectArgument.equals("topics")) {
+            for (ConferenceTopic topic : topicDao.listTopics()) {
+                sb.append(" " + topic.getId() + " " + topic.getTitle() + "\n");
             }
             this.body = sb.toString();
             this.statusCode = 200;
