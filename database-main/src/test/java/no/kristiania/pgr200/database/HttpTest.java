@@ -58,7 +58,7 @@ public class HttpTest {
         HttpRequest request = new HttpRequest("localhost", server.getPort(), "/update/talk", "PUT",
                 "id=1&column=title&value=hacks");
         HttpResponse response = request.execute();
-        assertThat(response.getBody()).isEqualTo("The talk you tried to update does not exist");
+        assertThat(response.getBody()).isEqualTo("Successfully updated conference talk 1 with hacks in title");
     }
 
     @Test

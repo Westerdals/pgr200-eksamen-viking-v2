@@ -105,7 +105,7 @@ public class ArgumentReader {
                 }
                 try {update(Integer.parseInt(titleArgument));  //Converts string input to integer id
                 } catch (NumberFormatException e) {
-                    sb.append("retrieve failed: id has to be a number");
+                    sb.append("update failed: id has to be a number");
                     this.body = sb.toString();
                 }
                 break;
@@ -146,10 +146,6 @@ public class ArgumentReader {
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
-            /*
-            TODO: Brag about this in documentation
-            Handles edgecase where capital topic already exists, and user tries to insert lowercase topic
-             */
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
                     .noneMatch(topic -> topic.toLowerCase().equals(topicArgument.toLowerCase()))) {
@@ -225,9 +221,9 @@ public class ArgumentReader {
 
         if(talkDao.retrieveTalk(id) != null) {
             talkDao.updateSingleObject(id, "conference_talk", descriptionArgument, topicArgument);
-            sb.append("Successfully updated conference talk " + id + "with " + topicArgument + " in " + descriptionArgument);
+            sb.append("Successfully updated conference talk " + id + " with " + topicArgument + " in " + descriptionArgument);
             this.body = sb.toString();
-            this.statusCode = 200;
+            this.statusCode = 201;
             return;
         } else {
             sb.append("The talk you tried to update does not exist");
@@ -250,7 +246,7 @@ public class ArgumentReader {
             } catch (NullPointerException e) {
                 sb.append("id " + id + " does not exist in conference talk");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
             this.body = sb.toString();
@@ -279,7 +275,7 @@ public class ArgumentReader {
             if(talkDao.listTalks().isEmpty()) {
                 sb.append("There are no talks in conference talk");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
             for (ConferenceTalk talk : talkDao.listTalks()) {
@@ -301,7 +297,7 @@ public class ArgumentReader {
             } else {
                 sb.append("there are not talks with " + descriptionArgument + " as topic");
                 this.body = sb.toString();
-                this.statusCode = 403;
+                this.statusCode = 404;
                 return;
             }
         }
