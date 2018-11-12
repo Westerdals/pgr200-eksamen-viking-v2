@@ -57,48 +57,48 @@ class UriBuilder {
 
 
     HttpRequest retrieve() throws IOException {
-        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
+        if(objectArgument != null && arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/retrieve/talk/" + titleArgument, "GET");
         } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/retrieve/topic/" + titleArgument, "GET");
-        } System.out.println("Not valid input");
+        } System.out.println("Invalid input");
         return null;
     }
 
     private void update() throws IOException {
-        if(arguments.length == 5 && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
+        if(objectArgument != null && arguments.length == 5 && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
             new HttpRequest(hostname, port, "/update/talk", "PUT",
                     "id=" + titleArgument + "&column=" + descriptionArgument + "&value=" + topicArgument);
             return;
         }
-        System.out.println("Not valid input");
+        System.out.println("Invalid input");
     }
 
     HttpRequest delete() throws IOException {
-        if(arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
+        if(objectArgument != null && arguments.length == 3 && objectArgument.equals("talk") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/delete/talk/" + titleArgument, "DELETE");
-        } else if(arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+        } else if(objectArgument != null && arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/delete/topic/" + titleArgument, "DELETE");
-        } System.out.println("Not valid input");
+        } System.out.println("Invalid input");
         return null;
     }
 
     HttpRequest insert() throws IOException {
-        if(objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
+        if(objectArgument != null && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument == null) {
             return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument);
-        } else if (objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
+        } else if (objectArgument != null && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
             return new HttpRequest(hostname, port, "/insert/talk", "POST",
                     "title=" + titleArgument + "&description=" + descriptionArgument + "&topic=" + topicArgument);
-        } else if (arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
+        } else if (objectArgument != null && arguments.length == 3 && objectArgument.equals("topic") && titleArgument != null) {
             return new HttpRequest(hostname, port, "/insert/topic", "POST",
                     "topic=" + titleArgument);
-        } System.out.println("Not valid input");
+        } System.out.println("Invalid input");
         return null;
     }
 
     HttpRequest list() throws IOException {
-        if(arguments.length == 2 && objectArgument.equals("talks")) {
+        if(objectArgument != null && arguments.length == 2 && objectArgument.equals("talks")) {
             return new HttpRequest(hostname, port, "/list/talks", "GET");
         } else if(arguments.length == 2 && objectArgument.equals("topics")) {
             return new HttpRequest(hostname, port, "/list/topics", "GET");
