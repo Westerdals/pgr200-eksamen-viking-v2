@@ -3,9 +3,10 @@
 # Kjøring
 
 1. Oppdater innlevering.properties med database settings i root (Når mvn package blir kjørt vil properties automatisk flytte seg til target folder). 
-2. Når du står i root, naviger til `cd database-main/target/` 
+2. Kjør `mvn clean package`
+3. Når du står i root, naviger til `cd database-main/target/` 
 3. Kjør `java -jar server.jar`
-4. I nytt terminalvindu kjører du `java -jar client.jar` med ønsket [kommando](#kommandoer)
+4. I nytt terminalvindu navigerer du deg til `database-main/target` og kjører `java -jar client.jar` med ønsket [kommando](#kommandoer)
 
 Eksempel:
 
