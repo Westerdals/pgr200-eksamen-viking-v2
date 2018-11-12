@@ -2,10 +2,11 @@
 
 # Kjøring
 
-1. Oppdater innlevering.properties med database settings i root (Når mvn package blir kjørt vil properties automatisk flytte seg). 
-2. Når du står i root, naviger til `cd database-main/target/` 
+1. Oppdater innlevering.properties med database settings i root (Når mvn package blir kjørt vil properties automatisk flytte seg til target folder). 
+2. Kjør `mvn clean package`
+3. Når du står i root, naviger til `cd database-main/target/` 
 3. Kjør `java -jar server.jar`
-4. I nytt terminalvindu kjører du `java -jar client.jar` med ønsket [kommando](#kommandoer)
+4. I nytt terminalvindu navigerer du deg til `database-main/target` og kjører `java -jar client.jar` med ønsket [kommando](#kommandoer)
 
 Eksempel:
 
@@ -87,8 +88,6 @@ måte. Vi har også tatt bruk i Travis CI. Dette var jo noe helt nytt, men følt
 se at alt kjørte slik det skulle. Vi hadde mye problemer å få buildet prosjektet i Travis, selv om alle
 testene kjørte grønt lokalt. Dette viste seg å være et problem med H2 databasen. Etter utallige timer med
 debugging fikk vi endelig ordnet det (Dette er hvorfor vi har så stygg Travis historikk). 
-
-### Maven
 
 
 ### Sammarbeid og arbeidsmengde 
