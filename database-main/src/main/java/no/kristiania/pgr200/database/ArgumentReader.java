@@ -222,6 +222,7 @@ class ArgumentReader {
             sb.append("Successfully updated conference talk ").append(id).append(" with ").append(topicArgument).append(" in ").append(descriptionArgument);
             this.body = sb.toString();
             this.statusCode = 200;
+
         } else {
             sb.append("The talk you tried to update does not exist");
             this.body = sb.toString();
