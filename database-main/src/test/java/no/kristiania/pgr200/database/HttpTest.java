@@ -1,18 +1,11 @@
 package no.kristiania.pgr200.database;
 
-
 import org.flywaydb.core.Flyway;
-import org.h2.jdbcx.JdbcDataSource;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
+import org.junit.Before;
 import org.junit.Test;
-
-import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -21,15 +14,18 @@ public class HttpTest {
     private String query;
 
 
-    @BeforeClass
-    public static void startServer() throws IOException {
+    @Before
+    public void startServer() throws IOException {
+        ConferenceDatabaseProgram.useH2 = true;
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(ConferenceDatabaseProgram.createH2DataSource());
+        flyway.migrate();
         server = new HttpEchoServer(0);
         populateDatabase();
-
     }
 
     public static void populateDatabase() throws IOException {
-        HttpRequest insert = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
+        new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
                 "title=hacks" + "&description=hacking" + "&topic=hacking");
     }
 
@@ -55,7 +51,6 @@ public class HttpTest {
         assertThat(response.getBody()).isEqualTo("Successfully inserted my into conference_talk");
     }
 
-    @Ignore
     @Test
     public void shouldPutData() throws IOException {
         HttpRequest request = new HttpRequest("localhost", server.getPort(), "/update/talk", "PUT",
@@ -92,7 +87,7 @@ public class HttpTest {
         HttpRequest request = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
                 "title=my&description=description");
         HttpResponse response = request.execute();
-        assertThat(response.getHeader("Content-Length")).isEqualTo("45");
+        assertThat(response.getHeader()).isEqualTo("45");
     }
 
     @Test

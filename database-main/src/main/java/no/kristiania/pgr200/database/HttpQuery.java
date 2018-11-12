@@ -11,7 +11,7 @@ public class HttpQuery {
 	
 	private Map<String, String> parameters = new LinkedHashMap<>();
 	
-	public HttpQuery(String query) {
+	HttpQuery(String query) {
 		if (!query.isEmpty()) {
 			for (String parameter : query.split("&")) {
 				int equalsPos = parameter.indexOf('=');
@@ -52,7 +52,7 @@ public class HttpQuery {
 		return query.toString();
 	}
 
-	public String getParameter(String key) {
+	String getParameter(String key) {
 		return parameters.get(key);
 	}
 

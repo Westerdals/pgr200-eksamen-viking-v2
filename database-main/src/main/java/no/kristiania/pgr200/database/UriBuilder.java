@@ -65,13 +65,13 @@ class UriBuilder {
         return null;
     }
 
-    HttpRequest update() throws IOException {
+    private void update() throws IOException {
         if(arguments.length == 5 && objectArgument.equals("talk") && titleArgument != null && descriptionArgument != null && topicArgument != null) {
-            return new HttpRequest(hostname, port, "/update/talk", "PUT",
-                     "id=" + titleArgument + "&column=" + descriptionArgument + "&value=" + topicArgument);
+            new HttpRequest(hostname, port, "/update/talk", "PUT",
+                    "id=" + titleArgument + "&column=" + descriptionArgument + "&value=" + topicArgument);
+            return;
         }
         System.out.println("Not valid input");
-        return null;
     }
 
     HttpRequest delete() throws IOException {

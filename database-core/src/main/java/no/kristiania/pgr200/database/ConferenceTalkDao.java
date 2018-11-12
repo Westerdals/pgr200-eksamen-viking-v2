@@ -39,7 +39,6 @@ public class ConferenceTalkDao extends AbstractDao {
 
     public List<ConferenceTalk> listConferenceTalkWithTopic(String topic) throws SQLException {
         return list("select * from conference_talk", this::mapToTalk)
-                .stream().filter(s -> topic.equals(s.getTopic())).collect(Collectors.toList());
-    }
+                .stream().filter(s -> s.getTopic() != null && topic.toLowerCase().equals(s.getTopic().toLowerCase())).collect(Collectors.toList());    }
 
 }

@@ -10,5 +10,9 @@
         <module name="database-main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="database-server" target="1.8" />
+      <module name="databaseserver" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

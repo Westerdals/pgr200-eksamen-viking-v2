@@ -1,6 +1,5 @@
 package no.kristiania.pgr200.database;
 
-import java.time.LocalTime;
 import java.util.Arrays;
 
 public class ConferenceTalk implements BaseModel {

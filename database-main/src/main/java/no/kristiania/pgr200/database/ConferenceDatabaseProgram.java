@@ -1,37 +1,31 @@
 package no.kristiania.pgr200.database;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ConnectException;
-import java.sql.*;
-import java.util.Arrays;
 import java.util.Properties;
 import javax.sql.DataSource;
-
-import com.sun.org.apache.xpath.internal.Arg;
-import org.flywaydb.core.Flyway;
+import org.h2.jdbcx.JdbcDataSource;
 import org.postgresql.ds.PGPoolingDataSource;
 
 public class ConferenceDatabaseProgram {
 
-    private DataSource dataSource;
-    private ConferenceTalkDao talkDao;
-    private ConferenceTopicDao topicDao;
-    private UriBuilder builder;
-    private ArgumentReader reader;
+    static boolean useH2 = false;
 
-    public ConferenceDatabaseProgram() throws IOException {
-        this.dataSource = createDataSource();
-        this.talkDao = new ConferenceTalkDao(dataSource);
-        this.topicDao = new ConferenceTopicDao(dataSource);
+    ConferenceDatabaseProgram() throws IOException {
+        DataSource dataSource = createDataSource();
+        ConferenceTalkDao talkDao = new ConferenceTalkDao(dataSource);
+        ConferenceTopicDao topicDao = new ConferenceTopicDao(dataSource);
 
     }
 
-    public static DataSource createDataSource() throws IOException {
+    static DataSource createDataSource() throws IOException {
+        if(useH2){
+            return createH2DataSource();
+        }
         Properties props = new Properties();
 
-        try( FileInputStream in = new FileInputStream("db.properties")) {
+        try( FileInputStream in = new FileInputStream("innlevering.properties")) {
             props.load(in);
         }
 
@@ -47,18 +41,24 @@ public class ConferenceDatabaseProgram {
         return dataSource;
     }
 
+    static DataSource createH2DataSource(){
+        JdbcDataSource dataSource = new JdbcDataSource();
+        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+        dataSource.setUser("sa");
+        dataSource.setPassword("sa");
+        return dataSource;
+    }
+
 
     //TODO: Tell user to start server + Handle crash if server is not started
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws IOException {
         new ConferenceDatabaseProgram().run(args);
     }
 
-    public void run(String[] args) throws IOException {
+    private void run(String[] args) throws IOException {
         if (args.length == 0) {
-            System.out.println("Run the class with one of these arguments:\n" +
-                    "For inserting a talk/topic type insert [talk/topic] [title] [description] <- Only for Talk \n" +
-                    "To Retrieve a single object type Retrieve [talk/topic] and ID for talk \n" +
-                    "To List either every talk or topic type list [talk/topic]");
+            System.out.println("Application needs commands to run \n" +
+                    "See README.md for full list of commands");
             System.exit(1);
         }
 
@@ -67,15 +67,15 @@ public class ConferenceDatabaseProgram {
             return;
         }
         try {
-            builder = new UriBuilder(args);
+            new UriBuilder(args);
         } catch (ConnectException e) {
-            System.out.println("Start the server before running the clinet");
+            System.out.println("Start the server before running the client");
         }
 
 
     }
 
-    public void resetDatabase() throws IOException {
+    void resetDatabase() throws IOException {
             ArgumentReader reader = new ArgumentReader();
             reader.reset();
             System.out.println("Database has been reset");

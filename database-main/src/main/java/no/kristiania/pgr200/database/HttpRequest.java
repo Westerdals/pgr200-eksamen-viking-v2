@@ -5,19 +5,19 @@ import java.net.Socket;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class HttpRequest {
+class HttpRequest {
 
-    String requestMethod;
+    private String requestMethod;
     private String hostname;
     private String uri;
     private int port;
     private String body;
 
-    public HttpRequest(String hostname, int port, String uri, String requestMethod) throws IOException {
+    HttpRequest(String hostname, int port, String uri, String requestMethod) throws IOException {
         this(hostname, port, uri, requestMethod, "");
     }
 
-    public HttpRequest(String hostname, int port, String uri, String requestMethod, String body) throws IOException {
+    HttpRequest(String hostname, int port, String uri, String requestMethod, String body) throws IOException {
         this.hostname = hostname;
         this.uri = uri;
         this.port = port;
@@ -26,7 +26,7 @@ public class HttpRequest {
         execute();
     }
 
-    public HttpResponse execute() throws IOException {
+    HttpResponse execute() throws IOException {
         try(Socket socket = new Socket(hostname, port)) {
             socket.getOutputStream()
                     .write((requestMethod + " " + uri + " HTTP/1.1\r\n").getBytes());
@@ -44,6 +44,7 @@ public class HttpRequest {
             if(body != null && !body.trim().isEmpty()) {
                 socket.getOutputStream().write(body.trim().getBytes(UTF_8));
             }
+            socket.getOutputStream().flush();
 
             return new HttpResponse(socket);
         }

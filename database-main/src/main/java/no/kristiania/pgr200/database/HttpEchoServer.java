@@ -1,14 +1,8 @@
 package no.kristiania.pgr200.database;
-
-
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.URLDecoder;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +14,7 @@ public class HttpEchoServer {
 
     private ServerSocket serverSocket;
     private ArgumentReader argumentReader;
-    private int statusCode;
-    String requestMethod;
-    private HttpRequest request;
+    private String requestMethod;
 
     public static void main(String[] args) throws IOException {
         HttpEchoServer server = new HttpEchoServer(8080);
@@ -34,8 +26,8 @@ public class HttpEchoServer {
         thread.start();
     }
 
-    public void runServer(ServerSocket serverSocket) {
-
+    private void runServer(ServerSocket serverSocket) {
+        System.out.println("Server now running");
         while (true) {
 
             try {
@@ -64,13 +56,10 @@ public class HttpEchoServer {
                 // Writes the response
                 socket.getOutputStream().write(("HTTP/1.1 " + setStatusCode() + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());
-                socket.getOutputStream().write("Server: Kristiania Java Server!!\r\n".getBytes());
                 socket.getOutputStream().write(("Content-Length: " + setBody().getBytes(UTF_8).length + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write(setBody().getBytes(UTF_8));
                 socket.getOutputStream().flush();
-                socket.close();
-
             } catch (IOException | SQLException e) {
                 //TODO: Do something here?
                 e.printStackTrace();
@@ -79,19 +68,16 @@ public class HttpEchoServer {
         }
     }
 
-    public String setBody() {
-        String body = argumentReader.getBody();
-        return body;
+    private String setBody() {
+        return argumentReader.getBody();
     }
 
-    public int setStatusCode() {
-        int statusCode = argumentReader.getStatusCode();
-        return statusCode;
+    private int setStatusCode() {
+        return argumentReader.getStatusCode();
     }
 
 
-    //TODO: Refactor setting the body
-    public String readBody(Map<String, String> headers, Socket socket) throws IOException {
+    private String readBody(Map<String, String> headers, Socket socket) throws IOException {
         StringBuilder bodyBuilder = new StringBuilder();
         int contentLength = Integer.parseInt(headers.getOrDefault("content-length", "0"));
         String body = null;
@@ -106,41 +92,41 @@ public class HttpEchoServer {
             }
             body = bodyBuilder.toString();
             HttpQuery query = new HttpQuery(body);
-            if (this.requestMethod.equals("POST")) {
-                body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
-            } else if (this.requestMethod.equals("PUT")) {
-                body = query.getParameter("id") + " " + query.getParameter("column") + " " + query.getParameter("value");
-            } else {
-                System.out.println("Invalid body arguments");
+            switch (this.requestMethod) {
+                case "POST":
+                    body = query.getParameter("title") + " " + query.getParameter("description") + " " + query.getParameter("topic");
+                    break;
+                case "PUT":
+                    body = query.getParameter("id") + " " + query.getParameter("column") + " " + query.getParameter("value");
+                    break;
+                default:
+                    System.out.println("Invalid body arguments");
+                    break;
             }
         }
         return body;
     }
 
 
-    public String[] getArguments(String uri, String body) {
-        String[] arguments = Stream.concat(Arrays.stream(getUriArguments(uri)), Arrays.stream(getBodyArguments(body)))
+    private String[] getArguments(String uri, String body) {
+        return Stream.concat(Arrays.stream(getUriArguments(uri)), Arrays.stream(getBodyArguments(body)))
                 .filter(Arrays -> !"null".equals(Arrays))
                 .toArray(String[]::new);
-        return arguments;
     }
 
-    public String[] getBodyArguments(String body) {
-        String[] bodyArguments = body.split(" ");
-        return bodyArguments;
+    private String[] getBodyArguments(String body) {
+        return body.split(" ");
     }
 
-    public String[] getUriArguments(String uri) {
+    private String[] getUriArguments(String uri) {
         String[] argumentsUri = uri.split("/");
         String[] uriArguments = new String[argumentsUri.length - 1];
-        for(int i = 1; i < argumentsUri.length; i++) {
-            uriArguments[i - 1] = argumentsUri[i];
-        }
+        if (argumentsUri.length - 1 >= 0) System.arraycopy(argumentsUri, 1, uriArguments, 0, argumentsUri.length - 1);
         return uriArguments;
     }
 
 
-    public String readLine(Socket socket) throws IOException {
+    private String readLine(Socket socket) throws IOException {
         StringBuilder requestLine = new StringBuilder();
         // Reads the first line
         int c;
@@ -154,7 +140,7 @@ public class HttpEchoServer {
         return requestLine.toString();
     }
 
-    public int getPort() {
+    int getPort() {
         return serverSocket.getLocalPort();
 
     }

@@ -1,11 +1,6 @@
 package no.kristiania.pgr200.database;
-
-
 import org.flywaydb.core.Flyway;
-import org.h2.jdbcx.JdbcDataSource;
 import org.junit.*;
-
-import javax.sql.DataSource;
 import java.io.IOException;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -15,15 +10,18 @@ public class UriBuilderTest {
     private static HttpEchoServer server;
 
 
-    @BeforeClass
-    public static void startServer() throws IOException {
+    @Before
+    public void startServer() throws IOException {
+        ConferenceDatabaseProgram.useH2 = true;
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(ConferenceDatabaseProgram.createH2DataSource());
+        flyway.migrate();
         server = new HttpEchoServer(0);
-       populateDatabase();
-
+        populateDatabase();
     }
 
-    public static void populateDatabase() throws IOException {
-        HttpRequest insert = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
+    private static void populateDatabase() throws IOException {
+        new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
                 "title=hacks" + "&description=hacking" + "&topic=hacking");
     }
 
@@ -35,10 +33,7 @@ public class UriBuilderTest {
     @Test
     public void ShouldReturnCorrectHttpRequestForInsertingTalk() throws IOException {
         String[] testSet = {"Insert", "talk", "hacks", "hacking"};
-        //The UriBuilder doing a request
         HttpRequest request = new UriBuilder(server.getPort(), testSet).insert();
-
-        //What the UriBuilder-request should look like
         HttpRequest compareRequest = new HttpRequest("localhost", server.getPort(), "/insert/talk", "POST",
                 "title=hacks" + "&description=hacking");
         assertThat(request).isEqualToComparingFieldByField(compareRequest);
@@ -79,7 +74,6 @@ public class UriBuilderTest {
     }
 
     @Test
-    @Ignore
     public void ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic() throws IOException {
         String[] testSet = {"list", "talks", "with", "hacking"};
         HttpRequest request = new UriBuilder(server.getPort(), testSet).list();

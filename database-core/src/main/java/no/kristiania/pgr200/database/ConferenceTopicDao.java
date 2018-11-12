@@ -1,8 +1,6 @@
 package no.kristiania.pgr200.database;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -11,7 +9,7 @@ public class ConferenceTopicDao extends AbstractDao {
 
     private DataSource dataSource;
 
-    public ConferenceTopicDao(DataSource dataSource) {
+    ConferenceTopicDao(DataSource dataSource) {
         super(dataSource);
         this.dataSource = dataSource;
     }

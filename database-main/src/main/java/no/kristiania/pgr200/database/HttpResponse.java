@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class HttpResponse {
+class HttpResponse {
 
     private int statusCode;
 
@@ -18,11 +18,11 @@ public class HttpResponse {
 
     private String body;
 
-    public String getBody() {
+    String getBody() {
         return body;
     }
 
-    public HttpResponse(Socket socket) throws IOException {
+    HttpResponse(Socket socket) throws IOException {
         input = socket.getInputStream();
         readStatusLine();
         readHeaderLines();
@@ -45,7 +45,7 @@ public class HttpResponse {
     }
 
     private int getContentLength() {
-        return Integer.parseInt(getHeader("Content-Length"));
+        return Integer.parseInt(getHeader());
     }
 
     private void readHeaderLines() throws IOException {
@@ -65,7 +65,6 @@ public class HttpResponse {
         String statusLine = readNextLine();
         String[] parts = statusLine.split(" ");
         statusCode = Integer.parseInt(parts[1]);
-        System.out.println(statusCode);
     }
 
     private String readNextLine() throws IOException {
@@ -82,11 +81,11 @@ public class HttpResponse {
         return currentLine.toString();
     }
 
-    public String getHeader(String headerName) {
-        return headers.get(headerName);
+    String getHeader() {
+        return headers.get("Content-Length");
     }
 
-    public int getStatusCode() {
+    int getStatusCode() {
         return this.statusCode;
     }
 }

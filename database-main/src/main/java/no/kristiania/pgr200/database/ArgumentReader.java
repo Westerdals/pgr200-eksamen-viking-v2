@@ -14,14 +14,12 @@ class ArgumentReader {
     private String titleArgument;
     private String descriptionArgument;
     private String topicArgument;
-    private ConferenceTalk talk;
     private ConferenceTopic topic;
     private ConferenceTalkDao talkDao;
     private ConferenceTopicDao topicDao;
     private int statusCode;
     private String body;
     private StringBuilder sb = new StringBuilder();
-
 
 
     ArgumentReader(String[] arguments) throws SQLException, IOException {
@@ -131,7 +129,7 @@ class ArgumentReader {
     void reset() throws IOException {
         ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
         Flyway flyway = new Flyway();
-        flyway.setDataSource(program.createDataSource());
+        flyway.setDataSource(ConferenceDatabaseProgram.createDataSource());
         flyway.clean();
         flyway.migrate();
         sb.append("Successfully reset the database");
@@ -139,7 +137,16 @@ class ArgumentReader {
         this.body = sb.toString();
     }
 
-    private int insert() throws SQLException {
+    private void migrate() throws IOException {
+        ConferenceDatabaseProgram program = new ConferenceDatabaseProgram();
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(ConferenceDatabaseProgram.createDataSource());
+        flyway.migrate();
+    }
+
+
+    private void insert() throws SQLException, IOException {
+        ConferenceTalk talk;
         if (arguments.length > 4) {
             topic = new ConferenceTopic(topicArgument);
             talk = new ConferenceTalk(titleArgument, descriptionArgument, topicArgument);
@@ -156,16 +163,18 @@ class ArgumentReader {
             }
             talkDao.insert(talk);
             sb.append("Successfully inserted ").append(titleArgument).append(" with topic: ").append(topicArgument).append(" into conference_talks");
+            migrate();
             this.body = sb.toString();
             this.statusCode = 201;
-            return 201;
+            return;
         } else if (objectArgument.equals("talk") && arguments.length > 3) {
             talk = new ConferenceTalk(titleArgument, descriptionArgument);
             sb.append("Successfully inserted ").append(titleArgument).append(" into conference_talk");
             talkDao.insert(talk);
             this.body = sb.toString();
             this.statusCode = 201;
-            return 201;
+            migrate();
+            return;
         } else if(objectArgument.equals("topic")) { //Insert topic
             List<ConferenceTopic> topics = topicDao.listTopics();
             if(topics.stream().map(ConferenceTopic::getTitle)
@@ -173,36 +182,38 @@ class ArgumentReader {
                 sb.append("topic ").append(titleArgument).append(" already exists");
                 this.body = sb.toString();
                 this.statusCode = 202;
-                return 201;
+                return;
             }
             topic = new ConferenceTopic(titleArgument);
             topicDao.insert(topic);
             sb.append("Successfully inserted ").append(titleArgument).append(" into topic");
             this.body = sb.toString();
             this.statusCode = 201;
-            return 201;
+            migrate();
+            return;
         }
         sb.append("Unknown Command");
         this.body = sb.toString();
         this.statusCode = 404;
-        return 404;
     }
 
-    private void delete(int id) throws SQLException {
+    private void delete(int id) throws SQLException, IOException {
         if(talkDao.retrieveTalk(id) != null) {
             String talkTitle = talkDao.retrieveTalk(id).getTitle();
             talkDao.deleteTalk(id);
             sb.append("Successfully deleted conference talk ").append(talkTitle);
             this.body = sb.toString();
             this.statusCode = 200;
+            migrate();
         } else {
             sb.append("The talk you tried to delete does not exist");
             this.body = sb.toString();
             this.statusCode = 404;
+            migrate();
         }
     }
 
-    private void update(int id) throws SQLException {
+    private void update(int id) throws SQLException, IOException {
         if(descriptionArgument.equals("topic")) {
             List<ConferenceTopic> topics = topicDao.listTopics();
             if (topics.stream().map(ConferenceTopic::getTitle)
@@ -222,6 +233,7 @@ class ArgumentReader {
             sb.append("Successfully updated conference talk ").append(id).append(" with ").append(topicArgument).append(" in ").append(descriptionArgument);
             this.body = sb.toString();
             this.statusCode = 200;
+            migrate();
 
         } else {
             sb.append("The talk you tried to update does not exist");
