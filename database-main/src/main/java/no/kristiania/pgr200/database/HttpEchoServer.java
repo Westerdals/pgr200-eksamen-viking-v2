@@ -62,7 +62,7 @@ public class HttpEchoServer {
                 // Writes the response
                 socket.getOutputStream().write(("HTTP/1.1 " + setStatusCode() + " OK\r\n").getBytes());
                 socket.getOutputStream().write("Content-Type: text/html; charset=utf-8\r\n".getBytes());
-                socket.getOutputStream().write("Server: Kristiania Java Server!!\r\n".getBytes());
+                socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write(("Content-Length: " + setBody().getBytes(UTF_8).length + "\r\n").getBytes());
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write(setBody().getBytes(UTF_8));
