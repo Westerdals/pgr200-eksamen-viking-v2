@@ -21,6 +21,7 @@ public class HttpEchoServer {
     private ArgumentReader argumentReader;
     private int statusCode;
     String requestMethod;
+    public static boolean TEST_ENVIRONMENT = false;
 
     public static void main(String[] args) throws IOException {
         HttpEchoServer server = new HttpEchoServer(8080);
@@ -67,12 +68,12 @@ public class HttpEchoServer {
                 socket.getOutputStream().write("\r\n".getBytes());
                 socket.getOutputStream().write(setBody().getBytes(UTF_8));
                 socket.getOutputStream().flush();
-
             } catch (IOException | SQLException e) {
                 //TODO: Do something here?
                 e.printStackTrace();
                 System.out.println("Something went wrong with the server");
             }
+            //if(TEST_ENVIRONMENT) break;
         }
     }
 

@@ -1,18 +1,11 @@
 package no.kristiania.pgr200.database;
 
-
-import org.flywaydb.core.Flyway;
-import org.h2.jdbcx.JdbcDataSource;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import javax.sql.DataSource;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
@@ -55,7 +48,6 @@ public class HttpTest {
         assertThat(response.getBody()).isEqualTo("Successfully inserted my into conference_talk");
     }
 
-    @Ignore
     @Test
     public void shouldPutData() throws IOException {
         HttpRequest request = new HttpRequest("localhost", server.getPort(), "/update/talk", "PUT",

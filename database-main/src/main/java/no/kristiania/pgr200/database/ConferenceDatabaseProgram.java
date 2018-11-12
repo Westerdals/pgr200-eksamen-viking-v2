@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import com.sun.org.apache.xpath.internal.Arg;
 import org.flywaydb.core.Flyway;
+import org.h2.jdbcx.JdbcDataSource;
 import org.postgresql.ds.PGPoolingDataSource;
 
 public class ConferenceDatabaseProgram {
@@ -19,6 +20,7 @@ public class ConferenceDatabaseProgram {
     private ConferenceTopicDao topicDao;
     private UriBuilder builder;
     private ArgumentReader reader;
+    public static boolean useH2 = false;
 
     public ConferenceDatabaseProgram() throws IOException {
         this.dataSource = createDataSource();
@@ -28,6 +30,9 @@ public class ConferenceDatabaseProgram {
     }
 
     public static DataSource createDataSource() throws IOException {
+        if(useH2){
+            return createH2DataSource();
+        }
         Properties props = new Properties();
 
         try( FileInputStream in = new FileInputStream("db.properties")) {
@@ -43,6 +48,14 @@ public class ConferenceDatabaseProgram {
         dataSource.setUser(username);
         dataSource.setPassword(password);
 
+        return dataSource;
+    }
+
+    public static DataSource createH2DataSource(){
+        JdbcDataSource dataSource = new JdbcDataSource();
+        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+        dataSource.setUser("sa");
+        dataSource.setPassword("sa");
         return dataSource;
     }
 

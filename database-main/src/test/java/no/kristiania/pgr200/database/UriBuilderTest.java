@@ -15,11 +15,15 @@ public class UriBuilderTest {
     private static HttpEchoServer server;
 
 
-    @BeforeClass
-    public static void startServer() throws IOException {
+    @Before
+    public void startServer() throws IOException {
+        ConferenceDatabaseProgram.useH2 = true;
+        HttpEchoServer.TEST_ENVIRONMENT = true;
+        Flyway flyway = new Flyway();
+        flyway.setDataSource(ConferenceDatabaseProgram.createH2DataSource());
+        flyway.migrate();
         server = new HttpEchoServer(0);
-       populateDatabase();
-
+        populateDatabase();
     }
 
     public static void populateDatabase() throws IOException {
@@ -79,7 +83,6 @@ public class UriBuilderTest {
     }
 
     @Test
-    @Ignore
     public void ShouldReturnCorrectHttpRequestForListingTalksWithGivenTopic() throws IOException {
         String[] testSet = {"list", "talks", "with", "hacking"};
         HttpRequest request = new UriBuilder(server.getPort(), testSet).list();

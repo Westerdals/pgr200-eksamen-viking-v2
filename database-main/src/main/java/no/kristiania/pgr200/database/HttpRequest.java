@@ -44,6 +44,7 @@ public class HttpRequest {
             if(body != null && !body.trim().isEmpty()) {
                 socket.getOutputStream().write(body.trim().getBytes(UTF_8));
             }
+            socket.getOutputStream().flush();
 
             return new HttpResponse(socket);
         }
