@@ -24,7 +24,7 @@ Eksempel:
 | -------- | -------- | ------- |
 | reset | resetter databasen, ikke over http | Database has been reset |
 | insert talk mytalk mydesc oldTopic | legger inn en talk i databasen, dersom topic ikke eksisterer legges dette også inn | Successfully inserted mytalk with topic: oldTopic into conference_talks |
-| insert talk without topic | legger til talken "without" uten en topic | Successfully inserted without into conference_talk |
+| insert talk mytalk topic | legger til talken "mytalk" uten en topic | Successfully inserted mytalk into conference_talk |
 | list talks | lister alle talks | 1 mytalk mydesc oldTopic 2 without topic null | 
 | list topics | lister alle topics | 1 Science 2 Programming 3 Hacking 4 oldTopic |
 | insert topic newTopic | legger inn en  topic i database | Successfully inserted newtopic into topic |
