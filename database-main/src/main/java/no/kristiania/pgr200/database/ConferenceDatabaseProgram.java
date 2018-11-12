@@ -3,6 +3,7 @@ package no.kristiania.pgr200.database;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.sql.*;
 import java.util.Arrays;
 import java.util.Properties;
@@ -68,23 +69,28 @@ public class ConferenceDatabaseProgram {
     public void run(String[] args) throws IOException {
         if (args.length == 0) {
             System.out.println("Run the class with one of these arguments:\n" +
-                    "For inserting a talk/topic type Insert [Talk/Topic] [Title] [Description] <- Only for Talk \n" +
-                    "To Retrieve a single object type Retrieve [Talk/Topic] and ID for talk \n" +
-                    "To List either every talk or topic type List [Talk/Topic]");
+                    "For inserting a talk/topic type insert [talk/topic] [title] [description] <- Only for Talk \n" +
+                    "To Retrieve a single object type Retrieve [talk/topic] and ID for talk \n" +
+                    "To List either every talk or topic type list [talk/topic]");
             System.exit(1);
         }
 
         if(args[0].equals("reset")) {
             resetDatabase();
+            return;
+        }
+        try {
+            builder = new UriBuilder(args);
+        } catch (ConnectException e) {
+            System.out.println("Start the server before running the clinet");
         }
 
-        builder = new UriBuilder(args);
 
     }
 
     public void resetDatabase() throws IOException {
             ArgumentReader reader = new ArgumentReader();
             reader.reset();
-            System.out.println("reset");
+            System.out.println("Database has been reset");
     }
 }
