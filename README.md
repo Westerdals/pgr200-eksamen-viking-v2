@@ -88,8 +88,6 @@ se at alt kjørte slik det skulle. Vi hadde mye problemer å få buildet prosjek
 testene kjørte grønt lokalt. Dette viste seg å være et problem med H2 databasen. Etter utallige timer med
 debugging fikk vi endelig ordnet det (Dette er hvorfor vi har så stygg Travis historikk). 
 
-### Maven
-
 
 ### Sammarbeid og arbeidsmengde 
 Sammarbeidet innad gruppen har fungert utrolig bra. Kunnskapsnivået til gruppemedlemmene er såppas likt at
